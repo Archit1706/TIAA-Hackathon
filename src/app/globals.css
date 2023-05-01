@@ -11,3 +11,7 @@
     --text-medium: #9c9ab6;
     --text-dark: #4d4c59;
 }
+
+body{
+    position: relative;
+}

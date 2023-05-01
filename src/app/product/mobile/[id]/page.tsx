@@ -5,11 +5,13 @@ import Specs from "@/components/ProductPage/Specs";
 import { Counter } from "@/components/Timer/Counter";
 import React, { useState } from "react";
 import { ImHammer2 } from "react-icons/im";
+import { RxCross2 } from "react-icons/rx";
 import { BsBookmark, BsFillBookmarkCheckFill } from "react-icons/bs";
 import TempImg from "../../../../assets/img/temp.jpg";
 import ProductCard from "@/components/Cards/ProductCard";
 const Product4 = () => {
     const [rotate, setRotate] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [count, setCount] = useState(1000002);
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [tab, setTab] = useState(1);
@@ -122,10 +124,74 @@ const Product4 = () => {
                         {/* Bookmark icon */}
                         <BsBookmark className="h-6 w-6 self-center" />
                     </div>
-                    <button type="button" className=" mt-2 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
+                    <button type="button" onClick={() => setIsModalOpen(true)} className=" mt-2 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
                         <ImHammer2 className="w-4 h-4 mr-2 -ml-1" />
                         Autobidding
                     </button>
+                    <div className={`${isModalOpen ? "" : "hidden"} z-20 absolute top-0 overflow-hidden bottom-0 left-0 right-0 bg-[rgb(0,0,0,0.5)] flex items-center justify-center`}>
+                        <div id="info-popup" className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex justify-center items-center">
+                            <div className="relative p-4 w-full max-w-lg h-full md:h-auto">
+                                <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
+                                    <div className="mb-4 text-sm font-light text-gray-500 dark:text-gray-400">
+                                        <h3 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white">Autobidding</h3>
+                                        <div className="flex flex-col space-y-2 items-center">
+                                            <div className="flex flex-row justify-start space-x-2 mt-2 w-full">
+                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap">Limit</button>
+                                                <div className="flex w-full">
+                                                    <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                        -
+                                                    </span>
+                                                    <input id="counter" aria-label="input" className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
+                                                    <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                        +
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row justify-start space-x-2 mt-2 w-full">
+                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap">Increment</button>
+                                                <div className="flex w-full">
+                                                    <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                        -
+                                                    </span>
+                                                    <input id="counter" aria-label="input" className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
+                                                    <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                        +
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row justify-start space-x-2 mt-2 w-full">
+                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap ">Time Gap</button>
+                                                <div className="flex w-full">
+                                                    <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                        -
+                                                    </span>
+                                                    <input id="counter" aria-label="input" className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
+                                                    <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                        +
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
+                                        <a href="#" className="font-medium text-primary-600 dark:text-primary-500 hover:underline">Learn more about autobidding</a>
+                                        <div className="items-center space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
+                                            <button onClick={() => setIsModalOpen(false)} id="close-modal" type="button" className="py-2 px-4 w-full text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 sm:w-auto hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                                            <button id="confirm-button" type="button" className="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <RxCross2
+                            onClick={
+                                () => {
+                                    setIsModalOpen(false);
+                                }
+                            }
+                            className="z-[51] w-8 h-8 text-white fixed right-2 top-2 cursor-pointer"
+                        />
+                    </div>
                 </div>
 
                 {/* <!-- Preview Images Div For larger Screen--> */}
@@ -158,16 +224,16 @@ const Product4 = () => {
             {/* review section */}
             <div className="flex items-center flex-col gap-8">
                 <div className="py-4 mt-12 w-full">
-                    <h1 className="text-4xl">Vendor Reviews</h1>
+                    <h1 className="text-4xl font-bold">Vendor Reviews</h1>
                 </div>
-                <section className="bg-blueGray-100 rounded-sm">
+                <section className="w-full bg-blueGray-100 rounded-sm">
                     <div className="px-4 mx-auto">
                         <div className="flex flex-wrap justify-center gap-8">
                             <ReviewCard />
                             <ReviewCard />
                             <ReviewCard />
                         </div>
-                        <div className="text-center">
+                        <div className="text-center mt-2">
                             <button className="inline-block w-full md:w-auto h-full py-2 px-10 leading-8 font-heading font-medium tracking-tighter text-xl text-white bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl">
                                 See all
                             </button>
@@ -180,7 +246,7 @@ const Product4 = () => {
             {/* Explore more producs */}
             <div className="flex items-center flex-col gap-8">
                 <div className="py-4 mt-12 w-full">
-                    <h1 className="text-4xl">Explore More Products</h1>
+                    <h1 className="text-4xl font-bold">Explore More Products</h1>
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">
                     <ProductCard />
