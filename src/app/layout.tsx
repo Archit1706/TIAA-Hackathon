@@ -14,10 +14,10 @@ const ubuntu = Ubuntu({
     subsets: ["latin"],
 });
 
-export const metadata = {
+/*export const metadata = {
     title: { name },
     description: { description },
-};
+};*/
 
 export default function RootLayout({
     children,
