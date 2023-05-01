@@ -22,9 +22,8 @@ function Timer1({ expiryTimestamp }: Props) {
     });
 
     return (
-        <div style={{ textAlign: "center" }}>
-            <h1>react-timer-hook </h1>
-            <p>Timer Demo</p>
+        <div>
+            <h1 className="text-xl md:text-2xl font-bold" >Time Left</h1>
             <div style={{ fontSize: "100px" }}>
                 <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
                 <span>{seconds}</span>
