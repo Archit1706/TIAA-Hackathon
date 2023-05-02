@@ -1,3 +1,4 @@
+import { Product } from "@/types/Product";
 import React from "react";
 
 type Props = {};
