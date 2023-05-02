@@ -8,6 +8,23 @@ const AppProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
 		const [users, setUsers] = useState([]);
+    const [category, setCategory] = useState("");
+
+    const [formNumber, setFormNumber] = useState(1);
+    // product form data
+    const [productName, setProductName] = useState("");
+    const [condition, setCondition] = useState("");
+    const [brand, setBrand] = useState("");
+    const [location, setLocation] = useState("");
+    const [productDescription, setProductDescription] = useState("");
+    const [tags, setTags] = useState([])
+    const [productImages, setProductImages] = useState([]);
+
+
+    // picture form data
+    const [links, setLinks] = useState([]);
+
+
 		useEffect(() => {
     fetch("https://auction-backend.sidd065.repl.co/api/product/get")
       .then(res => res.json())
@@ -30,6 +47,26 @@ const AppProvider = ({ children }) => {
                 setProducts,
 								users,
 								setUsers,
+                category,
+                setCategory,
+                productName,
+                setProductName,
+                condition,
+                setCondition,
+                brand,
+                setBrand,
+                location,
+                setLocation,
+                productDescription,
+                setProductDescription,
+                tags,
+                setTags,
+                productImages,
+                setProductImages,
+                formNumber,
+                setFormNumber,
+                links,
+                setLinks
             }}
         >
             {children}
