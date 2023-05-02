@@ -1,35 +1,40 @@
-type Product = {
-    id: string;
-    name: string;
-    description: string;
-    rating?: number;
-    reviews?: Array<Review>;
-    condition?: string;
-    images: Array<string>;
-    status?: string;
-    category: string;
-    specs?: Specs;
-    location: string;
-    returns?: boolean;
-    bids?: number;
-    price: number;
-    createDate: Date;
-    soldDate?: Date;
-    buyer?: string;
-    seller: string;
-};
-
-type Review = {
-    name: string;
-    comment: string;
-    rating: number;
-};
-
-type Specs = {
+export interface Product {
+    _id: number
+    name: string
+    brand: string
+    description: string
+    tags: string[]
+    price: number
+    rating: number
+    sellerReviews: SellerReview[]
+    productQuestions: ProductQuestion[]
+    condition: string
+    images: string[]
+    createDate: string
+    status: string
+    category: string
+    specs: Specs
+    location: string
+    returns: boolean
+    bids: number
+  }
+  
+  export interface SellerReview {
+    name: string
+    comment: string
+    rating: number
+  }
+  
+  export interface ProductQuestion {
+    name: string
+    comment: string
+    response: string
+  }
+  
+  export interface Specs {
     [key: string]: string;
-};
-
-export default Product;
+  }
+  
 
 // {
 // "name":"Apple iPhone 14",
