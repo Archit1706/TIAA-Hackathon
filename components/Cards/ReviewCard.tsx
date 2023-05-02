@@ -19,7 +19,7 @@ const ReviewCard = (props: Props) => {
             </div>
             <div className="px-4 overflow-hidden md:px-8 pt-4 pb-4 bg-white flex flex-col space-y-2">
                 <div className="w-full">
-                    <p className="text-sm text-gray-300 w-full">Added 2 months ago</p>
+                    <p className="text-sm text-gray-500 w-full">Added 2 months ago</p>
                 </div>
                 <p className="max-w-2xl text-darkBlueGray-400 leading-loose">
                     I haretra neque non mi aliquam, finibus hart bibendum molestie.

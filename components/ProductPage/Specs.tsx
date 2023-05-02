@@ -6,18 +6,18 @@ const Specs = (props: Props) => {
     return (
         <div className="w-full bg-white shadow-lg rounded-sm border border-gray-200 max-w-[100vw]">
             <header className="px-5 py-4 border-b border-gray-100">
-                <h2 className="font-semibold text-gray-800">Specs</h2>
+                <h2 className="font-semibold text-gray-800 text-xl">Specs</h2>
             </header>
             <div className="p-3">
                 <div className="overflow-x-auto max-h-[400px]">
                     <table className="table-auto w-full">
-                        <thead className="sticky top-0 text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                        <thead className="sticky top-0 text-base font-medium uppercase text-mobile bg-mobile-light">
                             <tr>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">Property</div>
+                                    <div className="font-medium text-left">Property</div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">Value</div>
+                                    <div className="font-medium text-left">Value</div>
                                 </th>
                             </tr>
                         </thead>
@@ -26,13 +26,13 @@ const Specs = (props: Props) => {
                                 <td className="p-2 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
-                                            <ImPointRight className='w-6 h-6 text-blue-500' />
+                                            <ImPointRight className='w-6 h-6 text-mobile' />
                                         </div>
                                         <div className="font-medium text-gray-800">Alex Shatov</div>
                                     </div>
                                 </td>
                                 <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-green-500">
+                                    <div className="text-left font-medium text-mobile">
                                         $2,890.66
                                     </div>
                                 </td>
@@ -41,7 +41,7 @@ const Specs = (props: Props) => {
                                 <td className="p-2 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
-                                            <ImPointRight className='w-6 h-6 text-blue-500' />
+                                            <ImPointRight className='w-6 h-6 text-mobile' />
                                         </div>
                                         <div className="font-medium text-gray-800">
                                             Philip Harbach
@@ -49,7 +49,7 @@ const Specs = (props: Props) => {
                                     </div>
                                 </td>
                                 <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-green-500">
+                                    <div className="text-left font-medium text-mobile">
                                         $2,767.04
                                     </div>
                                 </td>
@@ -58,13 +58,13 @@ const Specs = (props: Props) => {
                                 <td className="p-2 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
-                                            <ImPointRight className='w-6 h-6 text-blue-500' />
+                                            <ImPointRight className='w-6 h-6 text-mobile' />
                                         </div>
                                         <div className="font-medium text-gray-800">Mirko Fisuk</div>
                                     </div>
                                 </td>
                                 <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-green-500">
+                                    <div className="text-left font-medium text-mobile">
                                         $2,996.00
                                     </div>
                                 </td>
@@ -73,13 +73,13 @@ const Specs = (props: Props) => {
                                 <td className="p-2 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
-                                            <ImPointRight className='w-6 h-6 text-blue-500' />
+                                            <ImPointRight className='w-6 h-6 text-mobile' />
                                         </div>
                                         <div className="font-medium text-gray-800">Olga Semklo</div>
                                     </div>
                                 </td>
                                 <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-green-500">
+                                    <div className="text-left font-medium text-mobile">
                                         $1,220.66
                                     </div>
                                 </td>
@@ -88,13 +88,13 @@ const Specs = (props: Props) => {
                                 <td className="p-2 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
-                                            <ImPointRight className='w-6 h-6 text-blue-500' />
+                                            <ImPointRight className='w-6 h-6 text-mobile' />
                                         </div>
                                         <div className="font-medium text-gray-800">Burak Long</div>
                                     </div>
                                 </td>
                                 <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-green-500">
+                                    <div className="text-left font-medium text-mobile">
                                         $1,890.66
                                     </div>
                                 </td>
