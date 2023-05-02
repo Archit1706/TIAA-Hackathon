@@ -18,24 +18,24 @@ export const Counter = () => {
 
   return (
     <div className="counter">
-      <div className="counter-item">
+      <div className="counter-item bg-mobile">
         <span className="value">{String(timeLeft?.days)?.padStart(2, '0')}</span>
         <span className="label">Days</span>
       </div>
 
-      <div className="counter-item">
+      <div className="counter-item bg-mobile">
         <span className="value">{String(timeLeft?.hours)?.padStart(2, '0')}</span>
         <span className="label">Hours</span>
       </div>
 
-      <div className="counter-item">
+      <div className="counter-item bg-mobile">
         <span className="value">
           {String(timeLeft?.minutes)?.padStart(2, '0')}
         </span>
         <span className="label">Minutes</span>
       </div>
 
-      <div className="counter-item">
+      <div className="counter-item bg-mobile">
         <span className="value">
           {String(timeLeft?.seconds)?.padStart(2, '0')}
         </span>

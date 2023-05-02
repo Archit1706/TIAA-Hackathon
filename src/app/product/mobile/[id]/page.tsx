@@ -26,14 +26,14 @@ const Product4 = () => {
     };
 
     return (
-        <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 ">
+        <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 font-Roboto">
             <div className="flex justify-center items-center lg:flex-row flex-col gap-8">
                 {/* <!-- Description Div --> */}
 
                 <div className="  w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
                     {/* <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">Mobile</p> */}
                     <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">Wooden Stool</h2>
-                    <hr className=" bg-gray-200 w-full mt-4" />
+                    <hr className=" bg-gray-300 w-full mt-4" />
 
                     {/* 
                     <div className=" flex flex-row justify-between  mt-5">
@@ -90,12 +90,12 @@ const Product4 = () => {
 
                     <p className=" font-normal text-base leading-6 text-gray-600 mt-7">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using. Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
                     <div className="flex flex-row gap-2 flex-wrap">
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Electronic</div>
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Smart</div>
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Fast Charging</div>
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Camera</div>
+                        <div className="border-1 border-mobile px-4 py-1 bg-mobile-light text-mobile text-md md:text-lg w-fit rounded-full mt-2">Electronic</div>
+                        <div className="border-1 border-mobile px-4 py-1 bg-mobile-light text-mobile text-md md:text-lg w-fit rounded-full mt-2">Smart</div>
+                        <div className="border-1 border-mobile px-4 py-1 bg-mobile-light text-mobile text-md md:text-lg w-fit rounded-full mt-2">Fast Charging</div>
+                        <div className="border-1 border-mobile px-4 py-1 bg-mobile-light text-mobile text-md md:text-lg w-fit rounded-full mt-2">Camera</div>
                     </div>
-                    <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-[var(--blue)]"><span className="text-black">Current Bid: </span>$ 790.89</p>
+                    <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-mobile"><span className="text-black">Current Bid: </span>$ 790.89</p>
 
                     <hr className=" bg-gray-200 w-full mt-4" />
                     {/* <p className="font-light">Status : <span className="font-bold">Available</span></p> */}
@@ -120,12 +120,13 @@ const Product4 = () => {
                                 +
                             </span>
                         </div>
-                        <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2">Bid</button>
+                        <button className="focus:outline-none hover:bg-mobile-light hover:text-mobile font-medium text-white bg-mobile px-6 py-2">Bid</button>
                         {/* Bookmark icon */}
                         <BsBookmark className="h-6 w-6 self-center" />
                     </div>
-                    <button type="button" onClick={() => setIsModalOpen(true)} className=" mt-2 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
-                        <ImHammer2 className="w-4 h-4 mr-2 -ml-1" />
+                    {/* autobiding color [#F7BE38] */}
+                    <button type="button" onClick={() => setIsModalOpen(true)} className="border-mobile border-2 mt-2 text-white bg-mobile hover:text-mobile hover:bg-mobile-light focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
+                        <ImHammer2 className="w-4 h-4 mr-2 -ml-1 text-inherit" />
                         Autobidding
                     </button>
                     <div className={`${isModalOpen ? "" : "hidden"} z-20 absolute top-0 overflow-hidden bottom-0 left-0 right-0 bg-[rgb(0,0,0,0.5)] flex items-center justify-center`}>
@@ -224,7 +225,7 @@ const Product4 = () => {
             {/* review section */}
             <div className="flex items-center flex-col gap-8">
                 <div className="py-4 mt-12 w-full">
-                    <h1 className="text-4xl font-bold">Vendor Reviews</h1>
+                    <h1 className="text-4xl font-bold pl-4">Vendor Reviews</h1>
                 </div>
                 <section className="w-full bg-blueGray-100 rounded-sm">
                     <div className="px-4 mx-auto">
@@ -234,7 +235,7 @@ const Product4 = () => {
                             <ReviewCard />
                         </div>
                         <div className="text-center mt-2">
-                            <button className="inline-block w-full md:w-auto h-full py-2 px-10 leading-8 font-heading font-medium tracking-tighter text-xl text-white bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl">
+                            <button className="inline-block w-full md:w-auto h-full py-2 px-10 leading-8 font-heading font-medium tracking-tighter text-xl text-white border-2 border-mobile hover:text-mobile bg-mobile hover:bg-mobile-light focus:ring-2 focus:ring-mobile focus:ring-opacity-50 rounded-xl">
                                 See all
                             </button>
                         </div>
