@@ -196,12 +196,7 @@ const Product4 = () => {
                         {/* Bookmark icon */}
                         <BsBookmark className="h-6 w-6 self-center" />
                     </div>
-                    <button
-                        type="button"
-                        onClick={() => setIsModalOpen(true)}
-                        className=" mt-2 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2"
-                    >
-                        <ImHammer2 className="w-4 h-4 mr-2 -ml-1" />
+                
                     {/* autobiding color [#F7BE38] */}
                     <button type="button" onClick={() => setIsModalOpen(true)} className="border-mobile border-2 mt-2 text-white bg-mobile hover:text-mobile hover:bg-mobile-light focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
                         <ImHammer2 className="w-4 h-4 mr-2 -ml-1 text-inherit" />

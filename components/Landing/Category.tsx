@@ -4,7 +4,7 @@ import CategoryCard from '../Cards/CategoryCard';
 
 const Category = () => {
   return (
-    <div className='flex flex-col lg:flex-row justify-center w-full gap-10'> 
+    <div className='flex flex-col lg:flex-row justify-center w-full gap-10'>
       <div
         className="relative overflow-hidden rounded-lg bg-cover bg-no-repeat text-center bg-mobile"
         style={{backgroundImage : `url(${Mobile})`, height: '420px', width:'350px'}}
