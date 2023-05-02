@@ -1,10 +1,27 @@
-import React from 'react'
-
-const ProductCard = () => {
+import { calculateTimeLeft } from '@/utils/TimeCounter';
+import React, {useEffect, useState} from 'react'
+ type Props = {
+    endDate: Date
+}
+const ProductCard = ({endDate}: Props) => {
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 1,
+        minutes: 0,
+        seconds: 0
+      });
+    useEffect(() => {
+        let year = new Date().getFullYear();
+        let month = new Date().getMonth() + 4;
+        let day = new Date().getDate() + 4;
+        let endDate = new Date(`${year}-${month}-${day}`);
+        setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
+    }, [timeLeft])
+    
     return (
         <div className="!z-5 3xl:p-![18px] undefined relative flex w-full max-w-[300px] flex-col rounded-[20px] bg-white bg-clip-border !p-4 shadow-md">
             <div className="linear bg-blue-900 hover:bg-blue-800 active:bg-blue-700 mb-2 min-w-full rounded-[10px] px-4 py-2 text-center text-base font-medium text-white transition duration-200">
-                01 d: 12 h: 24 m: 36 s
+                {timeLeft?.days} d: {timeLeft?.hours} h: {timeLeft?.minutes} m: {timeLeft?.seconds} s
             </div>
             <div className="h-full w-full">
                 <div className="relative w-full">

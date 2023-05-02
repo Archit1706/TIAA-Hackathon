@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { AppContext } from "context/AppContext"
 import { RxCrossCircled } from 'react-icons/rx'
+import { ToastContainer, toast } from 'react-toastify';
 type Props = {}
 
 const Product = (props: Props) => {
   const { category, setCategory, productName, setProductName, productDescription, setProductDescription, condition, setCondition, brand, setBrand, location, setLocaion, tags, setTags, formNumber, setFormNumber } = useContext(AppContext)
   // const [tags, setTags] = useState<string[]>([])
   const [tag, setTag] = useState<string>("")
+
+
   return (
     <div className="mt-8 p-4">
+      <ToastContainer />
       <div className="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
           <label htmlFor="product-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
@@ -59,7 +63,7 @@ const Product = (props: Props) => {
               tags && tags.map((tag: any, index: number) => (
                 <span key={index}
                   onClick={() => setTags(tags.filter((t: any) => t !== tag))}
-                  className="inline-flex items-center px-2.5 py-1 rounded-full text-md font-medium bg-blue-100 text-blue-800 mr-2">
+                  className="inline-flex items-center px-2.5 py-1 rounded-full border-1 border-mobile text-md font-medium bg-mobile-light text-mobile mr-2">
                   {tag}
                   <RxCrossCircled className="ml-1" size={16} />
                 </span>
@@ -76,10 +80,23 @@ const Product = (props: Props) => {
               onClick={() => {
                 if (tag === "") return
                 if (tags?.includes(tag)) return
+                if (tags?.length === 11) {
+                  // return toast.error("Maximum 10 tags are allowed")
+                  return toast('❌ Maximum 10 tags are allowed!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+                }
                 setTags([...tags, tag])
                 setTag("")
               }}
-              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+              className='bg-mobile hover:bg-mobile-light text-white hover:text-mobile border-2 border-mobile font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
             >Add</button>
           </div>
         </div>                        <div>

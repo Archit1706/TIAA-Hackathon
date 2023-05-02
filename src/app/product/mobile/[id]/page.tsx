@@ -1,5 +1,5 @@
 "use client";
-import ReviewCard from "@/components/Cards/ReviewCard";
+import ReviewCard from "components/Cards/ReviewCard";
 import AuctionHistory from "@/components/ProductPage/AuctionHistory";
 import Specs from "@/components/ProductPage/Specs";
 import { Counter } from "@/components/Timer/Counter";
@@ -37,8 +37,6 @@ const Product4 = () => {
                         Wooden Stool
                     </h2>
                     <hr className=" bg-gray-200 w-full mt-4" />
-                    <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">Wooden Stool</h2>
-                    <hr className=" bg-gray-300 w-full mt-4" />
 
                     {/* 
                     <div className=" flex flex-row justify-between  mt-5">
@@ -140,10 +138,6 @@ const Product4 = () => {
                         <div className="border-1 border-mobile px-4 py-1 bg-mobile-light text-mobile text-md md:text-lg w-fit rounded-full mt-2">Fast Charging</div>
                         <div className="border-1 border-mobile px-4 py-1 bg-mobile-light text-mobile text-md md:text-lg w-fit rounded-full mt-2">Camera</div>
                     </div>
-                    <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-[var(--blue)]">
-                        <span className="text-black">Current Bid: </span>$
-                        790.89
-                    </p>
                     <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-mobile"><span className="text-black">Current Bid: </span>$ 790.89</p>
 
                     <hr className=" bg-gray-200 w-full mt-4" />
@@ -189,14 +183,10 @@ const Product4 = () => {
                                 +
                             </span>
                         </div>
-                        <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2">
-                            Bid
-                        </button>
                         <button className="focus:outline-none hover:bg-mobile-light hover:text-mobile font-medium text-white bg-mobile px-6 py-2">Bid</button>
                         {/* Bookmark icon */}
                         <BsBookmark className="h-6 w-6 self-center" />
                     </div>
-                
                     {/* autobiding color [#F7BE38] */}
                     <button type="button" onClick={() => setIsModalOpen(true)} className="border-mobile border-2 mt-2 text-white bg-mobile hover:text-mobile hover:bg-mobile-light focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
                         <ImHammer2 className="w-4 h-4 mr-2 -ml-1 text-inherit" />
@@ -420,14 +410,14 @@ const Product4 = () => {
                     </h1>
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
+                    <ProductCard endDate={new Date()}/>
                 </div>
             </div>
         </div>

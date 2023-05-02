@@ -19,7 +19,7 @@ const page = (props: Props) => {
     return (
         <div className="w-screen md:p-8 bg-purple-50 flex items-start justify-center min-h-screen">
             <div className="rounded-lg  shadow-lg w-full bg-white p-2 md:py-4">
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-center"> New Auction</h1>
+                {category!=="" && <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-center"> New Auction</h1>}
                 <div>
                     {
                         category === "" ?
@@ -90,40 +90,40 @@ const page = (props: Props) => {
                                 </div>
                                 <div className="mx-4 p-4">
                                     <div className="flex items-center">
-                                        <div className={`flex items-center ${formNumber === 1 ? "text-white" : "text-teal-600"} relative`}
+                                        <div className={`flex items-center ${formNumber === 1 ? "text-white" : "text-mobile"} relative`}
                                             onClick={() => setFormNumber(1)}
                                         >
-                                            <div className={`${formNumber === 1 && "bg-teal-600"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600 flex items-center justify-center`}>
+                                            <div className={`${formNumber === 1 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <AiOutlineShoppingCart className="w-6 h-6" />
                                             </div>
-                                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">Product</div>
+                                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-mobile">Product</div>
                                         </div>
-                                        <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-teal-600"></div>
+                                        <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-mobile"></div>
 
-                                        <div className={`flex items-center ${formNumber === 2 ? "text-white" : "text-teal-600"} relative`}
+                                        <div className={`flex items-center ${formNumber === 2 ? "text-white" : "text-mobile"} relative`}
                                             onClick={() => setFormNumber(2)}
                                         >
-                                            <div className={`${formNumber === 2 && "bg-teal-600"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600 flex items-center justify-center`}>
+                                            <div className={`${formNumber === 2 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <VscTools className="w-6 h-6" />
                                             </div>
-                                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">Specs</div>
+                                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-mobile">Specs</div>
                                         </div>
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
 
-                                        <div className={`flex items-center ${formNumber === 3 ? "text-white" : "text-teal-600"} relative`}
+                                        <div className={`flex items-center ${formNumber === 3 ? "text-white" : "text-mobile"} relative`}
                                             onClick={() => setFormNumber(3)}
                                         >
-                                            <div className={`${formNumber === 3 && "bg-teal-600"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600 flex items-center justify-center`}>
+                                            <div className={`${formNumber === 3 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <AiOutlineCamera className="w-6 h-6" />
                                             </div>
                                             <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Images</div>
                                         </div>
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
 
-                                        <div className={`flex items-center ${formNumber === 4 ? "text-white" : "text-teal-600"} relative`}
+                                        <div className={`flex items-center ${formNumber === 4 ? "text-white" : "text-mobile"} relative`}
                                             onClick={() => setFormNumber(4)}
                                         >
-                                            <div className={`${formNumber === 4 && "bg-teal-600"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600 flex items-center justify-center`}>
+                                            <div className={`${formNumber === 4 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <MdDone className="w-6 h-6" />
                                             </div>
                                             <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Success</div>

@@ -24,7 +24,7 @@
             "@/*": ["./src/*"],
             "@/components/*": ["components/*"],
             "@/assets/*": ["./src/assets/*"]
-        }
+        },
     },
     "include": [
         "next-env.d.ts",
