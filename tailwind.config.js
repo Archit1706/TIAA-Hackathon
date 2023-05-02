@@ -20,8 +20,8 @@ module.exports = {
           dark: '#0e7490',
         },
         'bike': {
-          light: '#ede9fe',
-          DEFAULT: '#8249ef',
+          light: '#dbeafe',
+          DEFAULT: '#3b82f6',
           dark: '#0e7490',
         },
         'car': {
@@ -30,8 +30,8 @@ module.exports = {
           dark: '#0e7490',
         },
         'rState': {
-          light: '#ede9fe',
-          DEFAULT: '#8249ef',
+          light: '#ffedd5',
+          DEFAULT: '#f97316',
           dark: '#0e7490',
         },
       },

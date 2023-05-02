@@ -22,13 +22,16 @@ const Product = (props: Props) => {
             onChange={(e) => setProductName(e.target.value)}
             type="text" name="product-name" id="product-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product ame.example" required />
         </div>
-        <div>
-          <label htmlFor="brand" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-          <input
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-            type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product brand eg. Hp, Lenovo etc." required />
-        </div>
+        {
+          category === "real estate" ||
+          <div>
+            <label htmlFor="brand" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+            <input
+              value={brand}
+              onChange={(e) => setBrand(e.target.value)}
+              type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product brand eg. Hp, Lenovo etc." required />
+          </div>
+        }
         <div>
           <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
           <input
@@ -91,7 +94,7 @@ const Product = (props: Props) => {
                     draggable: true,
                     progress: undefined,
                     theme: "light",
-                    });
+                  });
                 }
                 setTags([...tags, tag])
                 setTag("")
@@ -113,8 +116,8 @@ const Product = (props: Props) => {
             onClick={() => {
               setFormNumber(2)
             }}
-            className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition">Next</button>
-          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition">Skip</button>
+            className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
+          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
         </div>
       </div>
     </div>
