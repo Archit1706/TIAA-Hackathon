@@ -1,5 +1,5 @@
 "use client";
-import ReviewCard from "@/components/Cards/ReviewCard";
+import ReviewCard from "components/Cards/ReviewCard";
 import AuctionHistory from "@/components/ProductPage/AuctionHistory";
 import Specs from "@/components/ProductPage/Specs";
 import { Counter } from "@/components/Timer/Counter";
