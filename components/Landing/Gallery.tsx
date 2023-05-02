@@ -46,64 +46,64 @@ const Gallery = (props: Props) => {
     ];
 
     // cars
-    useEffect(() => {
-        const secondsBetweenChanges = 5;
-        const interval = setInterval(() => {
-            setCarIndex((prevIndex) =>
-                prevIndex + 1 < carImages.length ? prevIndex + 1 : 0
-            );
-        }, secondsBetweenChanges * 1000);
+    // useEffect(() => {
+    //     const secondsBetweenChanges = 5;
+    //     const interval = setInterval(() => {
+    //         setCarIndex((prevIndex) =>
+    //             prevIndex + 1 < carImages.length ? prevIndex + 1 : 0
+    //         );
+    //     }, secondsBetweenChanges * 1000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     // bikes
-    useEffect(() => {
-        const secondsBetweenChanges = 4;
-        const interval = setInterval(() => {
-            setBikeIndex((prevIndex) =>
-                prevIndex + 1 < bikeImages.length ? prevIndex + 1 : 0
-            );
-        }, secondsBetweenChanges * 1000);
+    // useEffect(() => {
+    //     const secondsBetweenChanges = 4;
+    //     const interval = setInterval(() => {
+    //         setBikeIndex((prevIndex) =>
+    //             prevIndex + 1 < bikeImages.length ? prevIndex + 1 : 0
+    //         );
+    //     }, secondsBetweenChanges * 1000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     // laptops
-    useEffect(() => {
-        const secondsBetweenChanges = 3;
-        const interval = setInterval(() => {
-            setLaptopIndex((prevIndex) =>
-                prevIndex + 1 < laptopImages.length ? prevIndex + 1 : 0
-            );
-        }, secondsBetweenChanges * 1000);
+    // useEffect(() => {
+    //     const secondsBetweenChanges = 3;
+    //     const interval = setInterval(() => {
+    //         setLaptopIndex((prevIndex) =>
+    //             prevIndex + 1 < laptopImages.length ? prevIndex + 1 : 0
+    //         );
+    //     }, secondsBetweenChanges * 1000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     // phones
-    useEffect(() => {
-        const secondsBetweenChanges = 6;
-        const interval = setInterval(() => {
-            setPhoneIndex((prevIndex) =>
-                prevIndex + 1 < phoneImages.length ? prevIndex + 1 : 0
-            );
-        }, secondsBetweenChanges * 1000);
+    // useEffect(() => {
+    //     const secondsBetweenChanges = 6;
+    //     const interval = setInterval(() => {
+    //         setPhoneIndex((prevIndex) =>
+    //             prevIndex + 1 < phoneImages.length ? prevIndex + 1 : 0
+    //         );
+    //     }, secondsBetweenChanges * 1000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     // real-estate
-    useEffect(() => {
-        const secondsBetweenChanges = 4;
-        const interval = setInterval(() => {
-            setRealEstateIndex((prevIndex) =>
-                prevIndex + 1 < realEstateImages.length ? prevIndex + 1 : 0
-            );
-        }, secondsBetweenChanges * 1000);
+    // useEffect(() => {
+    //     const secondsBetweenChanges = 4;
+    //     const interval = setInterval(() => {
+    //         setRealEstateIndex((prevIndex) =>
+    //             prevIndex + 1 < realEstateImages.length ? prevIndex + 1 : 0
+    //         );
+    //     }, secondsBetweenChanges * 1000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     return (
         <section className="text-gray-600 body-font h-sreen">
