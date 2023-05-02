@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ReviewCard from "@/components/Cards/ReviewCard";
 import AuctionHistory from "@/components/ProductPage/AuctionHistory";
 import Specs from "@/components/ProductPage/Specs";
@@ -32,7 +32,9 @@ const Product4 = () => {
 
                 <div className="  w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
                     {/* <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">Mobile</p> */}
-                    <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">Wooden Stool</h2>
+                    <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
+                        Wooden Stool
+                    </h2>
                     <hr className=" bg-gray-200 w-full mt-4" />
 
                     {/* 
@@ -74,34 +76,80 @@ const Product4 = () => {
 
                     <div className="flex flex-row space-x-2 items-center mt-2">
                         <div className="flex -space-x-4">
-                            <img className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src={TempImg.src} alt="" />
-                            <img className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src={TempImg.src} alt="" />
-                            <img className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src={TempImg.src} alt="" />
-                            <a className="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+99</a>
+                            <img
+                                className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                                src={TempImg.src}
+                                alt=""
+                            />
+                            <img
+                                className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                                src={TempImg.src}
+                                alt=""
+                            />
+                            <img
+                                className="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
+                                src={TempImg.src}
+                                alt=""
+                            />
+                            <a
+                                className="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800"
+                                href="#"
+                            >
+                                +99
+                            </a>
                         </div>
                         <p className="text-xl"> Users are bidding.</p>
                     </div>
 
                     <hr className=" bg-gray-200 w-full mt-4" />
                     <div className="flex flex-col md:flex-row md:justify-between">
-                        <p className="font-light">Auctioneer : <span className="font-bold">Prateek V.</span></p>
-                        <p className="font-light">Category : <span className="font-bold">Mobile</span></p>
+                        <p className="font-light">
+                            Auctioneer :{" "}
+                            <span className="font-bold">Prateek V.</span>
+                        </p>
+                        <p className="font-light">
+                            Category : <span className="font-bold">Mobile</span>
+                        </p>
                     </div>
 
-                    <p className=" font-normal text-base leading-6 text-gray-600 mt-7">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using. Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+                    <p className=" font-normal text-base leading-6 text-gray-600 mt-7">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content of a page when
+                        looking at its layout. The point of using. Lorem Ipsum
+                        is that it has a more-or-less normal distribution of
+                        letters.
+                    </p>
                     <div className="flex flex-row gap-2 flex-wrap">
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Electronic</div>
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Smart</div>
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Fast Charging</div>
-                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">Camera</div>
+                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">
+                            Electronic
+                        </div>
+                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">
+                            Smart
+                        </div>
+                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">
+                            Fast Charging
+                        </div>
+                        <div className="border-1 border-green-600 px-4 py-1 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-full mt-2">
+                            Camera
+                        </div>
                     </div>
-                    <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-[var(--blue)]"><span className="text-black">Current Bid: </span>$ 790.89</p>
+                    <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-[var(--blue)]">
+                        <span className="text-black">Current Bid: </span>$
+                        790.89
+                    </p>
 
                     <hr className=" bg-gray-200 w-full mt-4" />
                     {/* <p className="font-light">Status : <span className="font-bold">Available</span></p> */}
                     <div className="flex flex-row space-x-2 items-center">
-                        <div className="px-6 py-2 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-md mt-2">Available </div>
-                        <div className="px-6 py-2 bg-red-100 text-red-600 text-md md:text-lg w-fit rounded-md mt-2">Ends on <span className="font-bold">June 30, 2023 12:00 am</span></div>
+                        <div className="px-6 py-2 bg-green-100 text-green-600 text-md md:text-lg w-fit rounded-md mt-2">
+                            Available{" "}
+                        </div>
+                        <div className="px-6 py-2 bg-red-100 text-red-600 text-md md:text-lg w-fit rounded-md mt-2">
+                            Ends on{" "}
+                            <span className="font-bold">
+                                June 30, 2023 12:00 am
+                            </span>
+                        </div>
                     </div>
                     {/* <p className="font-light">Aucion ends : <span className="font-bold">June 30, 2023 12:00 am</span></p> */}
                     {/* <p className="font-light">Bids : <span className="font-bold">23</span></p> */}
@@ -112,61 +160,140 @@ const Product4 = () => {
 
                     <div className="flex flex-row justify-start space-x-2 mt-8">
                         <div className="flex">
-                            <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                            <span
+                                onClick={minusCount}
+                                className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold"
+                            >
                                 -
                             </span>
-                            <input id="counter" aria-label="input" className="px-2 border border-gray-300 h-full text-center w-[50%] min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
-                            <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                            <input
+                                id="counter"
+                                aria-label="input"
+                                className="px-2 border border-gray-300 h-full text-center w-[50%] min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold"
+                                type="text"
+                                value={count}
+                                onChange={(e) => e.target.value}
+                            />
+                            <span
+                                onClick={addCount}
+                                className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
+                            >
                                 +
                             </span>
                         </div>
-                        <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2">Bid</button>
+                        <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2">
+                            Bid
+                        </button>
                         {/* Bookmark icon */}
                         <BsBookmark className="h-6 w-6 self-center" />
                     </div>
-                    <button type="button" onClick={() => setIsModalOpen(true)} className=" mt-2 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
+                    <button
+                        type="button"
+                        onClick={() => setIsModalOpen(true)}
+                        className=" mt-2 text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2"
+                    >
                         <ImHammer2 className="w-4 h-4 mr-2 -ml-1" />
                         Autobidding
                     </button>
-                    <div className={`${isModalOpen ? "" : "hidden"} z-20 absolute top-0 overflow-hidden bottom-0 left-0 right-0 bg-[rgb(0,0,0,0.5)] flex items-center justify-center`}>
-                        <div id="info-popup" className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex justify-center items-center">
+                    <div
+                        className={`${
+                            isModalOpen ? "" : "hidden"
+                        } z-20 absolute top-0 overflow-hidden bottom-0 left-0 right-0 bg-[rgb(0,0,0,0.5)] flex items-center justify-center`}
+                    >
+                        <div
+                            id="info-popup"
+                            className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full flex justify-center items-center"
+                        >
                             <div className="relative p-4 w-full max-w-lg h-full md:h-auto">
                                 <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
                                     <div className="mb-4 text-sm font-light text-gray-500 dark:text-gray-400">
-                                        <h3 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white">Autobidding</h3>
+                                        <h3 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white">
+                                            Autobidding
+                                        </h3>
                                         <div className="flex flex-col space-y-2 items-center">
                                             <div className="flex flex-row justify-start space-x-2 mt-2 w-full">
-                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap">Limit</button>
+                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap">
+                                                    Limit
+                                                </button>
                                                 <div className="flex w-full">
-                                                    <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                    <span
+                                                        onClick={minusCount}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold"
+                                                    >
                                                         -
                                                     </span>
-                                                    <input id="counter" aria-label="input" className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
-                                                    <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                    <input
+                                                        id="counter"
+                                                        aria-label="input"
+                                                        className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold"
+                                                        type="text"
+                                                        value={count}
+                                                        onChange={(e) =>
+                                                            e.target.value
+                                                        }
+                                                    />
+                                                    <span
+                                                        onClick={addCount}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
+                                                    >
                                                         +
                                                     </span>
                                                 </div>
                                             </div>
                                             <div className="flex flex-row justify-start space-x-2 mt-2 w-full">
-                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap">Increment</button>
+                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap">
+                                                    Increment
+                                                </button>
                                                 <div className="flex w-full">
-                                                    <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                    <span
+                                                        onClick={minusCount}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold"
+                                                    >
                                                         -
                                                     </span>
-                                                    <input id="counter" aria-label="input" className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
-                                                    <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                    <input
+                                                        id="counter"
+                                                        aria-label="input"
+                                                        className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold"
+                                                        type="text"
+                                                        value={count}
+                                                        onChange={(e) =>
+                                                            e.target.value
+                                                        }
+                                                    />
+                                                    <span
+                                                        onClick={addCount}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
+                                                    >
                                                         +
                                                     </span>
                                                 </div>
                                             </div>
                                             <div className="flex flex-row justify-start space-x-2 mt-2 w-full">
-                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap ">Time Gap</button>
+                                                <button className="focus:outline-none hover:bg-black font-medium text-white bg-gray-800 px-6 py-2 whitespace-nowrap ">
+                                                    Time Gap
+                                                </button>
                                                 <div className="flex w-full">
-                                                    <span onClick={minusCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                    <span
+                                                        onClick={minusCount}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold"
+                                                    >
                                                         -
                                                     </span>
-                                                    <input id="counter" aria-label="input" className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold" type="text" value={count} onChange={(e) => e.target.value} />
-                                                    <span onClick={addCount} className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold">
+                                                    <input
+                                                        id="counter"
+                                                        aria-label="input"
+                                                        className="w-full px-2 border border-gray-300 h-full text-center min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold"
+                                                        type="text"
+                                                        value={count}
+                                                        onChange={(e) =>
+                                                            e.target.value
+                                                        }
+                                                    />
+                                                    <span
+                                                        onClick={addCount}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
+                                                    >
                                                         +
                                                     </span>
                                                 </div>
@@ -174,21 +301,39 @@ const Product4 = () => {
                                         </div>
                                     </div>
                                     <div className="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
-                                        <a href="#" className="font-medium text-primary-600 dark:text-primary-500 hover:underline">Learn more about autobidding</a>
+                                        <a
+                                            href="#"
+                                            className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                                        >
+                                            Learn more about autobidding
+                                        </a>
                                         <div className="items-center space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
-                                            <button onClick={() => setIsModalOpen(false)} id="close-modal" type="button" className="py-2 px-4 w-full text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 sm:w-auto hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                                            <button id="confirm-button" type="button" className="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Confirm</button>
+                                            <button
+                                                onClick={() =>
+                                                    setIsModalOpen(false)
+                                                }
+                                                id="close-modal"
+                                                type="button"
+                                                className="py-2 px-4 w-full text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 sm:w-auto hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                                            >
+                                                Cancel
+                                            </button>
+                                            <button
+                                                id="confirm-button"
+                                                type="button"
+                                                className="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-auto hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                            >
+                                                Confirm
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <RxCross2
-                            onClick={
-                                () => {
-                                    setIsModalOpen(false);
-                                }
-                            }
+                            onClick={() => {
+                                setIsModalOpen(false);
+                            }}
                             className="z-[51] w-8 h-8 text-white fixed right-2 top-2 cursor-pointer"
                         />
                     </div>
@@ -198,19 +343,33 @@ const Product4 = () => {
 
                 <div className=" w-full sm:w-96 md:w-8/12  lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
                     <div className=" w-full lg:w-8/12 bg-gray-100 flex justify-center items-center cursor-pointer">
-                        <img src="https://i.ibb.co/bRg2CJj/sam-moqadam-kvmds-Tr-GOBM-unsplash-removebg-preview-1.png" alt="Wooden Chair Previw" />
+                        <img
+                            src="https://i.ibb.co/bRg2CJj/sam-moqadam-kvmds-Tr-GOBM-unsplash-removebg-preview-1.png"
+                            alt="Wooden Chair Previw"
+                        />
                     </div>
                     <div className=" w-full lg:w-4/12 grid lg:grid-cols-1 sm:grid-cols-4 grid-cols-2 gap-6">
                         <div className="bg-gray-100 flex justify-center items-center py-4 cursor-pointer">
-                            <img src="https://i.ibb.co/0jX1zmR/sam-moqadam-kvmds-Tr-GOBM-unsplash-removebg-preview-1-1.png" alt="Wooden chair - preview 1" />
+                            <img
+                                src="https://i.ibb.co/0jX1zmR/sam-moqadam-kvmds-Tr-GOBM-unsplash-removebg-preview-1-1.png"
+                                alt="Wooden chair - preview 1"
+                            />
                         </div>
                         <div className="bg-gray-100 flex justify-center items-center py-4 cursor-pointer">
-                            <img src="https://i.ibb.co/7zv1N5Q/sam-moqadam-kvmds-Tr-GOBM-unsplash-removebg-preview-2.png" alt="Wooden chair - preview 2" />
+                            <img
+                                src="https://i.ibb.co/7zv1N5Q/sam-moqadam-kvmds-Tr-GOBM-unsplash-removebg-preview-2.png"
+                                alt="Wooden chair - preview 2"
+                            />
                         </div>
                         <div className="bg-gray-100 flex justify-center items-center py-4 cursor-pointer relative">
-                            <img src={TempImg.src} alt="Wooden chair- preview 3" />
+                            <img
+                                src={TempImg.src}
+                                alt="Wooden chair- preview 3"
+                            />
                             <div className="z-10 absolute top-0 bottom-0 left-0 right-0 bg-black opacity-0 hover:opacity-50 transition-all ease-in flex items-center justify-center">
-                                <p className="text-white font-extrabold">View more</p>
+                                <p className="text-white font-extrabold">
+                                    View more
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -240,13 +399,14 @@ const Product4 = () => {
                         </div>
                     </div>
                 </section>
-
             </div>
 
             {/* Explore more producs */}
             <div className="flex items-center flex-col gap-8">
                 <div className="py-4 mt-12 w-full">
-                    <h1 className="text-4xl font-bold">Explore More Products</h1>
+                    <h1 className="text-4xl font-bold">
+                        Explore More Products
+                    </h1>
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">
                     <ProductCard />
@@ -264,4 +424,3 @@ const Product4 = () => {
 };
 
 export default Product4;
-
