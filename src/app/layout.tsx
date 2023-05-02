@@ -7,6 +7,7 @@ import Navbar from "../../components/Base/Navbar";
 import Footer from "../../components/Base/Footer";
 import LightDarkToggle from "../../components/LightDarkToggle";
 import { Ubuntu } from "next/font/google";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ubuntu = Ubuntu({
     weight: ["400", "500", "700"],

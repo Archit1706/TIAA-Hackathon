@@ -16,7 +16,7 @@ const Success = (props: Props) => {
                     <p className="text-gray-600 my-2">Thank you for cteating auction for your product.</p>
                     <p> Have a great day!  </p>
                     <div className="py-10 text-center">
-                        <a href="#" className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                        <a href="#" className="px-12 bg-mobile hover:bg-mobile-light border-2 border-mobile rounded-lg hover:text-mobile text-white font-semibold py-3">
                             GO BACK
                         </a>
                     </div>

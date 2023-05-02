@@ -13,7 +13,11 @@ export const Counter = () => {
   });
 
   useEffect(() => {
-    setTimeout(() => setTimeLeft(calculateTimeLeft()), 1000);
+    let year = new Date().getFullYear();
+    let month = new Date().getMonth() + 4;
+    let day = new Date().getDate() + 4;
+    let endDate = new Date(`${year}-${month}-${day}`);
+    setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
   }, [timeLeft]);
 
   return (
