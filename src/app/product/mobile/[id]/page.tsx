@@ -9,6 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 import { BsBookmark, BsFillBookmarkCheckFill } from "react-icons/bs";
 import TempImg from "../../../../assets/img/temp.jpg";
 import ProductCard from "@/components/Cards/ProductCard";
+import Chat from "@/components/ProductPage/Chat";
 const Product4 = () => {
     const [rotate, setRotate] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -222,6 +223,10 @@ const Product4 = () => {
                 <AuctionHistory />
                 <Specs />
             </div>
+            <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
+                <Chat/>
+            </div>
+
             {/* review section */}
             <div className="flex items-center flex-col gap-8">
                 <div className="py-4 mt-12 w-full">
