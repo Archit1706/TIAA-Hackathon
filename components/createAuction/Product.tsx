@@ -47,15 +47,15 @@ const Product = (props: Props) => {
             {
               category === "real estate" ?
                 <>
-                  <option value="newly-built">Newly built</option>
-                  <option value="pre-owned">Pre owned</option>
-                  <option value="requires-repair">Requires Repair</option>
+                  <option value="Newily built">Newly built</option>
+                  <option value="Pre owned">Pre owned</option>
+                  <option value="Requires Repairs">Requires Repair</option>
                 </>
                 :
                 <>
-                  <option value="new">New</option>
-                  <option value="used">Used</option>
-                  <option value="for-parts">For Parts</option>
+                  <option value="New">New</option>
+                  <option value="Used">Used</option>
+                  <option value="For Parts">For Parts</option>
                 </>
             }
           </select>

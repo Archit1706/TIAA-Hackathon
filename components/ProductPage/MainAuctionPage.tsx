@@ -14,6 +14,7 @@ import { Product } from "@/types/Product";
 import Link from "next/link";
 
 import io from "socket.io-client";
+import FAQ from "./FAQ";
 let socket: any;
 const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
 
@@ -468,10 +469,38 @@ const MainAuctionPage = (props: Props) => {
             {/* extra tabs section */}
             <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
                 <AuctionHistory product={props?.product} />
-                <Specs specifications={props?.product?.specs} />
+                {
+                    props?.product?.specs && <Specs specifications={props?.product?.specs} />
+                }
             </div>
             <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
                 <Chat />
+            </div>
+
+            {/* review section */}
+            <div className="flex items-center flex-col gap-8">
+                <div className="py-4 mt-12 w-full">
+                    <h1 className="text-4xl font-bold pl-4">FAQ</h1>
+                </div>
+                <section className="w-full bg-blueGray-100 rounded-sm">
+                    {
+                        props?.product?.productQuestions?.length === 0 ? (
+                            <div className="flex items-center justify-center py-4 bg-gray-100 rounded-xl">
+                                <h1 className="text-2xl font-bold">
+                                    No questions yet
+                                </h1>
+                            </div>
+                        )
+                            : (
+                                props?.product?.productQuestions
+                                &&
+                                <div className="mx-auto">
+                                    <FAQ product={props?.product} QnA={props?.product?.productQuestions} />
+                                </div>
+                            )
+                    }
+
+                </section>
             </div>
 
             {/* review section */}
