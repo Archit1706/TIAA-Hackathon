@@ -20,6 +20,8 @@ const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
 type Props = {
     product: Product;
     moreProducts?: Product[];
+    type: string;
+    color: any;
 };
 const MainAuctionPage = (props: Props) => {
     const [rotate, setRotate] = useState(false);

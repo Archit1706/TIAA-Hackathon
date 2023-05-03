@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Product } from "@/types/Product";
 import MainAuctionPage from "@/components/ProductPage/MainAuctionPage";
 import { useRouter } from "next/navigation";
+import { colors } from "config";
 
 import { products } from "mockProductData";
 
@@ -21,7 +22,12 @@ const page = ({ params }: any) => {
 
     return (
         <div>
-            <MainAuctionPage product={product} moreProducts={moreProducts} />
+            <MainAuctionPage
+                type={product.category}
+                color={colors[product.category]}
+                product={product}
+                moreProducts={moreProducts}
+            />
         </div>
     );
 };

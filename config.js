@@ -14,5 +14,33 @@ const features = [
     "Feature 4"
 ];
 
-export { name, tagline, description, features };
+const colors = {
+    "Bikes": {
+        "color1": "#dbeafe",
+        "color2": "#8249ef",
+        "color3": "#0e7490"
+    },
+    "Cars": {
+        "color1": "#ede9fe",
+        "color2": "#8249ef",
+        "color3": "#0e7490"
+    },
+    "Mobiles": {
+        "color1": "#ede9fe",
+        "color2": "#8249ef",
+        "color3": "#0e7490"
+    },
+    "Real-Estate": {
+        "color1": "#ffedd5",
+        "color2": "#f97316",
+        "color3": "#0e7490"
+    },
+    "Laptops": {
+        "color1": "#f0fdfa",
+        "color2": "#10b981",
+        "color3": "#0e7490"
+    }
+}
+
+export { name, tagline, description, features, colors };
 
