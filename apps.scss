@@ -37,7 +37,6 @@
     }
     p {
       font-size: 1.02vw;
-      color: #333;
       margin: 20px 0 30px 0;
     }
     .btn_group {
@@ -52,7 +51,7 @@
         border-radius: 8px;
         font-weight: 600;
         &.btn_primary {
-          background-color: #000000;
+          background-color: #7700ff;
           color: #ffffff;
           svg {
             margin-left: 8px;
@@ -188,7 +187,7 @@
     h3 {
       font-size: 1.15vw;
       font-weight: 600;
-      color: #000000;
+    //   color: #000000;
       text-transform: capitalize;
     }
     a {
