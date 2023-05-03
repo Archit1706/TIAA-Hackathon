@@ -222,7 +222,7 @@ const MainAuctionPage = (props: Props) => {
                     {/* <p className="font-light">Bids : <span className="font-bold">23</span></p> */}
                     {/*  timer */}
                     <div className="flex flex-row justify-between items-center mt-6">
-                        <Counter endDate={} />
+                        <Counter />
                     </div>
 
                     <div className="flex flex-row justify-start space-x-2 mt-8">

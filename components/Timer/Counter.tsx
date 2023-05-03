@@ -5,7 +5,7 @@ import { calculateTimeLeft } from "../../src/utils/TimeCounter";
 import "./timer-styles.css";
 
 type Props = {
-    endDate: Date | string;
+    endDate?: Date | string;
 };
 export const Counter = ({ endDate }: Props) => {
     const [timeLeft, setTimeLeft] = useState({
