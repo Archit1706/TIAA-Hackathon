@@ -1,22 +1,20 @@
 "use client";
 
+import { Product } from "@/types/Product";
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 
 let socket: any;
 const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
 type Props = {
-    bidHistory?: [
-        {
-            name: string;
-            amount: number;
-            date: string | Date;
-        }
-    ];
+    product: Product;
 };
 
-const AuctionHistory = ({ bidHistory }: Props) => {
-    const [room, setRoom] = useState(window.location.href);
+const AuctionHistory = (props: Props) => {
+    // const [room, setRoom] = useState(window.location.pathname.split("/")[2]);
+    const [room, setRoom] = useState(
+        window.location.href.substr(window.location.href.length - 24)
+    );
     const [userName, setUserName] = useState(String(Math.random())); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
     const [_, update] = useState(1);
 
@@ -29,7 +27,10 @@ const AuctionHistory = ({ bidHistory }: Props) => {
 
     useEffect(() => {
         socket = io(CONNECTION_PORT);
-        socket.emit("join_room", room);
+        socket.emit(
+            "join_room",
+            window.location.href.substr(window.location.href.length - 24)
+        );
     }, [CONNECTION_PORT]);
 
     useEffect(() => {

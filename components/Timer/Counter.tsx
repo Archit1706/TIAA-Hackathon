@@ -5,9 +5,9 @@ import { calculateTimeLeft } from "../../src/utils/TimeCounter";
 import "./timer-styles.css";
 
 type Props = {
-    endDate?: Date | string;
+    endDate: string;
 };
-export const Counter = ({ endDate }: Props) => {
+export const Counter = (props: Props) => {
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -16,10 +16,14 @@ export const Counter = ({ endDate }: Props) => {
     });
 
     useEffect(() => {
-        let year = new Date().getFullYear();
-        let month = new Date().getMonth() + 4;
-        let day = new Date().getDate() + 4;
-        let endDate = new Date(`${year}-${month}-${day}`);
+        let date = new Date(props?.endDate);
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        const endDate = new Date(`${year}-${month}-${day}`);
+
+        // console.log(day);
+
         setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
     }, [timeLeft]);
 
