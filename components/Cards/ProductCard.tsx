@@ -3,21 +3,26 @@ import { calculateTimeLeft } from "@/utils/TimeCounter";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 type Props = {
-    endDate: Date;
+    endDate: string;
     product: Product;
 };
-const ProductCard = ({ endDate, product }: Props) => {
+const ProductCard = (props: Props) => {
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
-        hours: 1,
+        hours: 0,
         minutes: 0,
         seconds: 0,
     });
+
     useEffect(() => {
-        let year = new Date().getFullYear();
-        let month = new Date().getMonth() + 4;
-        let day = new Date().getDate() + 4;
-        let endDate = new Date(`${year}-${month}-${day}`);
+        let date = new Date(props?.endDate);
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        const endDate = new Date(`${year}-${month}-${day}`);
+
+        // console.log(day);
+
         setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
     }, [timeLeft]);
 
@@ -30,7 +35,9 @@ const ProductCard = ({ endDate, product }: Props) => {
             <div className="h-full w-full">
                 <div className="relative w-full">
                     <img
-                        src={product?.images && product?.images[0]}
+                        src={
+                            props?.product?.images && props?.product?.images[0]
+                        }
                         className="3xl:h-full 3xl:w-full mb-3 h-full w-full rounded-xl max-h-40"
                         alt=""
                     />
@@ -59,7 +66,7 @@ const ProductCard = ({ endDate, product }: Props) => {
                 <div className="mb-3 flex items-center justify-between px-1 md:items-start">
                     <div className="mb-2">
                         <p className="text-navy-700 text-lg font-bold">
-                            {product?.name}
+                            {props?.product?.name}
                         </p>
                         <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
                             By Owner
@@ -70,11 +77,11 @@ const ProductCard = ({ endDate, product }: Props) => {
                             Current Bid
                         </p>
                         <p className="mt-1 text-sm font-medium md:mt-2">
-                            {product?.price}
+                            {props?.product?.price}
                         </p>
                     </div>
                 </div>
-                <Link href={`/product/${product?._id}`}>
+                <Link href={`/product/${props?.product?._id}`}>
                     <div className="flex items-center md:items-center">
                         <button className="linear bg-blue-900 hover:bg-blue-800 active:bg-blue-700 min-w-full rounded-[10px] px-4 py-2 text-base font-medium text-white transition duration-200">
                             Place Bid

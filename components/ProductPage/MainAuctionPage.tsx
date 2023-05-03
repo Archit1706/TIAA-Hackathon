@@ -55,6 +55,8 @@ const MainAuctionPage = (props: Props) => {
     const [messageList, setMessageList] = useState([]);
     const [bidList, setBidList] = useState([]);
 
+    const [userCount, setUserCount] = useState(0);
+
     useEffect(() => {
         socket = io(CONNECTION_PORT);
         socket.emit(
@@ -66,6 +68,7 @@ const MainAuctionPage = (props: Props) => {
     useEffect(() => {
         socket.once("connectToRoom", (data: any) => {
             console.log(data);
+            setUserCount(data.userCount);
             setPrice(data.price);
             setBidAmt(data.price + 100);
             setBidList(data.history);
@@ -86,6 +89,7 @@ const MainAuctionPage = (props: Props) => {
     useEffect(() => {
         socket.on("recieve_bid", (data: any) => {
             console.log(data);
+            setUserCount(data.userCount);
             setPrice(Number(data.price));
             setBidList(data.history);
         });
@@ -158,8 +162,7 @@ const MainAuctionPage = (props: Props) => {
                                             className="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800"
                                             href="#"
                                         >
-                                            +
-                                            {props?.product?.images?.length - 3}
+                                            +{userCount}
                                         </a>
                                     </>
                                 )}
@@ -274,8 +277,9 @@ const MainAuctionPage = (props: Props) => {
                         Autobidding
                     </button>
                     <div
-                        className={`${isModalOpen ? "" : "hidden"
-                            } z-20 absolute top-0 overflow-hidden bottom-0 left-0 right-0 bg-[rgb(0,0,0,0.5)] flex items-center justify-center`}
+                        className={`${
+                            isModalOpen ? "" : "hidden"
+                        } z-20 absolute top-0 overflow-hidden bottom-0 left-0 right-0 bg-[rgb(0,0,0,0.5)] flex items-center justify-center`}
                     >
                         <div
                             id="info-popup"
@@ -509,32 +513,31 @@ const MainAuctionPage = (props: Props) => {
                     <h1 className="text-4xl font-bold pl-4">Vendor Reviews</h1>
                 </div>
                 <section className="w-full bg-blueGray-100 rounded-sm">
-                    {
-                        props?.product?.sellerReviews?.length === 0 ? (
-                            <div className="flex items-center justify-center py-4 bg-gray-100 rounded-xl">
-                                <h1 className="text-2xl font-bold">
-                                    No reviews yet
-                                </h1>
+                    {props?.product?.sellerReviews?.length === 0 ? (
+                        <div className="flex items-center justify-center py-4 bg-gray-100 rounded-xl">
+                            <h1 className="text-2xl font-bold">
+                                No reviews yet
+                            </h1>
+                        </div>
+                    ) : (
+                        <div className="px-4 mx-auto">
+                            <div className="flex flex-wrap justify-center gap-8">
+                                {props?.product?.sellerReviews &&
+                                    props.product.sellerReviews?.map(
+                                        (review) => {
+                                            return (
+                                                <ReviewCard review={review} />
+                                            );
+                                        }
+                                    )}
                             </div>
-                        )
-                            : (
-                                <div className="px-4 mx-auto">
-                                    <div className="flex flex-wrap justify-center gap-8">
-                                        {props?.product?.sellerReviews &&
-                                            props.product.sellerReviews?.map((review) => {
-                                                return <ReviewCard review={review} />;
-                                            })}
-                                    </div>
-                                    <div className="text-center mt-2">
-                                        <button className="inline-block w-full md:w-auto h-full py-2 px-10 leading-8 font-heading font-medium tracking-tighter text-xl text-white border-2 border-mobile hover:text-mobile bg-mobile hover:bg-mobile-light focus:ring-2 focus:ring-mobile focus:ring-opacity-50 rounded-xl">
-                                            See all
-                                        </button>
-                                    </div>
-
-                                </div>
-                            )
-                    }
-
+                            <div className="text-center mt-2">
+                                <button className="inline-block w-full md:w-auto h-full py-2 px-10 leading-8 font-heading font-medium tracking-tighter text-xl text-white border-2 border-mobile hover:text-mobile bg-mobile hover:bg-mobile-light focus:ring-2 focus:ring-mobile focus:ring-opacity-50 rounded-xl">
+                                    See all
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </section>
             </div>
 
