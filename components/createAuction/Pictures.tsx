@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 type Props = {}
 
 const Pictures = (props: Props) => {
-  const { category, productName, condition, brand, location, productDescription, tags, productImages, formNumber, links, specs, price, soldDate, setFormNumber, setLinks } = useContext(AppContext)
+  const { category, setCategory, productName, setProductName, condition, setCondition, brand, setBrand, location, setLocation, productDescription, setProductDescription, tags, setTags, productImages, setProductImages, formNumber, setFormNumber, links, setLinks, specs, setSpecs, price, setPrice, soldDate, setSoldDate } = useContext(AppContext)
   const uploadCloudinary = async (file: any) => {
     const formData = new FormData()
     formData.append("file", file)
@@ -137,7 +137,18 @@ const Pictures = (props: Props) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("Product Form server",data)
+        console.log("Product Form server",data);
+        setCategory('');
+        setProductName('');
+        setBrand('');
+        setProductDescription('');
+        setTags([]);
+        setPrice(0);
+        setCondition('');
+        setSoldDate(new Date());
+        setSpecs({});
+        setLocation('');
+        setLinks([]);
         toast.success('🙌 Auction created successfully!');
         setFormNumber(4)
       })
@@ -149,8 +160,9 @@ const Pictures = (props: Props) => {
 
   return (
     <div className="mt-8 p-4">
+      <ToastContainer />
       <div className='flex flex-col space-y-4 items-center'>
-        <ToastContainer />
+        
         <form onSubmit={imageSubmitHandler} className="flex space-x-2 items-center mx-auto">
           <input
             type="file"

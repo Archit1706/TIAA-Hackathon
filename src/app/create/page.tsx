@@ -1,6 +1,5 @@
 "use client"
 import Pictures from "@/components/CreateAuction/Pictures";
-import Specs from "@/components/CreateAuction/Specs";
 import Product from "@/components/CreateAuction/Product";
 import Success from "@/components/CreateAuction/Success";
 import React, { useState } from "react";
@@ -47,7 +46,7 @@ const page = (props: Props) => {
                                     <div className="-m-1 flex flex-wrap md:-m-2">
                                         <div className="flex w-1/2 flex-wrap">
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("laptop")}
+                                                onClick={() => setCategory("Laptops")}
                                             >
                                                 <img
                                                     alt="gallery"
@@ -61,7 +60,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("car")}>
+                                                onClick={() => setCategory("Cars")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -74,7 +73,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-full p-1 md:p-2 relative"
-                                                onClick={() => setCategory("mobile")}>
+                                                onClick={() => setCategory("Mobiles")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -89,7 +88,7 @@ const page = (props: Props) => {
                                         </div>
                                         <div className="flex w-1/2 flex-wrap">
                                             <div className="w-full p-1 md:p-2 relative"
-                                                onClick={() => setCategory("real estate")}>
+                                                onClick={() => setCategory("Real-Estate")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -102,7 +101,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("bike")}>
+                                                onClick={() => setCategory("Bikes")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -115,7 +114,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("other")}>
+                                                onClick={() => setCategory("Other")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -190,22 +189,22 @@ const page = (props: Props) => {
                                     formNumber === 2 && (
                                         <>
                                         {
-                                            category === "car" && <CarForm />
+                                            category === "Cars" && <CarForm />
                                         }
                                         {
-                                            category === "bike" && <BikeForm />
+                                            category === "Bikes" && <BikeForm />
                                         }
                                         {
-                                            category === "real estate" && <RealEstateForm />
+                                            category === "Real-Estate" && <RealEstateForm />
                                         }
                                         {
-                                            category === "mobile" && <MobileForm />
+                                            category === "Mobiles" && <MobileForm />
                                         }
                                         {
-                                            category === "laptop" && <LaptopForm />
+                                            category === "Laptops" && <LaptopForm />
                                         }
                                         {
-                                            category === "other" && <OtherForm />
+                                            category === "Other" && <OtherForm />
                                         }
                                         </>
                                     )
