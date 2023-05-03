@@ -74,11 +74,7 @@ const ProductCard = ({ endDate, product }: Props) => {
                         </p>
                     </div>
                 </div>
-                <Link
-                    href={`/product/${product?.category?.toLowerCase()}/${
-                        product?._id
-                    }`}
-                >
+                <Link href={`/product/${product?._id}`}>
                     <div className="flex items-center md:items-center">
                         <button className="linear bg-blue-900 hover:bg-blue-800 active:bg-blue-700 min-w-full rounded-[10px] px-4 py-2 text-base font-medium text-white transition duration-200">
                             Place Bid

@@ -243,7 +243,7 @@ const products: Product[] = [
         ],
         createDate: "2023-05-03T14:00:00Z",
         status: "Available",
-        category: "Laptops",
+        category: "Laptop",
         specs: {
             Processor: "Intel Core i7",
             Memory: "16GB",

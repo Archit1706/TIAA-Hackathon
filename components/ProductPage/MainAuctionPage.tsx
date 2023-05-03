@@ -1,6 +1,6 @@
 "use client";
 import { Counter } from "@/components/Timer/Counter";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ImHammer2 } from "react-icons/im";
 import { RxCross2 } from "react-icons/rx";
 import { BsBookmark, BsFillBookmarkCheckFill } from "react-icons/bs";
@@ -12,6 +12,10 @@ import ReviewCard from "../Cards/ReviewCard";
 import TempImg from "@/assets/img/temp.jpg";
 import { Product } from "@/types/Product";
 import Link from "next/link";
+
+import io from "socket.io-client";
+let socket: any;
+const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
 
 type Props = {
     product: Product;
@@ -32,6 +36,63 @@ const MainAuctionPage = (props: Props) => {
             setCount((prev) => prev - 1);
         }
     };
+
+    const [room, setRoom] = useState(window.location.href);
+    const [userName, setUserName] = useState(String(Math.random())); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
+    const [_, update] = useState(1);
+
+    const [price, setPrice] = useState(0);
+    const [bidAmt, setBidAmt] = useState(0);
+
+    const [message, setMessage] = useState("");
+    const [messageList, setMessageList] = useState([]);
+    const [bidList, setBidList] = useState([]);
+
+    useEffect(() => {
+        socket = io(CONNECTION_PORT);
+        socket.emit("join_room", room);
+    }, [CONNECTION_PORT]);
+
+    useEffect(() => {
+        socket.once("connectToRoom", (data: any) => {
+            console.log(data);
+            setPrice(data.price);
+            setBidAmt(data.price + 100);
+            setBidList(data.history);
+        });
+        return () => socket.off("connectToRoom");
+    });
+
+    useEffect(() => {
+        socket.once("receive_message", (data: any) => {
+            const temp = messageList;
+            temp.push(data);
+            setMessageList(temp);
+            update(Math.random());
+        });
+        return () => socket.off("receive_message");
+    });
+
+    useEffect(() => {
+        socket.on("recieve_bid", (data: any) => {
+            console.log(data);
+            setPrice(Number(data.price));
+            setBidList(data.history);
+        });
+    });
+
+    const sendBid = (amount: number) => {
+        const messageContent = {
+            room: room,
+            content: {
+                date: Date.now(),
+                amount: amount,
+                name: userName,
+            },
+        };
+        socket.emit("bid", messageContent);
+    };
+
     return (
         <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 font-Roboto">
             <div className="flex justify-center items-center lg:flex-row flex-col gap-8">
@@ -221,7 +282,7 @@ const MainAuctionPage = (props: Props) => {
                     <div className="flex flex-row justify-start space-x-2 mt-8">
                         <div className="flex">
                             <span
-                                onClick={minusCount}
+                                // onClick={minusCount}
                                 className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold"
                             >
                                 -
@@ -231,17 +292,21 @@ const MainAuctionPage = (props: Props) => {
                                 aria-label="input"
                                 className="px-2 border border-gray-300 h-full text-center w-[50%] min-w-fit bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 font-extrabold"
                                 type="text"
-                                value={count}
-                                onChange={(e) => e.target.value}
+                                placeholder={bidAmt.toString()}
+                                onChange={(e: any) => setBidAmt(e.target.value)}
+                                value={bidAmt}
                             />
                             <span
-                                onClick={addCount}
+                                // onClick={addCount}
                                 className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
                             >
                                 +
                             </span>
                         </div>
-                        <button className="focus:outline-none hover:bg-mobile-light hover:text-mobile font-medium text-white bg-mobile px-6 py-2">
+                        <button
+                            className="focus:outline-none hover:bg-mobile-light hover:text-mobile font-medium text-white bg-mobile px-6 py-2"
+                            onClick={() => sendBid(bidAmt)}
+                        >
                             Bid
                         </button>
                         {/* Bookmark icon */}
