@@ -1,33 +1,37 @@
-import { calculateTimeLeft } from '@/utils/TimeCounter';
-import React, {useEffect, useState} from 'react'
- type Props = {
-    endDate: Date
-}
-const ProductCard = ({endDate}: Props) => {
+import { Product } from "@/types/Product";
+import { calculateTimeLeft } from "@/utils/TimeCounter";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+type Props = {
+    endDate: Date;
+    product: Product;
+};
+const ProductCard = ({ endDate, product }: Props) => {
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 1,
         minutes: 0,
-        seconds: 0
-      });
+        seconds: 0,
+    });
     useEffect(() => {
         let year = new Date().getFullYear();
         let month = new Date().getMonth() + 4;
         let day = new Date().getDate() + 4;
         let endDate = new Date(`${year}-${month}-${day}`);
         setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
-    }, [timeLeft])
-    
+    }, [timeLeft]);
+
     return (
         <div className="!z-5 3xl:p-![18px] undefined relative flex w-full max-w-[300px] flex-col rounded-[20px] bg-white bg-clip-border !p-4 shadow-md">
             <div className="linear bg-blue-900 hover:bg-blue-800 active:bg-blue-700 mb-2 min-w-full rounded-[10px] px-4 py-2 text-center text-base font-medium text-white transition duration-200">
-                {timeLeft?.days} d: {timeLeft?.hours} h: {timeLeft?.minutes} m: {timeLeft?.seconds} s
+                {timeLeft?.days} d: {timeLeft?.hours} h: {timeLeft?.minutes} m:{" "}
+                {timeLeft?.seconds} s
             </div>
             <div className="h-full w-full">
                 <div className="relative w-full">
                     <img
-                        src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/Nft3.3b3e6a4b3ada7618de6c.png"
-                        className="3xl:h-full 3xl:w-full mb-3 h-full w-full rounded-xl"
+                        src={product?.images && product?.images[0]}
+                        className="3xl:h-full 3xl:w-full mb-3 h-full w-full rounded-xl max-h-40"
                         alt=""
                     />
                     <button className="text-blue-500 absolute right-3 top-3 flex items-center justify-center rounded-full bg-white p-2 hover:cursor-pointer">
@@ -54,27 +58,36 @@ const ProductCard = ({endDate}: Props) => {
                 </div>
                 <div className="mb-3 flex items-center justify-between px-1 md:items-start">
                     <div className="mb-2">
-                        <p className="text-navy-700 text-lg font-bold">1 BHK Flat</p>
+                        <p className="text-navy-700 text-lg font-bold">
+                            {product?.name}
+                        </p>
                         <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
                             By Owner
                         </p>
                     </div>
                     <div className="text-blue-500 mb-2 text-right">
-                        <p className="text-right text-lg font-bold">Current Bid</p>
-                        <p className="mt-1 text-sm font-medium md:mt-2">Rs. 1350</p>
+                        <p className="text-right text-lg font-bold">
+                            Current Bid
+                        </p>
+                        <p className="mt-1 text-sm font-medium md:mt-2">
+                            {product?.price}
+                        </p>
                     </div>
                 </div>
-                <div className="flex items-center md:items-center">
-                    <button
-                        className="linear bg-blue-900 hover:bg-blue-800 active:bg-blue-700 min-w-full rounded-[10px] px-4 py-2 text-base font-medium text-white transition duration-200"
-                    >
-                        Place Bid
-                    </button>
-                </div>
+                <Link
+                    href={`/product/${product?.category?.toLowerCase()}/${
+                        product?._id
+                    }`}
+                >
+                    <div className="flex items-center md:items-center">
+                        <button className="linear bg-blue-900 hover:bg-blue-800 active:bg-blue-700 min-w-full rounded-[10px] px-4 py-2 text-base font-medium text-white transition duration-200">
+                            Place Bid
+                        </button>
+                    </div>
+                </Link>
             </div>
         </div>
+    );
+};
 
-    )
-}
-
-export default ProductCard
+export default ProductCard;

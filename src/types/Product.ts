@@ -1,56 +1,104 @@
 export interface Product {
-    _id: number
-    name: string
-    brand: string
-    description: string
-    tags: string[]
-    price: number
-    rating: number
-    sellerReviews: SellerReview[]
-    productQuestions: ProductQuestion[]
-    condition: string
-    images: string[]
-    createDate: string
-    status: string
-    category: string
-    specs: Specs
-    location: string
-    returns: boolean
-    bids: number
-  }
-  
-  export interface SellerReview {
-    name: string
-    comment: string
-    rating: number
-  }
-  
-  export interface ProductQuestion {
-    name: string
-    comment: string
-    response: string
-  }
-  
-  export interface Specs {
-    [key: string]: string;
-  }
-  
+    _id: number;
+    name: string;
+    brand: string;
+    description: string;
+    tags?: string[];
+    price: number;
+    rating?: number;
+    sellerReviews?: SellerReview[];
+    productQuestions?: ProductQuestion[];
+    condition?: string;
+    images: string[];
+    createDate: Date | string;
+    soldDate?: Date | string;
+    seller: string;
+    buyer?: string;
+    status?: string;
+    category?: string;
+    specs?: Specs;
+    location?: string;
+    returns?: boolean;
+    bids?: number;
+}
 
+export interface SellerReview {
+    name: string;
+    comment: string;
+    rating: number;
+}
+
+export interface ProductQuestion {
+    name: string;
+    comment: string;
+    response: string;
+}
+
+export interface Specs {
+    [key: string]: string | number | boolean | undefined | any;
+}
+
+// Product Schema Example
 // {
-// "name":"Apple iPhone 14",
-// "description":"The latest iPhone model from Apple with a sleek design and cutting-edge features.",
-// "price": 160000,
-// "rating":4.8,
-// "reviews":[{"name":"Alice","comment":"The seller was very prompt in responding to my questions and the phone was delivered in perfect condition.","rating":5}, {"name":"Charlie","comment":"I'm very happy with my purchase. The phone works flawlessly and looks amazing.","rating":4.5}],
-// "condition":"New",
-// "images":["https://example.com/iphone14-image1.jpg", "https://example.com/iphone14-image2.jpg", "https://example.com/iphone14-image3.jpg"],
-// "createDate": "2023-04-30T14:00:00Z",
-// "soldDate": null,
-// "seller":"Rajveer M.",
-// "status":"Available",
-// "category":"Mobiles",
-// "specs":{"Battery":3200,"bluetooth":true,"Clock Speed":2.5, "Dual Sim":false,"Camera Mega Pixels(Front)":12, "Connectivity": "5G","Internal Memory (GB)":256, "Number of Processor Cores":6, "Camera Mega Pixels(Primary)":48,"Screen Height (Pixels)":2532,"Screen Width (Pixels)":1170,"Ram":8,"Screen Height (cm)":16.51, "Screen Width (cm)":7.53,"Wifi":true},
-// "location":"New York, US",
-// "returns":true,
-// "bids":0
+//     “_id”:123
+//     "name": "Samsung Galaxy S22",
+//     “brand”: “Samsung”
+//     "description": "The latest Samsung flagship smartphone with a stunning display and powerful performance.",
+//     “tags”:[”Electronics”,”Phones”]
+//     "price": 120000,
+//     "rating": 4.5,
+//     "sellerReviews": [
+//         {
+//             "name": "David",
+//             "comment": "The seller was very professional and the phone arrived on time. I'm very happy with my purchase.",
+//             "rating": 5
+//         },
+//         {
+//             "name": "Emily",
+//             "comment": "The phone works great and the camera is amazing. I would definitely recommend this seller.",
+//             "rating": 4
+//         }
+//     ],
+//     "productQuestions": [
+//         {
+//             "name": "Alice",
+//             "comment": "What is the battery life like on this phone?",
+//             "response": "The Samsung Galaxy S22 has a 4500mAh battery that provides up to 16 hours of video playback or up to 22 hours of talk time."
+//         },
+//         {
+//             "name": "Bob",
+//             "comment": "Does this phone have a headphone jack?",
+//             "response": "No, the Samsung Galaxy S22 does not have a headphone jack. You will need to use wireless headphones or a USB-C adapter to use wired headphones."
+//         }
+//     ],
+//     "condition": "New",
+//     "images": [
+//         "https://example.com/samsungs22-image1.jpg",
+//         "https://example.com/samsungs22-image2.jpg",
+//         "https://example.com/samsungs22-image3.jpg"
+//     ],
+//     "createDate": "2023-05-01T10:00:00Z",
+//     "status": "Available",
+//     "category": "Mobiles",
+//     "specs": {
+// 	Specs will be final after ML MODEL is finalized
+//         "Battery": 4500,
+//         "Bluetooth": true,
+//         "Clock Speed": 2.9,
+//         "Dual Sim": true,
+//         "Camera Mega Pixels (Front)": 20,
+//         "Connectivity": "5G",
+//         "Internal Memory (GB)": 128,
+//         "Number of Processor Cores": 8,
+//         "Camera Mega Pixels (Primary)": 64,
+//         "Screen Height (Pixels)": 2400,
+//         "Screen Width (Pixels)": 1080,
+//         "Ram": 6,
+//         "Screen Height (cm)": 15.49,
+//         "Screen Width (cm)": 6.98,
+//         "Wifi": true
+//     },
+//     "location": "Los Angeles, US",
+//     "returns": true,
+//     "bids": 0
 // }
