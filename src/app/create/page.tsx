@@ -1,8 +1,8 @@
 "use client"
-import Pictures from "@/components/createAuction/Pictures";
-import Specs from "@/components/createAuction/Specs";
-import Product from "@/components/createAuction/Product";
-import Success from "@/components/createAuction/Success";
+import Pictures from "@/components/CreateAuction/Pictures";
+import Specs from "@/components/CreateAuction/Specs";
+import Product from "@/components/CreateAuction/Product";
+import Success from "@/components/CreateAuction/Success";
 import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscTools } from "react-icons/vsc";
@@ -12,6 +12,12 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useContext } from "react";
 import { AppContext } from "context/AppContext";
 import { IoIosArrowBack } from "react-icons/io";
+import CarForm from "@/components/CreateAuction/SpecsForms/CarForm";
+import BikeForm from "@/components/CreateAuction/SpecsForms/BikeForm";
+import OtherForm from "@/components/CreateAuction/SpecsForms/OtherForm";
+import RealEstateForm from "@/components/CreateAuction/SpecsForms/RealEstateForm";
+import MobileForm from "@/components/CreateAuction/SpecsForms/MobileForm";
+import LaptopForm from "@/components/CreateAuction/SpecsForms/LaptopForm";
 
 type Props = {};
 const page = (props: Props) => {
@@ -181,7 +187,28 @@ const page = (props: Props) => {
                                     formNumber === 1 && <Product />
                                 }
                                 {
-                                    formNumber === 2 && <Specs />
+                                    formNumber === 2 && (
+                                        <>
+                                        {
+                                            category === "car" && <CarForm />
+                                        }
+                                        {
+                                            category === "bike" && <BikeForm />
+                                        }
+                                        {
+                                            category === "real estate" && <RealEstateForm />
+                                        }
+                                        {
+                                            category === "mobile" && <MobileForm />
+                                        }
+                                        {
+                                            category === "laptop" && <LaptopForm />
+                                        }
+                                        {
+                                            category === "other" && <OtherForm />
+                                        }
+                                        </>
+                                    )
                                 }
                                 {
                                     formNumber === 3 && <Pictures />
