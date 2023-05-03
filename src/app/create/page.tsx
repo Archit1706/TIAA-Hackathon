@@ -1,8 +1,7 @@
 "use client"
-import Pictures from "@/components/createAuction/Pictures";
-import Specs from "@/components/createAuction/Specs";
-import Product from "@/components/createAuction/Product";
-import Success from "@/components/createAuction/Success";
+import Pictures from "@/components/CreateAuction/Pictures";
+import Product from "@/components/CreateAuction/Product";
+import Success from "@/components/CreateAuction/Success";
 import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscTools } from "react-icons/vsc";
@@ -12,6 +11,12 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useContext } from "react";
 import { AppContext } from "context/AppContext";
 import { IoIosArrowBack } from "react-icons/io";
+import CarForm from "@/components/CreateAuction/SpecsForms/CarForm";
+import BikeForm from "@/components/CreateAuction/SpecsForms/BikeForm";
+import OtherForm from "@/components/CreateAuction/SpecsForms/OtherForm";
+import RealEstateForm from "@/components/CreateAuction/SpecsForms/RealEstateForm";
+import MobileForm from "@/components/CreateAuction/SpecsForms/MobileForm";
+import LaptopForm from "@/components/CreateAuction/SpecsForms/LaptopForm";
 
 type Props = {};
 const page = (props: Props) => {
@@ -41,7 +46,7 @@ const page = (props: Props) => {
                                     <div className="-m-1 flex flex-wrap md:-m-2">
                                         <div className="flex w-1/2 flex-wrap">
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("laptop")}
+                                                onClick={() => setCategory("Laptops")}
                                             >
                                                 <img
                                                     alt="gallery"
@@ -55,7 +60,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("car")}>
+                                                onClick={() => setCategory("Cars")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -68,7 +73,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-full p-1 md:p-2 relative"
-                                                onClick={() => setCategory("mobile")}>
+                                                onClick={() => setCategory("Mobiles")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -83,7 +88,7 @@ const page = (props: Props) => {
                                         </div>
                                         <div className="flex w-1/2 flex-wrap">
                                             <div className="w-full p-1 md:p-2 relative"
-                                                onClick={() => setCategory("real estate")}>
+                                                onClick={() => setCategory("Real-Estate")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -96,7 +101,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("bike")}>
+                                                onClick={() => setCategory("Bikes")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -109,7 +114,7 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("other")}>
+                                                onClick={() => setCategory("Other")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
@@ -181,7 +186,28 @@ const page = (props: Props) => {
                                     formNumber === 1 && <Product />
                                 }
                                 {
-                                    formNumber === 2 && <Specs />
+                                    formNumber === 2 && (
+                                        <>
+                                        {
+                                            category === "Cars" && <CarForm />
+                                        }
+                                        {
+                                            category === "Bikes" && <BikeForm />
+                                        }
+                                        {
+                                            category === "Real-Estate" && <RealEstateForm />
+                                        }
+                                        {
+                                            category === "Mobiles" && <MobileForm />
+                                        }
+                                        {
+                                            category === "Laptops" && <LaptopForm />
+                                        }
+                                        {
+                                            category === "Other" && <OtherForm />
+                                        }
+                                        </>
+                                    )
                                 }
                                 {
                                     formNumber === 3 && <Pictures />

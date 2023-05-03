@@ -1,12 +1,84 @@
-import React from 'react'
+"use client";
 
-type Props = {}
+import { Product } from "@/types/Product";
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
+
+let socket: any;
+const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
+type Props = {
+    product: Product;
+};
 
 const AuctionHistory = (props: Props) => {
+    // const [room, setRoom] = useState(window.location.pathname.split("/")[2]);
+    const [room, setRoom] = useState(
+        window.location.href.substr(window.location.href.length - 24)
+    );
+    const [userName, setUserName] = useState(String(Math.random())); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
+    const [_, update] = useState(1);
+
+    const [price, setPrice] = useState(0);
+    const [bidAmt, setBidAmt] = useState(0);
+
+    const [message, setMessage] = useState("");
+    const [messageList, setMessageList] = useState([]);
+    const [bidList, setBidList] = useState([]);
+
+    useEffect(() => {
+        socket = io(CONNECTION_PORT);
+        socket.emit(
+            "join_room",
+            window.location.href.substr(window.location.href.length - 24)
+        );
+    }, [CONNECTION_PORT]);
+
+    useEffect(() => {
+        socket.once("connectToRoom", (data: any) => {
+            console.log(data);
+            setPrice(data.price);
+            setBidAmt(data.price + 100);
+            setBidList(data.history);
+        });
+        return () => socket.off("connectToRoom");
+    });
+
+    useEffect(() => {
+        socket.once("receive_message", (data: any) => {
+            const temp = messageList;
+            temp.push(data);
+            setMessageList(temp);
+            update(Math.random());
+        });
+        return () => socket.off("receive_message");
+    });
+
+    useEffect(() => {
+        socket.on("recieve_bid", (data: any) => {
+            console.log(data);
+            setPrice(Number(data.price));
+            setBidList(data.history);
+        });
+    });
+
+    const sendBid = (amount: number) => {
+        const messageContent = {
+            room: room,
+            content: {
+                date: Date.now(),
+                amount: amount,
+                name: userName,
+            },
+        };
+        socket.emit("bid", messageContent);
+    };
+
     return (
         <div className="w-full bg-white shadow-lg rounded-sm border border-gray-200 max-w-[100vw]">
             <header className="px-5 py-4 border-b border-gray-100">
-                <h2 className="font-semibold text-gray-800 text-xl">Bid History</h2>
+                <h2 className="font-semibold text-gray-800 text-xl">
+                    Bid History
+                </h2>
             </header>
             <div className="p-3">
                 <div className="overflow-x-auto max-h-[400px]">
@@ -14,145 +86,61 @@ const AuctionHistory = (props: Props) => {
                         <thead className="sticky top-0 text-base font-medium uppercase text-mobile bg-mobile-light">
                             <tr>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-medium text-left">Name</div>
+                                    <div className="font-medium text-left">
+                                        Name
+                                    </div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-medium text-left">Email</div>
+                                    <div className="font-medium text-left">
+                                        Date
+                                    </div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">Spent</div>
+                                    <div className="font-semibold text-left">
+                                        Spent
+                                    </div>
                                 </th>
                             </tr>
                         </thead>
                         <tbody className="text-sm divide-y divide-gray-100 max-h-[400px] overflow-y-auto">
-                            <tr>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                            <img
-                                                className="rounded-full"
-                                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg"
-                                                width={40}
-                                                height={40}
-                                                alt="Alex Shatov"
-                                            />
-                                        </div>
-                                        <div className="font-medium text-gray-800">Alex Shatov</div>
-                                    </div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left">alexshatov@gmail.com</div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-mobile">
-                                        $2,890.66
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                            <img
-                                                className="rounded-full"
-                                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-06.jpg"
-                                                width={40}
-                                                height={40}
-                                                alt="Philip Harbach"
-                                            />
-                                        </div>
-                                        <div className="font-medium text-gray-800">
-                                            Philip Harbach
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left">philip.h@gmail.com</div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-mobile">
-                                        $2,767.04
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                            <img
-                                                className="rounded-full"
-                                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-07.jpg"
-                                                width={40}
-                                                height={40}
-                                                alt="Mirko Fisuk"
-                                            />
-                                        </div>
-                                        <div className="font-medium text-gray-800">Mirko Fisuk</div>
-                                    </div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left">mirkofisuk@gmail.com</div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-mobile">
-                                        $2,996.00
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                            <img
-                                                className="rounded-full"
-                                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-08.jpg"
-                                                width={40}
-                                                height={40}
-                                                alt="Olga Semklo"
-                                            />
-                                        </div>
-                                        <div className="font-medium text-gray-800">Olga Semklo</div>
-                                    </div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left">olga.s@cool.design</div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-mobile">
-                                        $1,220.66
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                            <img
-                                                className="rounded-full"
-                                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-09.jpg"
-                                                width={40}
-                                                height={40}
-                                                alt="Burak Long"
-                                            />
-                                        </div>
-                                        <div className="font-medium text-gray-800">Burak Long</div>
-                                    </div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left">longburak@gmail.com</div>
-                                </td>
-                                <td className="p-2 whitespace-nowrap">
-                                    <div className="text-left font-medium text-mobile">
-                                        $1,890.66
-                                    </div>
-                                </td>
-                            </tr>
+                            {bidList?.map((bid: any, index: number) => {
+                                return (
+                                    <tr key={index}>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="flex items-center">
+                                                <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                                                    <img
+                                                        className="rounded-full"
+                                                        src={`https://avatars.dicebear.com/api/initials/${bid?.name}.svg`}
+                                                        width={40}
+                                                        height={40}
+                                                        alt="Alex Shatov"
+                                                    />
+                                                </div>
+                                                <div className="font-medium text-gray-800">
+                                                    {bid?.name}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-left">
+                                                {String(new Date(bid?.date))}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-left font-medium text-mobile">
+                                                {bid?.amount}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default AuctionHistory
+export default AuctionHistory;

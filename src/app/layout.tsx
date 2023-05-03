@@ -7,7 +7,8 @@ import Navbar from "../../components/Base/Navbar";
 import Footer from "../../components/Base/Footer";
 import LightDarkToggle from "../../components/LightDarkToggle";
 import { Ubuntu } from "next/font/google";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import "swiper/css";
 
 const ubuntu = Ubuntu({
     weight: ["400", "500", "700"],
@@ -32,6 +33,7 @@ export default function RootLayout({
                     <div>
                         <Navbar />
                         {children}
+
                         <Footer />
                         <LightDarkToggle />
                     </div>

@@ -26,6 +26,8 @@ import RealEstate2 from "@/assets/real-estate/realEstate2.jpg";
 import RealEstate3 from "@/assets/real-estate/realEstate3.jpg";
 import RealEstate4 from "@/assets/real-estate/realEstate4.jpg";
 
+import Link from "next/link";
+
 type Props = {};
 const Gallery = (props: Props) => {
     const [carIndex, setCarIndex] = useState(0);
@@ -110,50 +112,92 @@ const Gallery = (props: Props) => {
             <div className="container px-5 py-24 mx-auto flex flex-wrap">
                 <div className="flex flex-wrap md:-m-2 -m-1">
                     <div className="flex flex-wrap w-1/2">
-                        <div className="md:p-2 p-1 w-1/2">
+                        <div className="md:p-2 p-1 w-1/2 relative hover:cursor-pointer rounded-lg">
                             <img
                                 alt="gallery"
-                                className="w-full object-cover h-full object-center block"
+                                className="w-full object-cover h-full object-center block rounded-lg"
                                 src={phoneImages[phoneIndex].src}
                             />
+                            <Link href="/auction/mobiles">
+                                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
+                                    <span className="text-white font-bold text-3xl">
+                                        Mobiles
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
-                        <div className="md:p-2 p-1 w-1/2">
+                        <div className="md:p-2 p-1 w-1/2 relative hover:cursor-pointer rounded-lg">
                             <img
                                 alt="gallery"
-                                className="w-full object-cover h-full object-center block"
+                                className="w-full object-cover h-full object-center block rounded-lg"
                                 src={bikeImages[bikeIndex].src}
                             />
+                            <Link href="/auction/bikes">
+                                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
+                                    <span className="text-white font-bold text-3xl">
+                                        Bikes
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
 
-                        <div className="md:p-2 p-1 w-full">
+                        <div className="md:p-2 p-1 w-full relative hover:cursor-pointer rounded-lg">
                             <img
                                 alt="gallery"
-                                className="w-full object-cover h-full object-center block"
+                                className="w-full object-cover h-full object-center block rounded-lg"
                                 src={carImages[carIndex].src}
                             />
+                            <Link href="/auction/cars">
+                                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
+                                    <span className="text-white font-bold text-3xl">
+                                        Cars
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                     <div className="flex flex-wrap w-1/2">
-                        <div className="md:p-2 p-1 w-full">
+                        <div className="md:p-2 p-1 w-full relative hover:cursor-pointer rounded-lg">
                             <img
                                 alt="gallery"
-                                className="w-full h-full object-cover object-center block"
+                                className="w-full h-full object-cover object-center block rounded-lg"
                                 src={laptopImages[laptopIndex].src}
                             />
+                            <Link href="/auction/laptops">
+                                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
+                                    <span className="text-white font-bold text-3xl">
+                                        Laptops
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
-                        <div className="md:p-2 p-1 w-1/2">
+                        <div className="md:p-2 p-1 w-1/2 relative hover:cursor-pointer rounded-lg">
                             <img
                                 alt="gallery"
-                                className="w-full object-cover h-full object-center block"
+                                className="w-full object-cover h-full object-center block rounded-lg"
                                 src={phoneImages[phoneIndex].src}
                             />
+                            <Link href="/auction/mobiles">
+                                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
+                                    <span className="text-white font-bold text-3xl">
+                                        Mobiles
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
-                        <div className="md:p-2 p-1 w-1/2">
+                        <div className="md:p-2 p-1 w-1/2 relative hover:cursor-pointer rounded-lg">
                             <img
                                 alt="gallery"
-                                className="w-full object-cover h-full object-center block"
+                                className="w-full object-cover h-full object-center block rounded-lg"
                                 src={realEstateImages[realEstateIndex].src}
                             />
+                            <Link href="/auction/laptops">
+                                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
+                                    <span className="text-white font-bold text-3xl">
+                                        Real Estate
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
