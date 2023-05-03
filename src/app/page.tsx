@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import CTA from "../../components/Landing/CTA";
+import Filter from "../../components/Landing/Filter";
 import Features from "../../components/Landing/Features";
 import Hero from "../../components/Landing/Hero";
 import HeroTry from "@/components/Landing/Herotry";
@@ -14,7 +14,7 @@ export default function Home() {
             <HeroTry />
             <Gallery />
             <Category />
-            <CTA />
+            <Filter />
             <Features />
             <Testimonials />
         </main>
