@@ -29,50 +29,56 @@ const Specs = (props: Props) => {
                             </tr>
                         </thead>
                         <tbody className="text-sm divide-y divide-gray-100 max-h-[400px] overflow-y-auto">
-                            {Object.keys(props?.specifications).map(
-                                (specs: string, index: number) => {
-                                    return (
-                                        <tr key={index}>
-                                            <td className="p-2 whitespace-nowrap">
-                                                <div className="flex items-center">
-                                                    <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
-                                                        <ImPointRight className="w-6 h-6 text-mobile" />
+                            {props?.specifications &&
+                                Object.keys(props?.specifications).map(
+                                    (specs: string, index: number) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td className="p-2 whitespace-nowrap">
+                                                    <div className="flex items-center">
+                                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3 flex items-center justify-center">
+                                                            <ImPointRight className="w-6 h-6 text-mobile" />
+                                                        </div>
+                                                        <div className="font-medium text-gray-800">
+                                                            {specs}
+                                                        </div>
                                                     </div>
-                                                    <div className="font-medium text-gray-800">
-                                                        {specs}
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className="p-2 whitespace-nowrap">
-                                                <div className="text-left font-medium text-mobile capitalize">
-                                                    {props?.specifications[
-                                                        specs
-                                                    ] &&
-                                                    Array.isArray(
+                                                </td>
+                                                <td className="p-2 whitespace-nowrap">
+                                                    <div className="text-left font-medium text-mobile capitalize">
+                                                        {props?.specifications[
+                                                            specs
+                                                        ] &&
+                                                        Array.isArray(
+                                                            props
+                                                                ?.specifications[
+                                                                specs
+                                                            ]
+                                                        ) &&
                                                         props?.specifications[
                                                             specs
-                                                        ]
-                                                    ) &&
-                                                    props?.specifications[
-                                                        specs
-                                                    ] > 0
-                                                        ? props?.specifications[
-                                                              specs
-                                                          ].map((val: any) => {
-                                                              return (
-                                                                  val.toString() +
-                                                                  " | "
-                                                              );
-                                                          })
-                                                        : props?.specifications[
-                                                              specs
-                                                          ].toString()}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    );
-                                }
-                            )}
+                                                        ] > 0
+                                                            ? props?.specifications[
+                                                                  specs
+                                                              ].map(
+                                                                  (
+                                                                      val: any
+                                                                  ) => {
+                                                                      return (
+                                                                          val.toString() +
+                                                                          " | "
+                                                                      );
+                                                                  }
+                                                              )
+                                                            : props?.specifications[
+                                                                  specs
+                                                              ].toString()}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        );
+                                    }
+                                )}
                         </tbody>
                     </table>
                 </div>

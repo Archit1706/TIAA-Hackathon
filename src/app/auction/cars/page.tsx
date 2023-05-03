@@ -1,6 +1,7 @@
+"use client";
 import AuctionHero from "@/components/AuctionPage/AuctionHero";
-import Hero from "@/components/Landing/Hero";
-import React from "react";
+import LatestProducts from "@/components/AuctionPage/LatestProducts";
+import React, { useState, useContext, useEffect } from "react";
 
 import Car1 from "@/assets/cars/car1.jpg";
 import Car2 from "@/assets/cars/car2.jpg";
@@ -14,11 +15,19 @@ const titles = [
     "Get behind the wheel of your next adventure with a car auction",
     "Find your perfect match on wheels at our car auction.",
 ];
+
+import { ProductContext } from "context/ProductContext";
 type Props = {};
 const page = (props: Props) => {
+    const { products, cars, setCars, getCars } = useContext(ProductContext);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getCars();
+    }, []);
     return (
-        <div className="px-4 md:px-16">
+        <div className="px-4 md:px-16 gap-4">
             <AuctionHero images={images} title={titles} />
+            <LatestProducts latestProducts={cars.slice(0, 4)} />
         </div>
     );
 };
