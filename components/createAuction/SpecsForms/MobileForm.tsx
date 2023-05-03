@@ -7,6 +7,7 @@ type Props = {}
 const MobileForm = (props: Props) => {
     // specs is a object with key value pair of specs
     const { setFormNumber, specs, setSpecs, price, setPrice, soldDate, setSoldDate } = useContext(AppContext)
+    const [localDate, setLocalDate] = React.useState("")
     const submitHandler = () => {
         console.log({
             "specs": specs,
@@ -17,6 +18,13 @@ const MobileForm = (props: Props) => {
         setFormNumber(3)
     }
     const handelDateTime = (e: any) => {
+        // check if date is after 24 hrs from now
+        setLocalDate(e.target.value)
+        if(new Date(e.target.value).getTime() < new Date().getTime() + 86400000){
+            toast.error("😓 Please select a date after 24 hours from now!")
+            setLocalDate("")
+            return
+        }
         const event = new Date(e.target.value);
         const newDate = event.toISOString();
         setSoldDate(newDate)
@@ -143,6 +151,7 @@ const MobileForm = (props: Props) => {
                     <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
                     <input
                         onChange={handelDateTime}
+                        value={localDate}
                         type="datetime-local" name="end-date" id="end-date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DD-YY-MM" required />
                 </div>
             </div>
