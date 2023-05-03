@@ -1,10 +1,16 @@
+"use client"
 import { Product } from "@/types/Product";
-import React from "react";
+import Link from "next/link";
+import React, { useState } from "react";
+import { BsSearch } from "react-icons/bs";
+import { ImHammer2 } from "react-icons/im";
+import QuickView from "./QuickView";
 
 type Props = {
     latestProducts: Product[];
 };
 const LatestProducts = (props: Props) => {
+    const [showQuickView, setShowQuickView] = useState(false);
     return (
         <section className="p-10">
             {/* create a div with heading in the center as "Latest Products" */}
@@ -21,33 +27,44 @@ const LatestProducts = (props: Props) => {
                         (product: Product, index: number) => {
                             return (
                                 <div className="w-[440px] lg:flex">
+                                    {
+                                        showQuickView && <QuickView setShowQuickView={setShowQuickView} />
+                                    }
                                     <div
                                         className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                                         title="Mountain"
                                     >
                                         {product.images &&
                                             product.images[0] && (
-                                                <>
-                                                    <div className="relative">
-                                                        <img
-                                                            className="h-full"
-                                                            src={
-                                                                product
-                                                                    .images[0]
-                                                            }
-                                                        />
+                                                <div className="relative">
+                                                    <img
+                                                        className="h-full w-full"
+                                                        src={
+                                                            product
+                                                                .images[0]
+                                                        }
+                                                    />
+                                                    <div className="absolute top-0 left-0 w-full bg-inherit h-full flex items-start justify-start transition-opacity duration-300 rounded-md">
+                                                        <div className="grid grid-flow-col gap-2 text-center auto-cols-max bg-mobile text-white p-2 rounded-lg mt-3 ml-3">
+                                                            <span className="countdown font-mono text-xs">
+                                                                15D
+                                                            </span>
+                                                            <span className="countdown font-mono text-xs">
+                                                                10H
+                                                            </span>
+                                                            <span className="countdown font-mono text-xs">
+                                                                24M
+                                                            </span>
+                                                            <span className="countdown font-mono text-xs">
+                                                                45S
+                                                            </span>
+                                                        </div>
                                                     </div>
-
-                                                    <div className="absolute top-0 left-0 w-full bg-inherit h-full flex items-center justify-center transition-opacity duration-300 rounded-lg">
-                                                        <span className="text-white font-bold text-3xl">
-                                                            Cars
-                                                        </span>
-                                                    </div>
-                                                </>
+                                                </div>
                                             )}
                                     </div>
                                     <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white dark:bg-gray-800 dark:lg:border-gray-700 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                                        <div className="mb-8">
+                                        <div className="">
                                             <div className="text-gray-900 font-bold text-xl mb-2 dark:text-white">
                                                 {product.name}
                                             </div>
@@ -76,17 +93,23 @@ const LatestProducts = (props: Props) => {
                                                     <button
                                                         className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-full active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                                                         aria-label="Edit"
+                                                        onClick={() => {
+                                                            setShowQuickView(true);
+                                                        }}
                                                     >
-                                                        <svg
-                                                            className="w-5 h-5"
-                                                            aria-hidden="true"
-                                                            fill="currentColor"
-                                                            viewBox="0 0 20 20"
-                                                        >
-                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                        </svg>
+                                                        <BsSearch className="w-5 h-5" />
                                                     </button>
                                                 </div>
+                                                <Link
+                                                    href={`/product/${`123`}`}
+                                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 border bg-purple-600 border-purple-700 rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                                                    aria-label="Like"
+                                                >
+                                                    <ImHammer2 className="w-5 h-5" />
+                                                </Link>
+                                            </div>
+                                            <div>
+                                                Current Bid:{" "}<span className="text-green-500 font-bold text-xl">$ 770.12</span>
                                             </div>
                                         </div>
                                         <div className="flex items-center">

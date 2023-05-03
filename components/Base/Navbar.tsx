@@ -11,7 +11,7 @@ const Navbar = (props: Props) => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
             stroke-width="2"
             className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
@@ -32,7 +32,7 @@ const Navbar = (props: Props) => {
           <svg
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
             stroke-width="2"
             className="w-4 h-4 ml-1"
