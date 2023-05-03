@@ -1,6 +1,8 @@
 "use client";
 import AuctionHero from "@/components/AuctionPage/AuctionHero";
 import LatestProducts from "@/components/AuctionPage/LatestProducts";
+import AuctionFilter from "@/components/AuctionPage/BikesFilter";
+
 import React, { useState, useContext, useEffect } from "react";
 
 import Bike1 from "@/assets/bikes/bike1.jpg";
@@ -29,7 +31,11 @@ const page = (props: Props) => {
     return (
         <div className="px-4 md:px-16 gap-4">
             <AuctionHero images={images} title={titles} />
-            <LatestProducts latestProducts={bikes.slice(0, 4)} />
+            <LatestProducts
+                latestProducts={bikes.slice(0, 4)}
+                endDate={bikes[0]?.soldDate}
+            />
+            <AuctionFilter />
         </div>
     );
 };
