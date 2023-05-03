@@ -12,7 +12,9 @@ const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
 type Props = {};
 
 const Chat = (props: Props) => {
-    const [room, setRoom] = useState(window.location.href);
+    const [room, setRoom] = useState(
+        window.location.href.substr(window.location.href.length - 24)
+    );
     const [userName, setUserName] = useState(String(Math.random())); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
     const [_, update] = useState(1);
 
@@ -36,7 +38,10 @@ const Chat = (props: Props) => {
 
     useEffect(() => {
         socket = io(CONNECTION_PORT);
-        socket.emit("join_room", room);
+        socket.emit(
+            "join_room",
+            window.location.href.substr(window.location.href.length - 24)
+        );
     }, [CONNECTION_PORT]);
 
     useEffect(() => {
@@ -97,7 +102,7 @@ const Chat = (props: Props) => {
     };
 
     return (
-        <div className="flex h-screen antialiased text-gray-800">
+        <div className="flex h-screen antialiased text-gray-800 w-full">
             <div className="flex flex-row h-full w-full overflow-x-hidden">
                 <div className="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
                     <div className="flex flex-row items-center justify-center h-12 w-full">

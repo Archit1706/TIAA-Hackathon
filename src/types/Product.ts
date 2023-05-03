@@ -15,7 +15,7 @@ export interface Product {
     seller: string;
     buyer?: string;
     status?: string;
-    category?: string;
+    category: string;
     specs?: Specs;
     location?: string;
     returns?: boolean;

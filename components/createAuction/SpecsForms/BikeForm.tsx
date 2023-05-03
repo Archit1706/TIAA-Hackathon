@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AppContext } from "context/AppContext"
+import { toast, ToastContainer } from 'react-toastify'
 type Props = {}
 
 const BikeForm = (props: Props) => {
@@ -19,6 +20,32 @@ const BikeForm = (props: Props) => {
     const newDate = event.toISOString();
     setSoldDate(newDate)
   }
+
+  const predictPrice = () => {
+    // fetch predicted initail bid (price) from backend based on all specs
+    if (specs["OS"] && specs["Color"] && specs["Ram (GB)"] && specs["Internal Storage (GB)"] && specs["Rear Camera (MP)"] && specs["Front Camera (MP)"] && specs["Display (Inch)"] && specs["Processor"] && specs["Battery"] && specs["Connectivity"]) {
+      // fetch predicted price from backend
+      fetch("https://auction-backend.sidd065.repl.co/api/product/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "specs": specs,
+          "category": "Mobile"
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setPrice(data["message"])
+        })
+        .catch(err => {
+          toast.error("😓 Unable to predict bid price for these specs!")
+          console.log(err)
+        })
+    }
+  }
   // specs format
   //   "specs": {
   //     "Age (years)": 2023,
@@ -32,6 +59,7 @@ const BikeForm = (props: Props) => {
   // },
   return (
     <div className="mt-8 p-4">
+      <ToastContainer />
       <div className="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
           <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age (years)</label>
@@ -86,9 +114,15 @@ const BikeForm = (props: Props) => {
       <div className="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
           <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Initial Bid</label>
-          <input
-            onChange={(e) => setPrice(parseInt(e.target.value))}
-            type="text" name="bid" id="bid" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="3500" required />
+          <div className='flex space-x-2'>
+            <button
+              onClick={() => { predictPrice() }}
+              className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Predict</button>
+            <input
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+              type="text" name="bid" id="bid" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="3500" required />
+          </div>
         </div>
         <div>
           <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
@@ -105,7 +139,7 @@ const BikeForm = (props: Props) => {
           <button
             onClick={() => { submitHandler() }}
             className="text-base ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
-          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
+          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile hover:text-white bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
         </div>
       </div>
     </div>
