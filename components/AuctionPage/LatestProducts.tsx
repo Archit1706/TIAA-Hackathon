@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Product } from "@/types/Product";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -14,7 +14,7 @@ const LatestProducts = (props: Props) => {
     return (
         <section className="p-10">
             {/* create a div with heading in the center as "Latest Products" */}
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center py-6">
                 <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
                     Latest Products
                 </h1>
@@ -27,22 +27,21 @@ const LatestProducts = (props: Props) => {
                         (product: Product, index: number) => {
                             return (
                                 <div className="w-[440px] lg:flex">
-                                    {
-                                        showQuickView && <QuickView setShowQuickView={setShowQuickView} />
-                                    }
+                                    {showQuickView && (
+                                        <QuickView
+                                            setShowQuickView={setShowQuickView}
+                                        />
+                                    )}
                                     <div
                                         className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                                         title="Mountain"
                                     >
                                         {product.images &&
                                             product.images[0] && (
-                                                <div className="relative">
+                                                <div className="relative h-full w-full">
                                                     <img
-                                                        className="h-full w-full"
-                                                        src={
-                                                            product
-                                                                .images[0]
-                                                        }
+                                                        className="h-full w-full object-cover"
+                                                        src={product.images[0]}
                                                     />
                                                     <div className="absolute top-0 left-0 w-full bg-inherit h-full flex items-start justify-start transition-opacity duration-300 rounded-md">
                                                         <div className="grid grid-flow-col gap-2 text-center auto-cols-max bg-mobile text-white p-2 rounded-lg mt-3 ml-3">
@@ -94,14 +93,16 @@ const LatestProducts = (props: Props) => {
                                                         className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-full active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                                                         aria-label="Edit"
                                                         onClick={() => {
-                                                            setShowQuickView(true);
+                                                            setShowQuickView(
+                                                                true
+                                                            );
                                                         }}
                                                     >
                                                         <BsSearch className="w-5 h-5" />
                                                     </button>
                                                 </div>
                                                 <Link
-                                                    href={`/product/${`123`}`}
+                                                    href={`/product/${product._id}`}
                                                     className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 border bg-purple-600 border-purple-700 rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                                                     aria-label="Like"
                                                 >
@@ -109,13 +110,16 @@ const LatestProducts = (props: Props) => {
                                                 </Link>
                                             </div>
                                             <div>
-                                                Current Bid:{" "}<span className="text-green-500 font-bold text-xl">$ 770.12</span>
+                                                Current Bid:{" "}
+                                                <span className="text-green-500 font-bold text-xl">
+                                                    ₹{product.price}
+                                                </span>
                                             </div>
                                         </div>
                                         <div className="flex items-center">
                                             <img
                                                 className="w-10 h-10 rounded-full mr-4"
-                                                src={`https://avatars.dicebear.com/api/initials/Archit.svg`}
+                                                src={`https://avatars.dicebear.com/api/initials/${product?.seller}.svg`}
                                                 alt="Avatar of Owner"
                                             />
                                             <div className="text-sm">

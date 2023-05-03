@@ -97,7 +97,7 @@ const Chat = (props: Props) => {
     };
 
     return (
-        <div className="flex h-screen antialiased text-gray-800">
+        <div className="flex h-screen antialiased text-gray-800 w-full">
             <div className="flex flex-row h-full w-full overflow-x-hidden">
                 <div className="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
                     <div className="flex flex-row items-center justify-center h-12 w-full">

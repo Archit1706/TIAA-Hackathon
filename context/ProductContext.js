@@ -6,6 +6,7 @@ export const ProductProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
 
+    const [product, setProduct] = useState({});
     const [cars, setCars] = useState([]);
     const [bikes, setBikes] = useState([]);
     const [mobiles, setMobiles] = useState([]);
@@ -16,37 +17,39 @@ export const ProductProvider = ({ children }) => {
     const getCars = async () => {
         const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-cars");
         const data = await res.json();
-        if (data.success) setCars(data);
+        if (data.success) setCars(data.message);
+        console.log("cars")
     }
 
     const getBikes = async () => {
         const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-bikes");
         const data = await res.json();
-        if (data.success) setBikes(data);
+        if (data.success) setBikes(data.message);
     }
 
     const getMobiles = async () => {
         const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-mobiles");
         const data = await res.json();
-        if (data.success) setMobiles(data);
+        if (data.success) setMobiles(data.message);
     }
 
     const getRealestates = async () => {
         const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-properties");
         const data = await res.json();
-        if (data.success) setRealestates(data);
+        if (data.success) setRealestates(data.message);
     }
 
     const getLaptops = async () => {
         const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-laptops");
         const data = await res.json();
-        if (data.success) setLaptops(data);
+        if (data.success) setLaptops(data.message);
     }
 
     const getAllProducts = async () => {
         const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get");
         const data = await res.json();
-        if (data.success) setProducts(data);
+        if (data.success) setProducts(data.message);
+        console.log("jfklae");
     }
 
 

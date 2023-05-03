@@ -182,7 +182,7 @@ const products: Product[] = [
         ],
         createDate: "2023-05-03T12:00:00Z",
         status: "Available",
-        category: "Gaming Consoles",
+        category: "Real-Estate",
         specs: {
             CPU: "AMD Zen 2",
             GPU: "AMD RDNA 2",
@@ -243,7 +243,7 @@ const products: Product[] = [
         ],
         createDate: "2023-05-03T14:00:00Z",
         status: "Available",
-        category: "Laptop",
+        category: "Laptops",
         specs: {
             Processor: "Intel Core i7",
             Memory: "16GB",
