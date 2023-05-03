@@ -5,7 +5,7 @@ import { calculateTimeLeft } from "../../src/utils/TimeCounter";
 import "./timer-styles.css";
 
 type Props = {
-    endDate: Date | string;
+    endDate: string;
 };
 export const Counter = (props: Props) => {
     const [timeLeft, setTimeLeft] = useState({
@@ -16,21 +16,15 @@ export const Counter = (props: Props) => {
     });
 
     useEffect(() => {
-        const date = new Date(props?.endDate);
+        let date = new Date(props?.endDate);
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        const endDate = new Date(`${year}-${month}-${day}`);
 
-        // const year = date.getUTCFullYear();
-        // const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-        // const day = String(date.getUTCDate()).padStart(2, "0");
+        // console.log(day);
 
-        // const formattedDate = `${year}-${month}-${day}`;
-
-        // console.log(formattedDate);
-
-        let year = new Date().getFullYear();
-        let month = new Date().getMonth() + 4;
-        let day = new Date().getDate() + 4;
-        let endDate = new Date(`${year}-${month}-${day}`);
-        setTimeout(() => setTimeLeft(calculateTimeLeft(props?.endDate)), 1000);
+        setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
     }, [timeLeft]);
 
     return (
