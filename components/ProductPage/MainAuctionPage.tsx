@@ -41,7 +41,9 @@ const MainAuctionPage = (props: Props) => {
         }
     };
 
-    const [room, setRoom] = useState(window.location.href);
+    const [room, setRoom] = useState(
+        window.location.href.substr(window.location.href.length - 24)
+    );
     const [userName, setUserName] = useState(localStorage.getItem("userName"));
     const [_, update] = useState(1);
 
@@ -54,7 +56,10 @@ const MainAuctionPage = (props: Props) => {
 
     useEffect(() => {
         socket = io(CONNECTION_PORT);
-        socket.emit("join_room", room);
+        socket.emit(
+            "join_room",
+            window.location.href.substr(window.location.href.length - 24)
+        );
     }, [CONNECTION_PORT]);
 
     useEffect(() => {
@@ -463,7 +468,7 @@ const MainAuctionPage = (props: Props) => {
             </div>
             {/* extra tabs section */}
             <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
-                <AuctionHistory />
+                <AuctionHistory product={props?.product} />
                 <Specs specifications={props?.product?.specs} />
             </div>
             <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
