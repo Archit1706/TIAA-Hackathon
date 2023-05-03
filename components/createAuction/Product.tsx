@@ -47,7 +47,7 @@ const Product = (props: Props) => {
             {
               category === "real estate" ?
                 <>
-                  <option value="newily-built">Newily built</option>
+                  <option value="newly-built">Newly built</option>
                   <option value="pre-owned">Pre owned</option>
                   <option value="requires-repair">Requires Repair</option>
                 </>

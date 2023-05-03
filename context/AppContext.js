@@ -21,6 +21,11 @@ const AppProvider = ({ children }) => {
   const [tags, setTags] = useState([])
   const [productImages, setProductImages] = useState([]);
 
+  // specs form data
+  const [specs, setSpecs] = useState([]);
+  const [price, setPrice] = useState("");
+  const [soldDate, setSoldDate] = useState("");
+
 
   // picture form data
   const [links, setLinks] = useState([]);
@@ -72,20 +77,12 @@ const AppProvider = ({ children }) => {
         setFormNumber,
         links,
         setLinks,
-
-
-        cars,
-        setCars,
-        bikes,
-        setBikes,
-        mobiles,
-        setMobiles,
-        realestates,
-        setRealestates,
-        laptops,
-        setLaptops,
-
-
+        specs,
+        setSpecs,
+        price,
+        setPrice,
+        soldDate,
+        setSoldDate
       }}
     >
       {children}
