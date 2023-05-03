@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
   const [formNumber, setFormNumber] = useState(1);
   // product form data
   const [productName, setProductName] = useState("");
-  const [condition, setCondition] = useState("");
+  const [condition, setCondition] = useState("New");
   const [brand, setBrand] = useState("");
   const [location, setLocation] = useState("");
   const [productDescription, setProductDescription] = useState("");
@@ -46,8 +46,6 @@ const AppProvider = ({ children }) => {
         if (res.success) setUsers(res.message);
       });
   }, []);
-
-
 
 
   return (

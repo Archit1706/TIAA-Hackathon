@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 type Props = {}
 
 const Product = (props: Props) => {
-  const { category, setCategory, productName, setProductName, productDescription, setProductDescription, condition, setCondition, brand, setBrand, location, setLocaion, tags, setTags, formNumber, setFormNumber } = useContext(AppContext)
+  const { category, setCategory, productName, setProductName, productDescription, setProductDescription, condition, setCondition, brand, setBrand, location, setLocation, tags, setTags, formNumber, setFormNumber } = useContext(AppContext)
   // const [tags, setTags] = useState<string[]>([])
   const [tag, setTag] = useState<string>("")
 
@@ -20,7 +20,7 @@ const Product = (props: Props) => {
           <input
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
-            type="text" name="product-name" id="product-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product ame.example" required />
+            type="text" name="product-name" id="product-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product name" required />
         </div>
         {
           category === "real estate" ||
@@ -29,14 +29,14 @@ const Product = (props: Props) => {
             <input
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
-              type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product brand eg. Hp, Lenovo etc." required />
+              type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product brand" required />
           </div>
         }
         <div>
           <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
           <input
             value={location}
-            onChange={(e) => setLocaion(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
             type="text" name="location" id="location" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mumbai, India" required />
         </div>                        <div>
           <label htmlFor="condition" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condition</label>
