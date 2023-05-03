@@ -96,7 +96,7 @@ const OtherForm = (props: Props) => {
         <div>
           <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Initial Bid</label>
           <input
-            onChange={(e) => setPrice(parseInt(e.target.value))}
+            onChange={(e) => setPrice(e.target.value)}
             type="text" name="bid" id="bid" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="3500" required />
         </div>
         <div>
@@ -114,7 +114,7 @@ const OtherForm = (props: Props) => {
           <button
             onClick={() => { submitHandler() }}
             className="text-base ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
-          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
+          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile hover:text-white bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
         </div>
       </div>
     </div>

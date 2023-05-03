@@ -23,7 +23,7 @@ const AppProvider = ({ children }) => {
 
   // specs form data
   const [specs, setSpecs] = useState([]);
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [soldDate, setSoldDate] = useState("");
 
 
