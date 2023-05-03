@@ -1,15 +1,37 @@
 "use client";
 import { Product } from "@/types/Product";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import { ImHammer2 } from "react-icons/im";
 import QuickView from "./QuickView";
 
+import { calculateTimeLeft } from "@/utils/TimeCounter";
+
 type Props = {
     latestProducts: Product[];
+    endDate: string;
 };
 const LatestProducts = (props: Props) => {
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
+
+    useEffect(() => {
+        let date = new Date(props?.endDate);
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        const endDate = new Date(`${year}-${month}-${day}`);
+
+        // console.log(day);
+
+        setTimeout(() => setTimeLeft(calculateTimeLeft(endDate)), 1000);
+    }, [timeLeft]);
+
     const [showQuickView, setShowQuickView] = useState(false);
     return (
         <section className="p-10">
@@ -46,16 +68,40 @@ const LatestProducts = (props: Props) => {
                                                     <div className="absolute top-0 left-0 w-full bg-inherit h-full flex items-start justify-start transition-opacity duration-300 rounded-md">
                                                         <div className="grid grid-flow-col gap-2 text-center auto-cols-max bg-mobile text-white p-2 rounded-lg mt-3 ml-3">
                                                             <span className="countdown font-mono text-xs">
-                                                                15D
+                                                                {String(
+                                                                    timeLeft?.days
+                                                                )?.padStart(
+                                                                    2,
+                                                                    "0"
+                                                                )}
+                                                                D
                                                             </span>
                                                             <span className="countdown font-mono text-xs">
-                                                                10H
+                                                                {String(
+                                                                    timeLeft?.hours
+                                                                )?.padStart(
+                                                                    2,
+                                                                    "0"
+                                                                )}
+                                                                H
                                                             </span>
                                                             <span className="countdown font-mono text-xs">
-                                                                24M
+                                                                {String(
+                                                                    timeLeft?.minutes
+                                                                )?.padStart(
+                                                                    2,
+                                                                    "0"
+                                                                )}
+                                                                M
                                                             </span>
                                                             <span className="countdown font-mono text-xs">
-                                                                45S
+                                                                {String(
+                                                                    timeLeft?.seconds
+                                                                )?.padStart(
+                                                                    2,
+                                                                    "0"
+                                                                )}
+                                                                S
                                                             </span>
                                                         </div>
                                                     </div>
