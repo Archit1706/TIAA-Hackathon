@@ -4,39 +4,100 @@ import { AppContext } from "context/AppContext"
 type Props = {}
 
 const CarForm = (props: Props) => {
-  const { category, setCategory, productName, setProductName, productDescription, setProductDescription, condition, setCondition, brand, setBrand, location, setLocaion, tags, setTags, formNumber, setFormNumber } = useContext(AppContext)
+  // specs is a object with key value pair of specs
+  const { setFormNumber, specs, setSpecs, price, setPrice, soldDate, setSoldDate } = useContext(AppContext)
+  const submitHandler = () => {
+    console.log({
+      "specs": specs,
+      "price": price,
+      "soldDate": soldDate
+    })
+    setFormNumber(3)
+  }
+  const handelDateTime = (e: any) => {
+    const event = new Date(e.target.value);
+    const newDate = event.toISOString();
+    setSoldDate(newDate)
+  }
+  // specs format
+  //   "specs": {
+  //     "year": 2023,
+  //     "transmission": "automatic",
+  //     "Milage": 24.45,
+  //     "Engine (CC)": 1545,
+  //     "Power (BHP)": 162.7,
+  //     "Fuel": "petrol",
+  //     "Kilometers Driven": 200
+  // },
   return (
     <div className="mt-8 p-4">
       <div className="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-          <input type="text" name="username" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username.example" required />
+          <label htmlFor="year" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age (years)</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "year": parseInt(e.target.value) })}
+            type="number" name="year" id="year" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2023" required />
         </div>
         <div>
-          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-          <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required />
+          <label htmlFor="color" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transmission</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "transmission": e.target.value })}
+            type="text" name="transmission" id="transmission" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="automatic" required />
         </div>
         <div>
-          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-          <input type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required />
+          <label htmlFor="fuel-type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fuel</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "Fuel": e.target.value })}
+            type="text" name="fuel-type" id="fuel-type" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Petrol" required />
         </div>
         <div>
-          <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-          <input type="password" name="confirm-password" id="confirm-password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required />
+          <label htmlFor="power" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Power (BHP)</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "Power (BHP)": parseInt(e.target.value) })}
+            type="number" min={0} name="power" id="power" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="162.7" required />
         </div>
         <div>
-          <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Initial Bid</label>
-          <input type="text" name="bid" id="bid" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="10000" required />
+          <label htmlFor="engine" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Engine (CC)</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "Engine (CC)": parseInt(e.target.value) })}
+            type="number" min={0} name="engine" id="engine" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1545" required />
+        </div>
+        <div>
+          <label htmlFor="km-driven" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kilometers Driven</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "Kilometers Driven": parseInt(e.target.value) })}
+            type="number" min={0} name="km-driven" id="km-driven" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="200" required />
+        </div>
+        <div>
+          <label htmlFor="mileage" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mileage (KMPL)</label>
+          <input
+            onChange={(e) => setSpecs({ ...specs, "Milage": parseFloat(e.target.value) })}
+            type="number" min={0} step="0.01" name="mileage" id="mileage" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="33" required />
+        </div>
+      </div>
+      <hr className=" bg-gray-200 w-full my-4" />
+      <div className="grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Initial Bid</label>
+          <input
+            onChange={(e) => setPrice(parseInt(e.target.value))}
+            type="text" name="bid" id="bid" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="3500" required />
+        </div>
+        <div>
+          <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
+          <input
+            onChange={handelDateTime}
+            type="datetime-local" name="end-date" id="end-date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DD-YY-MM" required />
         </div>
       </div>
       <div className="flex p-2 mt-4">
         <button
-          onClick={() => {setFormNumber(1)}} 
+          onClick={() => { setFormNumber(1) }}
           className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile-light bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Previous</button>
         <div className="flex-auto flex flex-row-reverse">
           <button
-           onClick={() => {setFormNumber(3)}}
-           className="text-base ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
+            onClick={() => { submitHandler() }}
+            className="text-base ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
           <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
         </div>
       </div>
