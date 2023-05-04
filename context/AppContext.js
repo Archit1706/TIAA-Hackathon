@@ -99,8 +99,8 @@ const AppProvider = ({ children }) => {
       .then(result => {
         if (result.success) {
           setMaxValue(result.maxValue);
-          setMaxBid(result.maxBid);
-          setMaxRating(result.maxRating);
+          setMaxBid(result.maxBids);
+          setMaxRating(result.maxRatings);
         }
       })
       .catch(error => console.log('error', error));
