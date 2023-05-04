@@ -55,7 +55,7 @@ const MobileFilter = () => {
         });
     };
 
-    const applyFilters = (e: any) => {
+    const applyFilters =  (e: any) => {
         setCheck({
             ...check,
             Apple: false,
@@ -74,61 +74,70 @@ const MobileFilter = () => {
             LowBid: false,
         });
 
-        if (New) {
-            setProducts(
-                mobiles.filter(
-                    (product: Product) => product.condition === "New"
-                )
-            );
-        } else if (Used) {
-            setProducts(
-                mobiles.filter(
-                    (product: Product) => product.condition === "Used"
-                )
-            );
-        } else if (ForParts) {
-            setProducts(
-                mobiles.filter(
-                    (product: Product) => product.condition === "ForParts"
-                )
-            );
-        } else if (High) {
-            setProducts(
-                mobiles.sort((a: Product, b: Product) => b.price - a.price)
-            );
-        } else if (Low) {
-            setProducts(
-                mobiles.sort((a: Product, b: Product) => a.price - b.price)
-            );
-        } else if (HighBid) {
-            setProducts(
-                mobiles.sort((a: Product, b: Product) => b?.bids - a?.bids)
-            );
-        } else if (LowBid) {
-            setProducts(
-                mobiles.sort((a: Product, b: Product) => a?.bids - b?.bids)
-            );
-        } else if (Apple) {
-            setProducts(
-                mobiles.filter((product: Product) => product.brand === "Apple")
-            );
-        } else if (Samsung) {
-            setProducts(
-                mobiles.filter(
-                    (product: Product) => product.brand === "Samsung"
-                )
-            );
-        } else if (Xiaomi) {
-            setProducts(
-                mobiles.filter((product: Product) => product.brand === "Xiaomi")
-            );
-        } else if (OnePlus) {
-            setProducts(
-                mobiles.filter(
-                    (product: Product) => product.brand === "OnePlus"
-                )
-            );
-        }
+        getMobiles().then(() => {
+            console.log(mobiles)
+            if (New) {
+                getMobiles();
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.condition === "New"
+                    )
+                );
+            } else if (Used) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.condition === "Used"
+                    )
+                );
+            } else if (ForParts) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.condition === "ForParts"
+                    )
+                );
+            } else if (High) {
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => b.price - a.price)
+                );
+            } else if (Low) {
+    
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => a.price - b.price)
+                );
+            } else if (HighBid) {
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => b?.bids - a?.bids)
+                );
+            } else if (LowBid) {
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => a?.bids - b?.bids)
+                );
+            } else if (Apple) {
+                setMobiles(
+                    mobiles.filter((product: Product) => product.brand === "Apple")
+                );
+            } else if (Samsung) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.brand === "Samsung"
+                    )
+                );
+            } else if (Xiaomi) {
+                setMobiles(
+                    mobiles.filter((product: Product) => product.brand === "Xiaomi")
+                );
+            } else if (OnePlus) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.brand === "OnePlus"
+                    )
+                );
+                // getMobiles();
+    
+            }
+        })
+       
+        
     };
 
     useEffect(() => {
