@@ -15,7 +15,14 @@ const Chat = (props: Props) => {
     const [room, setRoom] = useState(
         window.location.href.substr(window.location.href.length - 24)
     );
-    const [userName, setUserName] = useState(String(Math.random())); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
+    try {
+        const user: string = JSON.parse(localStorage.getItem("user")).name;
+        const [userName, setUserName] = useState(user); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
+    } catch (e) {
+        const [userName, setUserName] = useState("Hello World");
+    }
+    // const [userName, setUserName] = useState(String(Math.random()));
+    //GET USERNAME FROM COOKIES OR LOCALSTORAGE
     const [_, update] = useState(1);
 
     const [price, setPrice] = useState(0);

@@ -15,6 +15,7 @@ import Link from "next/link";
 
 import io from "socket.io-client";
 import FAQ from "./FAQ";
+import { toast } from "react-toastify";
 let socket: any;
 const CONNECTION_PORT = process.env.NEXT_PUBLIC_CONNECTION_URL || "";
 
@@ -240,7 +241,17 @@ const MainAuctionPage = (props: Props) => {
                         <div className="flex">
                             <span
                                 // onClick={minusCount}
-                                onClick={() => setBidAmt(bidAmt + 100)}
+                                onClick={() => {
+                                    if (
+                                        props?.product?.category != "Government"
+                                    ) {
+                                        toast.error(
+                                            "You cannot decrease bid on products"
+                                        );
+                                    } else {
+                                        setBidAmt(bidAmt - 100);
+                                    }
+                                }}
                                 className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-l cursor-pointer outline-none flex items-center justify-center font-bold"
                             >
                                 -
@@ -256,7 +267,18 @@ const MainAuctionPage = (props: Props) => {
                             />
                             <span
                                 // onClick={addCount}
-                                onClick={() => setBidAmt(bidAmt + 100)}
+                                onClick={() => {
+                                    if (
+                                        props?.product?.category ===
+                                        "Government"
+                                    ) {
+                                        toast.error(
+                                            "You cannot increase bid on government tenders"
+                                        );
+                                    } else {
+                                        setBidAmt(bidAmt + 100);
+                                    }
+                                }}
                                 className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
                             >
                                 +
