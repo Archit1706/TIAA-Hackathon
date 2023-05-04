@@ -10,6 +10,12 @@ const Product = (props: Props) => {
   // const [tags, setTags] = useState<string[]>([])
   const [tag, setTag] = useState<string>("")
 
+  const handleSubmit = () => {
+    if(category==="" || productName==="" || productDescription==="" || condition==="" || brand==="" || location===""){
+      return toast.error('😓 Please fill all the fields!');
+    }
+    setFormNumber(2)
+  }
 
   return (
     <div className="mt-8 p-4">
@@ -121,10 +127,10 @@ const Product = (props: Props) => {
         <div className="flex-auto flex flex-row-reverse">
           <button
             onClick={() => {
-              setFormNumber(2)
+              handleSubmit()
             }}
             className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
-          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 hover:text-white bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
+          {/* <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 hover:text-white bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button> */}
         </div>
       </div>
     </div>
