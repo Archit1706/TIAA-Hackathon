@@ -1,4 +1,3 @@
-"use client";
 import "./globals.css";
 import Providers from "@/utils/Providers";
 
@@ -16,10 +15,10 @@ const ubuntu = Ubuntu({
     subsets: ["latin"],
 });
 
-export const metadata = {
-    title: { name },
-    description: { description },
-};
+// export const metadata = {
+//     title: { name },
+//     description: { description },
+// };
 
 export default function RootLayout({
     children,
@@ -28,6 +27,14 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <head>
+                <meta charSet="utf-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+                <title>Bid Bazaar</title>
+            </head>
             <body className={ubuntu.className}>
                 <Providers>
                     <div>

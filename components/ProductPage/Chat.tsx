@@ -15,14 +15,8 @@ const Chat = (props: Props) => {
     const [room, setRoom] = useState(
         window.location.href.substr(window.location.href.length - 24)
     );
-    try {
-        const user: string = JSON.parse(localStorage.getItem("user")).name;
-        const [userName, setUserName] = useState(user); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
-    } catch (e) {
-        const [userName, setUserName] = useState("Hello World");
-    }
-    // const [userName, setUserName] = useState(String(Math.random()));
-    //GET USERNAME FROM COOKIES OR LOCALSTORAGE
+    const usr = JSON.parse(localStorage.getItem("user")).name;
+    const [userName, setUserName] = useState(usr);
     const [_, update] = useState(1);
 
     const [price, setPrice] = useState(0);
@@ -32,13 +26,13 @@ const Chat = (props: Props) => {
     const [messageList, setMessageList] = useState([]);
     const [bidList, setBidList] = useState([]);
 
-    const userId = localStorage.getItem("userId");
+    const userId = JSON.parse(localStorage.getItem("user"))._id;
     // fetch user from the database or context using userId
     // const user =
 
     const user: User = {
         id: "1",
-        name: "John Doe",
+        name: userName,
         email: "JohnDoe@gmail.com",
         mobile: "1234567890",
     };
@@ -88,7 +82,8 @@ const Chat = (props: Props) => {
                 message: message,
             },
         };
-        console.log(1);
+        // console.log(1);
+        console.log(userId, userName, messageList);
         socket.emit("send_message", messageContent);
         const temp = messageList;
         temp.push(messageContent.content);
@@ -203,30 +198,6 @@ const Chat = (props: Props) => {
                                             Cars Auction
                                         </div>
                                     </button>
-                                    <button className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-                                        <div className="flex items-center justify-center h-8 w-8 bg-purple-200 rounded-full">
-                                            J
-                                        </div>
-                                        <div className="ml-2 text-sm font-semibold">
-                                            Jerry Guzman
-                                        </div>
-                                    </button>
-                                </div>
-                                <div className="flex flex-row items-center justify-between text-xs mt-6">
-                                    <span className="font-bold">Archivied</span>
-                                    <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">
-                                        7
-                                    </span>
-                                </div>
-                                <div className="flex flex-col space-y-1 mt-4 -mx-2">
-                                    <button className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-                                        <div className="flex items-center justify-center h-8 w-8 bg-indigo-200 rounded-full">
-                                            H
-                                        </div>
-                                        <div className="ml-2 text-sm font-semibold">
-                                            Henry Boyd
-                                        </div>
-                                    </button>
                                 </div>
                             </div>
                         </>
@@ -252,7 +223,8 @@ const Chat = (props: Props) => {
                                     {Array.isArray(messageList) &&
                                         messageList.length > 0 &&
                                         messageList.map((message, index) => {
-                                            return message?.author == userId ? (
+                                            return message?.author ==
+                                                userName ? (
                                                 <div
                                                     key={index}
                                                     className="col-start-6 col-end-13 p-3 rounded-lg"
