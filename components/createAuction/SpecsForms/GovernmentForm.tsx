@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useContext } from 'react'
 import { AppContext } from "context/AppContext"
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 type Props = {}
 
-const LaptopForm = (props: Props) => {
+const GovernmentForm = (props: Props) => {
     // specs is a object with key value pair of specs
     const { setFormNumber, specs, brand, setSpecs, price, setPrice, soldDate, setSoldDate } = useContext(AppContext)
     const submitHandler = () => {
@@ -22,7 +22,7 @@ const LaptopForm = (props: Props) => {
     }
     const predictPrice = () => {
         // fetch predicted initail bid (price) from backend based on all specs
-        if (specs["CPU"] && specs["GPU Brand"] && specs["Battery (Wh)"] && specs["Ram (GB)"] && specs["SSD (GB)"] && specs["HDD (GB)"] && specs["Display Resolution (pixels)"] && specs["Weight (KG)"]) {
+        if (specs["Under Construction"] && specs["Rera Approved"] && specs["Ready to MoveIn"] && specs["Resale"] && specs["Area"] && specs["Rooms"] && specs["City"]) {
             // fetch predicted price from backend
             fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/predict`, {
                 method: "POST",
@@ -34,7 +34,7 @@ const LaptopForm = (props: Props) => {
                         ...specs,
                         "brand": brand
                     },
-                    "category": "Laptops"
+                    "category": "Government"
                 })
             })
                 .then(res => res.json())
@@ -61,7 +61,7 @@ const LaptopForm = (props: Props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "category": "Laptops"
+                "category": "Government"
             })
         })
             .then(res => res.json())
@@ -84,72 +84,53 @@ const LaptopForm = (props: Props) => {
     }
     // specs format
     //   "specs": {
-    //     "Display (Inch)": 14, >
-    //     "Ram (GB)": 8, >
-    //     "Weight (KG)": 1.4, >
-    //     "CPU": "Intel Core i7", >
-    //     "GPU Brand": "Intel",  >
-    //     "SSD (GB)": 512,  
-    //     "HDD (GB)": 0,
-    //     "Display Resolution (pixels)": 1080,
-    //     "Battery (Wh)": 42 >
-    // },
+    //     "type": "Hospital",
+    //     "address": "Sector 63, Noida"
+    //     "builtUpArea": "10,000 sq. m.",
+    //     "workDuration": "24 months",
+    //     "startMonth": "October 2023",
+    //     "completionMonth": "September 2025"
+    //     },
     return (
         <div className="mt-8 p-4">
+            <ToastContainer />
             <div className="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <label htmlFor="os" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CPU</label>
+                    <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
                     <input
-                        onChange={(e) => setSpecs({ ...specs, "CPU": e.target.value })}
-                        type="text" name="cpu" id="cpu" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Intel Core i7" required />
+                        onChange={(e) => setSpecs({ ...specs, "type": e.target.value })}
+                        type="text" name="type" id="type" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Hospital, Road, etc.." required />
                 </div>
                 <div>
-                    <label htmlFor="color" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GPU Brand</label>
+                    <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                     <input
-                        onChange={(e) => setSpecs({ ...specs, "GPU Brand": e.target.value })}
-                        type="text" name="color" id="color" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Intel" required />
+                        onChange={(e) => setSpecs({ ...specs, "address": e.target.value })}
+                        type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sector 63, Noida" required />
                 </div>
                 <div>
-                    <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Battery</label>
+                    <label htmlFor="builtUpArea" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Built Up Area</label>
                     <input
-                        onChange={(e) => setSpecs({ ...specs, "Battery (Wh)": parseInt(e.target.value) })}
-                        type="number" min={0} name="battery" id="battery" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="5000" required />
+                        onChange={(e) => setSpecs({ ...specs, "builtUpArea": e.target.value })}
+                        type="text" name="builtUpArea" id="builtUpArea" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="10,000 sq. m." required />
                 </div>
                 <div>
-                    <label htmlFor="ram" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ram (GB)</label>
+                    <label htmlFor="workDuration" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Work Duration</label>
                     <input
-                        onChange={(e) => setSpecs({ ...specs, "Ram (GB)": parseInt(e.target.value) })}
-                        type="number" min={0} name="ram" id="ram" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="8" required />
+                        onChange={(e) => setSpecs({ ...specs, "workDuration": e.target.value })}
+                        type="text" name="workDuration" id="workDuration" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="24 months" required />
+                </div>
+
+                <div>
+                    <label htmlFor="startMonth" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Month</label>
+                    <input
+                        onChange={(e) => setSpecs({ ...specs, "startMonth": e.target.value })}
+                        type="text" name="startMonth" id="startMonth" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="October 2023" required />
                 </div>
                 <div>
-                    <label htmlFor="ssd" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SSD (GB)</label>
+                    <label htmlFor="completionMonth" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Completion Month</label>
                     <input
-                        onChange={(e) => setSpecs({ ...specs, "SSD (GB)": parseInt(e.target.value) })}
-                        type="number" min={0} name="ssd" id="ssd" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="512" required />
-                </div>
-                <div>
-                    <label htmlFor="hdd" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">HDD (GB)</label>
-                    <input
-                        onChange={(e) => setSpecs({ ...specs, "HDD (GB)": parseInt(e.target.value) })}
-                        type="number" min={0} name="internal-storage" id="internal-storage" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1024" required />
-                </div>
-                <div>
-                    <label htmlFor="display" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Display Resolution (pixels)</label>
-                    <input
-                        onChange={(e) => setSpecs({ ...specs, "Display Resolution (pixels)": parseFloat(e.target.value) })}
-                        type="number" min={0} name="display-res" id="display-res" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1080" required />
-                </div>
-                <div>
-                    <label htmlFor="display" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Display (Inch)</label>
-                    <input
-                        onChange={(e) => setSpecs({ ...specs, "Display (Inch)": parseFloat(e.target.value) })}
-                        type="number" min={0} step="0.01" name="display" id="display" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="13.6" required />
-                </div>
-                <div>
-                    <label htmlFor="display" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Weight (KG)</label>
-                    <input
-                        onChange={(e) => setSpecs({ ...specs, "Weight (KG)": parseFloat(e.target.value) })}
-                        type="number" min={0} name="display" id="display" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1.4" required />
+                        onChange={(e) => setSpecs({ ...specs, "completionMonth": e.target.value })}
+                        type="text" name="completionMonth" id="completionMonth" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="September 2025" required />
                 </div>
             </div>
             <hr className=" bg-gray-200 w-full my-4" />
@@ -194,4 +175,4 @@ const LaptopForm = (props: Props) => {
     )
 }
 
-export default LaptopForm
+export default GovernmentForm

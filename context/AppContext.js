@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
 
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL6}/product/get`)
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`)
       .then(res => res.json())
       .then(res => {
         if (res.success) setProducts(res.message);
