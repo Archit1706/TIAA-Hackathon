@@ -13,7 +13,7 @@ import { AppContext } from "context/AppContext";
 import { IoIosArrowBack } from "react-icons/io";
 import CarForm from "@/components/CreateAuction/SpecsForms/CarForm";
 import BikeForm from "@/components/CreateAuction/SpecsForms/BikeForm";
-import OtherForm from "@/components/CreateAuction/SpecsForms/OtherForm";
+import GovernmentForm from "@/components/CreateAuction/SpecsForms/GovernmentForm";
 import RealEstateForm from "@/components/CreateAuction/SpecsForms/RealEstateForm";
 import MobileForm from "@/components/CreateAuction/SpecsForms/MobileForm";
 import LaptopForm from "@/components/CreateAuction/SpecsForms/LaptopForm";
@@ -23,7 +23,7 @@ const page = (props: Props) => {
     // const [formNumber, setFormNumber] = useState(1);
     const { category, setCategory, formNumber, setFormNumber } = useContext(AppContext);
     return (
-        <div className="w-screen md:p-8 bg-purple-50 flex items-start min-h-screen flex-col space-y-2">
+        <div className="md:p-8 bg-purple-50 flex items-start min-h-screen flex-col space-y-2">
             {/* back btn */}
             <div>
                 <button
@@ -114,15 +114,15 @@ const page = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="w-1/2 p-1 md:p-2 relative"
-                                                onClick={() => setCategory("Other")}>
+                                                onClick={() => setCategory("Government")}>
                                                 <img
                                                     alt="gallery"
                                                     className="block h-full w-full rounded-lg object-cover object-center"
-                                                    src="https://images.unsplash.com/photo-1605642634357-80a58f89af26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+                                                    src="https://etimg.etb2bimg.com/thumb/msid-95701624,width-1200,resizemode-4/.jpg" />
                                                 {/* overlay */}
                                                 <div className="z-10 absolute top-0 bottom-0 left-0 right-0 bg-black opacity-0 hover:opacity-50 transition-all ease-in flex items-center justify-center">
                                                     <p className="text-white font-extrabold">
-                                                        Other
+                                                        Government
                                                     </p>
                                                 </div>
                                             </div>
@@ -143,7 +143,7 @@ const page = (props: Props) => {
                                 <div className="mx-4 p-4">
                                     <div className="flex items-center">
                                         <div className={`flex items-center ${formNumber === 1 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(1)}
+                                            // onClick={() => setFormNumber(1)}
                                         >
                                             <div className={`${formNumber === 1 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <AiOutlineShoppingCart className="w-6 h-6" />
@@ -153,7 +153,7 @@ const page = (props: Props) => {
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-mobile"></div>
 
                                         <div className={`flex items-center ${formNumber === 2 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(2)}
+                                            // onClick={() => setFormNumber(2)}
                                         >
                                             <div className={`${formNumber === 2 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <VscTools className="w-6 h-6" />
@@ -163,7 +163,7 @@ const page = (props: Props) => {
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
 
                                         <div className={`flex items-center ${formNumber === 3 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(3)}
+                                            // onClick={() => setFormNumber(3)}
                                         >
                                             <div className={`${formNumber === 3 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <AiOutlineCamera className="w-6 h-6" />
@@ -173,7 +173,7 @@ const page = (props: Props) => {
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
 
                                         <div className={`flex items-center ${formNumber === 4 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(4)}
+                                            // onClick={() => setFormNumber(4)}
                                         >
                                             <div className={`${formNumber === 4 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <MdDone className="w-6 h-6" />
@@ -188,24 +188,24 @@ const page = (props: Props) => {
                                 {
                                     formNumber === 2 && (
                                         <>
-                                        {
-                                            category === "Cars" && <CarForm />
-                                        }
-                                        {
-                                            category === "Bikes" && <BikeForm />
-                                        }
-                                        {
-                                            category === "Real-Estate" && <RealEstateForm />
-                                        }
-                                        {
-                                            category === "Mobiles" && <MobileForm />
-                                        }
-                                        {
-                                            category === "Laptops" && <LaptopForm />
-                                        }
-                                        {
-                                            category === "Other" && <OtherForm />
-                                        }
+                                            {
+                                                category === "Cars" && <CarForm />
+                                            }
+                                            {
+                                                category === "Bikes" && <BikeForm />
+                                            }
+                                            {
+                                                category === "Real-Estate" && <RealEstateForm />
+                                            }
+                                            {
+                                                category === "Mobiles" && <MobileForm />
+                                            }
+                                            {
+                                                category === "Laptops" && <LaptopForm />
+                                            }
+                                            {
+                                                category === "Government" && <GovernmentForm />
+                                            }
                                         </>
                                     )
                                 }

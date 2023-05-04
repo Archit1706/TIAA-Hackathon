@@ -30,32 +30,43 @@ const AppProvider = ({ children }) => {
   // picture form data
   const [links, setLinks] = useState([]);
 
-  const [userId, setUserId] = useState(localStorage.getItem("userId") || "6452c8e67e7e50035edc2de2");
+  const [userId, setUserId] = useState(localStorage.getItem("userId") || "6453475e6d17a9bc0d9a8456");
 
   // getDashDetails, itemsSold, itemsBought
 
   const [itemsBought, setItemsBought] = useState([]);
   const [itemsSold, setItemsSold] = useState([]);
 
-  const getDashDetails = () => {
-    // Post Request
 
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/getDashDetails`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: userId,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.success) {
-          setItemsBought(res.message.itemsBought);
-          setItemsSold(res.message.itemsSold);
+  const [maxValue, setMaxValue] = useState([]);
+  const [maxBid, setMaxBid] = useState([]);
+  const [maxRating, setMaxRating] = useState([]);
+
+  const getDashDetails = (userId) => {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "id": userId || "6453475e6d17a9bc0d9a8456"
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/dashboard`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          setItemsBought(result.itemsBought);
+          setItemsSold(result.itemsSold);
         }
-      });
+      })
+      .catch(error => console.log('error', error));
 
 
     // fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/getDashDetails`)
@@ -68,9 +79,35 @@ const AppProvider = ({ children }) => {
     //   });
   }
 
+  const getAdminDetails = (userId) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "id": userId || "6453475e6d17a9bc0d9a8456"
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://auction-backend.sidd065.repl.co/api/users/admin", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          setMaxValue(result.maxValue);
+          setMaxBid(result.maxBid);
+          setMaxRating(result.maxRating);
+        }
+      })
+      .catch(error => console.log('error', error));
+  }
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL6}/product/get`)
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`)
       .then(res => res.json())
       .then(res => {
         if (res.success) setProducts(res.message);
@@ -126,6 +163,14 @@ const AppProvider = ({ children }) => {
         itemsSold,
         setItemsBought,
         setItemsSold,
+
+        getAdminDetails,
+        maxValue,
+        maxBid,
+        maxRating,
+        setMaxBid,
+        setMaxRating,
+        setMaxValue,
       }}
     >
       {children}

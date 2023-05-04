@@ -154,7 +154,7 @@ const FAQ = ({ QnA, product }: Props) => {
                                             {item?.response}
                                         </p>
                                     ) : (
-                                        item?.name === item?.name ? (
+                                        item?.name === localStorage.getItem("uname") ? (
                                             <ResponseCrad setQnAs={setQnAs} product={product} QnA={item} index={index} />
                                         ) : (
                                             <p className="ml-4 md:ml-6 text-gray-700 italic">

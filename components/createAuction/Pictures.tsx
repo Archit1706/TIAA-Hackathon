@@ -105,6 +105,9 @@ const Pictures = (props: Props) => {
     //   "bids": 0,
     //   "__v": 0
     // }
+    if(localStorage.getItem('uname') == null){
+      return toast.error('😓 Please login or refresh to create auction!');
+    }
     const product = {
       name: productName,
       brand: brand,
@@ -118,7 +121,7 @@ const Pictures = (props: Props) => {
       images: links.map((link: any) => link.secure_url),
       createDate: new Date(),
       soldDate: soldDate,
-      seller: "Prateek Vishwakarma",
+      seller: localStorage.getItem('uname'),
       buyer: "",
       category: category,
       specs: specs,
@@ -128,7 +131,7 @@ const Pictures = (props: Props) => {
     console.log(product)
 
     // send product json object to backend
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}}/product/new`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -137,8 +140,8 @@ const Pictures = (props: Props) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("Product Form server",data);
-        setCategory('');
+        console.log("Product From server",data);
+        // setCategory('');
         setProductName('');
         setBrand('');
         setProductDescription('');

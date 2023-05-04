@@ -29,7 +29,7 @@ const page = (props: Props) => {
         <div className="px-4 md:px-16 gap-4">
             <AuctionHero images={images} title={titles} />
             <LatestProducts
-                endDate={cars[0].soldDate}
+                endDate={cars[0]?.soldDate}
                 latestProducts={cars.slice(0, 4)}
             />
             <CarFilter />

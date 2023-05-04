@@ -1,8 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
-
+import { useContext } from 'react'
+import { AppContext } from "context/AppContext"
 type Props = {}
 
 const Success = (props: Props) => {
+    const { setFormNumber, setCategory } = useContext(AppContext)
     return (
         <div className="mt-8 p-4">
             <div className="bg-white p-6  md:mx-auto">
@@ -16,9 +19,13 @@ const Success = (props: Props) => {
                     <p className="text-gray-600 my-2">Thank you for cteating auction for your product.</p>
                     <p> Have a great day!  </p>
                     <div className="py-10 text-center">
-                        <a href="#" className="px-12 bg-mobile hover:bg-mobile-light border-2 border-mobile rounded-lg hover:text-mobile text-white font-semibold py-3">
+                        <button onClick={()=>{
+                            setCategory('');
+                            setFormNumber(1);
+                            window.location.href = '/'
+                        }} className="px-12 bg-mobile hover:bg-mobile-light border-2 border-mobile rounded-lg hover:text-mobile text-white font-semibold py-3">
                             GO BACK
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

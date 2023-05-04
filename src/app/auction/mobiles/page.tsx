@@ -32,7 +32,7 @@ const page = (props: Props) => {
         <div className="px-4 md:px-16">
             <AuctionHero images={images} title={titles} />
             <LatestProducts
-                endDate={mobiles[0].soldDate}
+                endDate={mobiles[0]?.soldDate}
                 latestProducts={mobiles.slice(0, 4)}
             />
             <MobileFilter />

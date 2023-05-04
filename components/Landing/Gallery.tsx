@@ -175,12 +175,12 @@ const Gallery = (props: Props) => {
                             <img
                                 alt="gallery"
                                 className="w-full object-cover h-full object-center block rounded-lg"
-                                src={phoneImages[phoneIndex].src}
+                                src="https://etimg.etb2bimg.com/thumb/msid-95701624,width-1200,resizemode-4/.jpg"
                             />
-                            <Link href="/auction/mobiles">
+                            <Link href="/auction/government">
                                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
                                     <span className="text-white font-bold text-3xl">
-                                        Mobiles
+                                        Government
                                     </span>
                                 </div>
                             </Link>
@@ -191,7 +191,7 @@ const Gallery = (props: Props) => {
                                 className="w-full object-cover h-full object-center block rounded-lg"
                                 src={realEstateImages[realEstateIndex].src}
                             />
-                            <Link href="/auction/laptops">
+                            <Link href="/auction/real">
                                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
                                     <span className="text-white font-bold text-3xl">
                                         Real Estate

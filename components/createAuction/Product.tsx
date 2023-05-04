@@ -10,20 +10,28 @@ const Product = (props: Props) => {
   // const [tags, setTags] = useState<string[]>([])
   const [tag, setTag] = useState<string>("")
 
+  const handleSubmit = () => {
+    if(category==="" || productName==="" || productDescription==="" || condition==="" || brand==="" || location===""){
+      return toast.error('😓 Please fill all the fields!');
+    }
+    setFormNumber(2)
+  }
 
   return (
     <div className="mt-8 p-4">
       <ToastContainer />
       <div className="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="product-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
+          <label htmlFor="product-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{
+          category === "Real-Estate" ? "Property" : category === "Government" ? "Tender" : "Product"} Name</label>
           <input
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
-            type="text" name="product-name" id="product-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product name" required />
+            type="text" name="product-name" id="product-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={`${
+              category === "Real-Estate" ? "Property" : category === "Government" ? "Tender" : "Product"} name`} required />
         </div>
         {
-          category === "real estate" ||
+          category === "Real-Estate" || category === "Government" ||
           <div>
             <label htmlFor="brand" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
             <input
@@ -38,28 +46,32 @@ const Product = (props: Props) => {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             type="text" name="location" id="location" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mumbai, India" required />
-        </div>                        <div>
-          <label htmlFor="condition" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condition</label>
-          <select
-            value={condition}
-            onChange={(e) => setCondition(e.target.value)}
-            name="condition" id="condition" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-            {
-              category === "real estate" ?
-                <>
-                  <option value="Newily built">Newly built</option>
-                  <option value="Pre owned">Pre owned</option>
-                  <option value="Requires Repairs">Requires Repair</option>
-                </>
-                :
-                <>
-                  <option value="New">New</option>
-                  <option value="Used">Used</option>
-                  <option value="For Parts">For Parts</option>
-                </>
-            }
-          </select>
         </div>
+        {
+          category !== "Government" &&
+          <div>
+            <label htmlFor="condition" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condition</label>
+            <select
+              value={condition}
+              onChange={(e) => setCondition(e.target.value)}
+              name="condition" id="condition" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+              {
+                category === "Real-Estate" ?
+                  <>
+                    <option value="Newily built">Newly built</option>
+                    <option value="Pre owned">Pre owned</option>
+                    <option value="Requires Repairs">Requires Repair</option>
+                  </>
+                  :
+                  <>
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                    <option value="For Parts">For Parts</option>
+                  </>
+              }
+            </select>
+          </div>
+        }
         <div>
           <div className='flex flex-wrap gap-2'>
             {
@@ -78,7 +90,8 @@ const Product = (props: Props) => {
             <input
               onChange={(e) => setTag(e.target.value)}
               value={tag}
-              type="text" name="tags" id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mumbai, India" required />
+              type="text" name="tags" id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={`${
+                category === "Real-Estate" ? "Dream House, Well furnished, etc.." : category === "Government" ? "Contarctor, Purchasing, etc.." : "Fast Processor 🔥, Good Camera, etc.."}`} required />
             <button
               onClick={() => {
                 if (tag === "") return
@@ -114,10 +127,10 @@ const Product = (props: Props) => {
         <div className="flex-auto flex flex-row-reverse">
           <button
             onClick={() => {
-              setFormNumber(2)
+              handleSubmit()
             }}
             className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Next</button>
-          <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 hover:text-white bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button>
+          {/* <button className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 hover:text-white bg-mobile-light text-mobile border duration-200 ease-in-out border-mobile transition">Skip</button> */}
         </div>
       </div>
     </div>
