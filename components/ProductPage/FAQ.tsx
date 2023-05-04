@@ -2,7 +2,7 @@
 import { Product } from '@/types/Product'
 import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
-// import Product from '../CreateAuction/Product'
+// import Product from '../createAuction/Product'
 import QueryModal from './QueryModal'
 
 type QnAtype = {

@@ -1,7 +1,7 @@
 "use client"
-import Pictures from "@/components/CreateAuction/Pictures";
-import Product from "@/components/CreateAuction/Product";
-import Success from "@/components/CreateAuction/Success";
+import Pictures from "@/components/createAuction/Pictures";
+import Product from "@/components/createAuction/Product";
+import Success from "@/components/createAuction/Success";
 import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscTools } from "react-icons/vsc";
@@ -11,12 +11,12 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useContext } from "react";
 import { AppContext } from "context/AppContext";
 import { IoIosArrowBack } from "react-icons/io";
-import CarForm from "@/components/CreateAuction/SpecsForms/CarForm";
-import BikeForm from "@/components/CreateAuction/SpecsForms/BikeForm";
-import GovernmentForm from "@/components/CreateAuction/SpecsForms/GovernmentForm";
-import RealEstateForm from "@/components/CreateAuction/SpecsForms/RealEstateForm";
-import MobileForm from "@/components/CreateAuction/SpecsForms/MobileForm";
-import LaptopForm from "@/components/CreateAuction/SpecsForms/LaptopForm";
+import CarForm from "@/components/createAuction/SpecsForms/CarForm";
+import BikeForm from "@/components/createAuction/SpecsForms/BikeForm";
+import GovernmentForm from "@/components/createAuction/SpecsForms/GovernmentForm";
+import RealEstateForm from "@/components/createAuction/SpecsForms/RealEstateForm";
+import MobileForm from "@/components/createAuction/SpecsForms/MobileForm";
+import LaptopForm from "@/components/createAuction/SpecsForms/LaptopForm";
 
 type Props = {};
 const page = (props: Props) => {

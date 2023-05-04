@@ -15,10 +15,11 @@ type Props = {
 
 const QueryModal = ({ setShowQueryModal, product, QnA }: Props) => {
     const [question, setQuestion] = useState("");
-    if(localStorage.getItem("uname")===null){
-        return toast.error("Please login or refresh to ask a question!")
-    }
+
     const submitAnswer = () => {
+        if (localStorage.getItem("uname") === null) {
+            return toast.error("Please login or refresh to ask a question!")
+        }
         if (question.length > 5) {
             // submit answer to backend
             const body = {
