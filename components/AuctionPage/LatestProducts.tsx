@@ -44,8 +44,8 @@ const LatestProducts = (props: Props) => {
             </div>
             {/* create a div with flex layout and wrap the products in it */}
             <div className="justify-center items-center flex flex-row flex-1 flex-wrap gap-10">
-                {props.latestProducts &&
-                    props.latestProducts.map(
+                {props?.latestProducts &&
+                    props?.latestProducts?.map(
                         (product: Product, index: number) => {
                             return (
                                 <div className="w-[440px] lg:flex">
@@ -58,12 +58,12 @@ const LatestProducts = (props: Props) => {
                                         className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                                         title="Mountain"
                                     >
-                                        {product.images &&
-                                            product.images[0] && (
+                                        {product?.images &&
+                                            product?.images[0] && (
                                                 <div className="relative h-full w-full">
                                                     <img
                                                         className="h-full w-full object-cover"
-                                                        src={product.images[0]}
+                                                        src={product?.images[0]}
                                                     />
                                                     <div className="absolute top-0 left-0 w-full bg-inherit h-full flex items-start justify-start transition-opacity duration-300 rounded-md">
                                                         <div className="grid grid-flow-col gap-2 text-center auto-cols-max bg-mobile text-white p-2 rounded-lg mt-3 ml-3">
@@ -111,10 +111,10 @@ const LatestProducts = (props: Props) => {
                                     <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white dark:bg-gray-800 dark:lg:border-gray-700 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                         <div className="">
                                             <div className="text-gray-900 font-bold text-xl mb-2 dark:text-white">
-                                                {product.name}
+                                                {product?.name}
                                             </div>
                                             <p className="text-gray-700 text-base dark:text-gray-200">
-                                                {product.description}
+                                                {product?.description}
                                             </p>
                                             <div className="py-2 flex flex-row">
                                                 <button
@@ -148,7 +148,7 @@ const LatestProducts = (props: Props) => {
                                                     </button>
                                                 </div>
                                                 <Link
-                                                    href={`/product/${product._id}`}
+                                                    href={`/product/${product?._id}`}
                                                     className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 border bg-purple-600 border-purple-700 rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                                                     aria-label="Like"
                                                 >
@@ -158,7 +158,7 @@ const LatestProducts = (props: Props) => {
                                             <div>
                                                 Current Bid:{" "}
                                                 <span className="text-green-500 font-bold text-xl">
-                                                    ₹{product.price}
+                                                    ₹{product?.price}
                                                 </span>
                                             </div>
                                         </div>
