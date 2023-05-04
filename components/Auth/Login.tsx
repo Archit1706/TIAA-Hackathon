@@ -1,7 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import Lottie from 'react-lottie';
-import RegisterPic from '../../public/register.json'
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import router from 'next/router';
@@ -11,14 +9,14 @@ type Props = {};
 
 
 const Login = (props: Props) => {
-    const DefaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: RegisterPic,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-        },
-    };
+    // const DefaultOptions = {
+    //     loop: true,
+    //     autoplay: true,
+    //     animationData: RegisterPic,
+    //     rendererSettings: {
+    //         preserveAspectRatio: "xMidYMid slice",
+    //     },
+    // };
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -91,7 +89,7 @@ const Login = (props: Props) => {
                     </div>
                 </div>
                 <div className='mt-16 mr-28'>
-                    <Lottie options={DefaultOptions} height={650} width={650} />
+                    {/* <Lottie options={DefaultOptions} height={650} width={650} /> */}
                     <ToastContainer
                         position="top-center"
                         autoClose={4000}
