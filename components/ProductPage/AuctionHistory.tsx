@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 
 let socket: any;
-const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
+const CONNECTION_PORT = process.env.NEXT_PUBLIC_CONNECTION_URL || "";
 type Props = {
     product: Product;
 };

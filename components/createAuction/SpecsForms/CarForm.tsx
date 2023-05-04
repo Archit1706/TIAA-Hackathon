@@ -24,7 +24,7 @@ const CarForm = (props: Props) => {
     // fetch predicted initail bid (price) from backend based on all specs
     if (specs["OS"] && specs["Color"] && specs["Ram (GB)"] && specs["Internal Storage (GB)"] && specs["Rear Camera (MP)"] && specs["Front Camera (MP)"] && specs["Display (Inch)"] && specs["Processor"] && specs["Battery"] && specs["Connectivity"]) {
       // fetch predicted price from backend
-      fetch("https://auction-backend.sidd065.repl.co/api/product/predict", {
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

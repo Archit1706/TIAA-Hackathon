@@ -15,38 +15,38 @@ export const ProductProvider = ({ children }) => {
 
 
     const getCars = async () => {
-        const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-cars");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-cars`);
         const data = await res.json();
         if (data.success) setCars(data.message);
         console.log("cars")
     }
 
     const getBikes = async () => {
-        const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-bikes");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-bikes`);
         const data = await res.json();
         if (data.success) setBikes(data.message);
     }
 
     const getMobiles = async () => {
-        const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-mobiles");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-mobiles`);
         const data = await res.json();
         if (data.success) setMobiles(data.message);
     }
 
     const getRealestates = async () => {
-        const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-properties");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-properties`);
         const data = await res.json();
         if (data.success) setRealestates(data.message);
     }
 
     const getLaptops = async () => {
-        const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get-laptops");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-laptops`);
         const data = await res.json();
         if (data.success) setLaptops(data.message);
     }
 
     const getAllProducts = async () => {
-        const res = await fetch("https://auction-backend.sidd065.repl.co/api/product/get");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`);
         const data = await res.json();
         if (data.success) setProducts(data.message);
         console.log("jfklae");
