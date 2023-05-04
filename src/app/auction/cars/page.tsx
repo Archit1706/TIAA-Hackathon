@@ -1,6 +1,7 @@
 "use client";
 import AuctionHero from "@/components/AuctionPage/AuctionHero";
 import LatestProducts from "@/components/AuctionPage/LatestProducts";
+import CarFilter from "@/components/AuctionPage/CarFilter";
 import React, { useState, useContext, useEffect } from "react";
 
 import Car1 from "@/assets/cars/car1.jpg";
@@ -28,6 +29,7 @@ const page = (props: Props) => {
         <div className="px-4 md:px-16 gap-4">
             <AuctionHero images={images} title={titles} />
             <LatestProducts latestProducts={cars.slice(0, 4)} />
+            <CarFilter />
         </div>
     );
 };
