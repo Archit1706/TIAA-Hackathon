@@ -13,7 +13,6 @@ export default function Home() {
         <main className="dark:text-blue-400 text-green-400">
             <HeroTry />
             <Gallery />
-            <Category />
             <Filter />
             <Features />
             <Testimonials />

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import router from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
+import LoginPic from '../../src/assets/loginPic.png'
 
 type Props = {};
 
@@ -41,10 +42,16 @@ const Login = (props: Props) => {
             if (res.success == true) {
                 localStorage.setItem("id", res._id);
                 localStorage.setItem("uname", res.data.name);
+                localStorage.setItem("isLogin", "true");
                 localStorage.setItem("user", JSON.stringify(res.data));
                 toast.success("Login Successful")
-                router.push('/')
-            }else{
+                if(res.isAdmin ==  false){
+                    router.push('/')
+                }else{
+                    router.push('/admin - routez');
+                }
+            } 
+            else{
                 toast.error("Login Unsuccessful. Something went wrong !!!")
             }
 
@@ -64,7 +71,7 @@ const Login = (props: Props) => {
                 <div className="w-full flex flex-col items-center justify-center px-6 py-8 mx-auto pl-28 md:h-screen lg:py-0">
                     <div className="md:w-[500px] bg-white rounded-lg drop-shadow-lg">
                         <div className="space-y-4 py-10 px-10">
-                            <h1 className="text-2xl text-center pb-3 font-bold leading-tight tracking-tight text-teal-400 md:text-3xl">
+                            <h1 className="text-2xl text-center pb-3 font-bold leading-tight tracking-tight text-mobile md:text-3xl">
                                 Login
                             </h1>
                             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-4">
@@ -79,17 +86,18 @@ const Login = (props: Props) => {
                                 </div>
 
 
-                                <button type="submit" className="w-full text-white bg-teal-400 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center ">Login</button>
+                                <button type="submit" className="w-full text-white bg-mobile hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center ">Login</button>
                                 <hr />
                                 <p className="text-base font-normal text-gray-800">
-                                    Don't have an account yet ? <Link href="/signup" className="font-medium text-lg text-teal-500 hover:underline dark:text-primary-500">Sign Up</Link>
+                                    Don't have an account yet ? <Link href="/signup" className="font-medium text-lg text-mobile hover:underline dark:text-primary-500">Sign Up</Link>
                                 </p>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div className='mt-16 mr-28'>
+                <div className='mt-10 mr-28'>
                     {/* <Lottie options={DefaultOptions} height={650} width={650} /> */}
+                    <img src={LoginPic.src} alt="" />
                     <ToastContainer
                         position="top-center"
                         autoClose={4000}

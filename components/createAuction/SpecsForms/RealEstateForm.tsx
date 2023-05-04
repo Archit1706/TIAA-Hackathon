@@ -1,12 +1,12 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AppContext } from "context/AppContext"
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 type Props = {}
 
 const RealEstateForm = (props: Props) => {
   // specs is a object with key value pair of specs
-  const { setFormNumber, specs, setSpecs, price, setPrice, soldDate, setSoldDate } = useContext(AppContext)
+  const { setFormNumber, specs, brand, setSpecs, price, setPrice, soldDate, setSoldDate } = useContext(AppContext)
   const submitHandler = () => {
     console.log({
       "specs": specs,
@@ -22,7 +22,7 @@ const RealEstateForm = (props: Props) => {
   }
   const predictPrice = () => {
     // fetch predicted initail bid (price) from backend based on all specs
-    if (specs["OS"] && specs["Color"] && specs["Ram (GB)"] && specs["Internal Storage (GB)"] && specs["Rear Camera (MP)"] && specs["Front Camera (MP)"] && specs["Display (Inch)"] && specs["Processor"] && specs["Battery"] && specs["Connectivity"]) {
+    if (specs["Under Construction"] && specs["Rera Approved"] && specs["Ready to MoveIn"] && specs["Resale"] && specs["Area"] && specs["Rooms"] && specs["City"]) {
       // fetch predicted price from backend
       fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/predict`, {
         method: "POST",
@@ -30,20 +30,57 @@ const RealEstateForm = (props: Props) => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "specs": specs,
-          "category": "Mobile"
+          "specs": {
+            ...specs,
+            "brand": brand
+          },
+          "category": "Real-Estate"
         })
       })
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          setPrice(data["message"])
+          if (data.success) {
+            setPrice(data["message"])
+            toast.success("😀 Successfully predicted bid price for these specs!")
+          } else {
+            toast.error("😓 Unable to predict bid price for these specs!")
+          }
         })
         .catch(err => {
           toast.error("😓 Unable to predict bid price for these specs!")
           console.log(err)
         })
     }
+  }
+
+  const predictEndDate = () => {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/predict-soldDate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "category": "Real-Estate"
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.success) {
+          // setSoldDate(data["message"])
+          const event = new Date(data["message"]);
+          const newDate = event.toISOString().slice(0, 16);
+          setSoldDate(newDate)
+          toast.success("😀 Successfully predicted bid price for these specs!")
+        } else {
+          toast.error("😓 Unable to predict bid price for these specs!")
+        }
+      })
+      .catch(err => {
+        toast.error("😓 Unable to predict bid price for these specs!")
+        console.log(err)
+      })
   }
   // specs format
   //    "specs": {
@@ -57,6 +94,7 @@ const RealEstateForm = (props: Props) => {
   // },
   return (
     <div className="mt-8 p-4">
+      <ToastContainer />
       <div className="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
           <label htmlFor="uc" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Under Construction</label>
@@ -133,9 +171,15 @@ const RealEstateForm = (props: Props) => {
         </div>
         <div>
           <label htmlFor="battery" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
-          <input
-            onChange={handelDateTime}
-            type="datetime-local" name="end-date" id="end-date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DD-YY-MM" required />
+          <div className='flex space-x-2'>
+            <button
+              onClick={() => { predictEndDate() }}
+              className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-mobile bg-mobile text-mobile-light border duration-200 ease-in-out border-mobile transition">Predict</button>
+            <input
+              onChange={handelDateTime}
+              value={soldDate}
+              type="datetime-local" name="end-date" id="end-date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DD-YY-MM" required />
+          </div>
         </div>
       </div>
       <div className="flex p-2 mt-4">

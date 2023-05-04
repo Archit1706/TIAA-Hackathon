@@ -128,7 +128,7 @@ const Pictures = (props: Props) => {
     console.log(product)
 
     // send product json object to backend
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}}/product/new`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -137,8 +137,8 @@ const Pictures = (props: Props) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("Product Form server",data);
-        setCategory('');
+        console.log("Product From server",data);
+        // setCategory('');
         setProductName('');
         setBrand('');
         setProductDescription('');
