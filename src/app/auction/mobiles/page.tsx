@@ -1,7 +1,7 @@
 "use client";
 import AuctionHero from "@/components/AuctionPage/AuctionHero";
 import LatestProducts from "@/components/AuctionPage/LatestProducts";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 
 import Phone1 from "@/assets/mobiles/mobile1.jpg";
 import Phone2 from "@/assets/mobiles/mobile2.jpg";
@@ -31,7 +31,10 @@ const page = (props: Props) => {
     return (
         <div className="px-4 md:px-16">
             <AuctionHero images={images} title={titles} />
-            <LatestProducts latestProducts={mobiles.slice(0, 4)} />
+            <LatestProducts
+                endDate={mobiles[0].soldDate}
+                latestProducts={mobiles.slice(0, 4)}
+            />
             <MobileFilter />
         </div>
     );

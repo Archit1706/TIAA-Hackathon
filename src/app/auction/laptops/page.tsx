@@ -32,7 +32,10 @@ const page = (props: Props) => {
     return (
         <div className="px-4 md:px-16 gap-4">
             <AuctionHero images={images} title={titles} />
-            <LatestProducts latestProducts={laptops.slice(0, 4)} />
+            <LatestProducts
+                endDate={laptops[0].soldDate}
+                latestProducts={laptops.slice(0, 4)}
+            />
         </div>
     );
 };

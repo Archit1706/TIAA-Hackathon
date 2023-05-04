@@ -69,6 +69,7 @@ const AuctionHistory = (props: Props) => {
                 amount: amount,
                 name: userName,
             },
+            reverse: props.product.category === "Government",
         };
         socket.emit("bid", messageContent);
     };

@@ -30,6 +30,44 @@ const AppProvider = ({ children }) => {
   // picture form data
   const [links, setLinks] = useState([]);
 
+  const [userId, setUserId] = useState(localStorage.getItem("userId") || "6452c8e67e7e50035edc2de2");
+
+  // getDashDetails, itemsSold, itemsBought
+
+  const [itemsBought, setItemsBought] = useState([]);
+  const [itemsSold, setItemsSold] = useState([]);
+
+  const getDashDetails = () => {
+    // Post Request
+
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/getDashDetails`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: userId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.success) {
+          setItemsBought(res.message.itemsBought);
+          setItemsSold(res.message.itemsSold);
+        }
+      });
+
+
+    // fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/getDashDetails`)
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     if (res.success) {
+    //       setItemsBought(res.message.itemsBought);
+    //       setItemsSold(res.message.itemsSold);
+    //     }
+    //   });
+  }
+
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL6}/product/get`)
@@ -80,7 +118,14 @@ const AppProvider = ({ children }) => {
         price,
         setPrice,
         soldDate,
-        setSoldDate
+        setSoldDate,
+        userId,
+        setUserId,
+        getDashDetails,
+        itemsBought,
+        itemsSold,
+        setItemsBought,
+        setItemsSold,
       }}
     >
       {children}
