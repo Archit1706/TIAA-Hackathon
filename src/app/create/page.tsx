@@ -143,7 +143,7 @@ const page = (props: Props) => {
                                 <div className="mx-4 p-4">
                                     <div className="flex items-center">
                                         <div className={`flex items-center ${formNumber === 1 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(1)}
+                                            // onClick={() => setFormNumber(1)}
                                         >
                                             <div className={`${formNumber === 1 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <AiOutlineShoppingCart className="w-6 h-6" />
@@ -153,7 +153,7 @@ const page = (props: Props) => {
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-mobile"></div>
 
                                         <div className={`flex items-center ${formNumber === 2 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(2)}
+                                            // onClick={() => setFormNumber(2)}
                                         >
                                             <div className={`${formNumber === 2 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <VscTools className="w-6 h-6" />
@@ -163,7 +163,7 @@ const page = (props: Props) => {
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
 
                                         <div className={`flex items-center ${formNumber === 3 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(3)}
+                                            // onClick={() => setFormNumber(3)}
                                         >
                                             <div className={`${formNumber === 3 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <AiOutlineCamera className="w-6 h-6" />
@@ -173,7 +173,7 @@ const page = (props: Props) => {
                                         <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
 
                                         <div className={`flex items-center ${formNumber === 4 ? "text-white" : "text-mobile"} relative`}
-                                            onClick={() => setFormNumber(4)}
+                                            // onClick={() => setFormNumber(4)}
                                         >
                                             <div className={`${formNumber === 4 && "bg-mobile"} rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-mobile flex items-center justify-center`}>
                                                 <MdDone className="w-6 h-6" />
