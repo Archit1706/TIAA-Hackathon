@@ -193,7 +193,7 @@ const Dash = (props: Props) => {
                                                     {/* {item?.createDate} */}
                                                     {item?.soldDate &&
                                                         new Date(
-                                                            props.product.soldDate
+                                                            item?.soldDate
                                                         ).toLocaleDateString(
                                                             "en-US",
                                                             options
