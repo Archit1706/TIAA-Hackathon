@@ -105,6 +105,9 @@ const Pictures = (props: Props) => {
     //   "bids": 0,
     //   "__v": 0
     // }
+    if(localStorage.getItem('uname') == null){
+      return toast.error('😓 Please login or refresh to create auction!');
+    }
     const product = {
       name: productName,
       brand: brand,
@@ -118,7 +121,7 @@ const Pictures = (props: Props) => {
       images: links.map((link: any) => link.secure_url),
       createDate: new Date(),
       soldDate: soldDate,
-      seller: "Prateek Vishwakarma",
+      seller: localStorage.getItem('uname'),
       buyer: "",
       category: category,
       specs: specs,

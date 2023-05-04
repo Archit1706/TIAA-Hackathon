@@ -33,7 +33,7 @@ const page = (props: Props) => {
             <AuctionHero images={images} title={titles} />
             <LatestProducts
                 latestProducts={bikes.slice(0, 4)}
-                endDate={bikes[0]?.soldDate}
+                // endDate={bikes[0]?.soldDate}
             />
             <AuctionFilter />
         </div>
