@@ -29,7 +29,10 @@ const page = (props: Props) => {
     return (
         <div className="px-4 md:px-16">
             <AuctionHero images={images} title={titles} />
-            <LatestProducts latestProducts={realestates.slice(0, 4)} />
+            <LatestProducts
+                endDate={realestates[0].soldDate}
+                latestProducts={realestates.slice(0, 4)}
+            />
         </div>
     );
 };

@@ -182,7 +182,7 @@ const BikesFilter = () => {
                     </button>
                 </div>
                 <p className=" text-xl leading-5 text-gray-600 font-Low">
-                    09 Products
+                    {bikes?.length} Products
                 </p>
 
                 {/* Filters Button (Small Screen)  */}

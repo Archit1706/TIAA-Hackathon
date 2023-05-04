@@ -3,12 +3,23 @@ import { Product } from "@/types/Product";
 import { ProductContext } from "context/ProductContext";
 
 import ProductCard from "../Cards/ProductCard";
-const CarFilter = () => {
-    const { products, getAllProducts, cars, getCars, setCars, setProducts } =
-        useContext(ProductContext);
+const MobileFilter = () => {
+    const {
+        products,
+        getAllProducts,
+        mobiles,
+        getMobiles,
+        setMobiles,
+        setProducts,
+    } = useContext(ProductContext);
 
     const [showFilters, setShowfilters] = useState(true);
     const [check, setCheck] = useState({
+        Apple: false,
+        Samsung: false,
+        OnePlus: false,
+        Xiaomi: false,
+
         New: false,
         Used: false,
         ForParts: false,
@@ -21,6 +32,11 @@ const CarFilter = () => {
     });
 
     const {
+        Apple,
+        Samsung,
+        OnePlus,
+        Xiaomi,
+
         New,
         Used,
         ForParts,
@@ -39,9 +55,14 @@ const CarFilter = () => {
         });
     };
 
-    const applyFilters = (e: any) => {
+    const applyFilters =  (e: any) => {
         setCheck({
             ...check,
+            Apple: false,
+            Samsung: false,
+            OnePlus: false,
+            Xiaomi: false,
+
             New: false,
             Used: false,
             ForParts: false,
@@ -53,52 +74,85 @@ const CarFilter = () => {
             LowBid: false,
         });
 
-        if (New) {
-            setProducts(
-                cars.filter((product: Product) => product.condition === "New")
-            );
-        } else if (Used) {
-            setProducts(
-                cars.filter((product: Product) => product.condition === "Used")
-            );
-        } else if (ForParts) {
-            setProducts(
-                cars.filter(
-                    (product: Product) => product.condition === "ForParts"
-                )
-            );
-        } else if (High) {
-            setProducts(
-                cars.sort((a: Product, b: Product) => b.price - a.price)
-            );
-        } else if (Low) {
-            setProducts(
-                cars.sort((a: Product, b: Product) => a.price - b.price)
-            );
-        } else if (HighBid) {
-            setProducts(
-                cars.sort((a: Product, b: Product) => b?.bids - a?.bids)
-            );
-        } else if (LowBid) {
-            setProducts(
-                cars.sort((a: Product, b: Product) => a?.bids - b?.bids)
-            );
-        }
+        getMobiles().then(() => {
+            console.log(mobiles)
+            if (New) {
+                getMobiles();
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.condition === "New"
+                    )
+                );
+            } else if (Used) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.condition === "Used"
+                    )
+                );
+            } else if (ForParts) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.condition === "ForParts"
+                    )
+                );
+            } else if (High) {
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => b.price - a.price)
+                );
+            } else if (Low) {
+    
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => a.price - b.price)
+                );
+            } else if (HighBid) {
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => b?.bids - a?.bids)
+                );
+            } else if (LowBid) {
+                setMobiles(
+                    mobiles.sort((a: Product, b: Product) => a?.bids - b?.bids)
+                );
+            } else if (Apple) {
+                setMobiles(
+                    mobiles.filter((product: Product) => product.brand === "Apple")
+                );
+            } else if (Samsung) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.brand === "Samsung"
+                    )
+                );
+            } else if (Xiaomi) {
+                setMobiles(
+                    mobiles.filter((product: Product) => product.brand === "Xiaomi")
+                );
+            } else if (OnePlus) {
+                setMobiles(
+                    mobiles.filter(
+                        (product: Product) => product.brand === "OnePlus"
+                    )
+                );
+                // getMobiles();
+    
+            }
+        })
+       
+        
     };
 
     useEffect(() => {
-        getCars();
+        getMobiles();
     }, []);
 
     return (
         <div className="2xl:container 2xl:mx-auto">
             <div className=" md:py-12 lg:px-20 md:px-6 py-9 px-4">
                 <p className=" text-sm leading-3 text-gray-600 font-normal mb-2">
-                    Auctions - cars - Filters
+                    Auctions - mobiles - Filters
                 </p>
                 <div className=" flex justify-between items-center mb-4">
                     <h2 className=" lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 font-semibold">
-                        cars
+                        mobiles
                     </h2>
 
                     {/*  filters Button (md and plus Screen) */}
@@ -182,7 +236,7 @@ const CarFilter = () => {
                     </button>
                 </div>
                 <p className=" text-xl leading-5 text-gray-600 font-Low">
-                    {cars?.length} Products
+                    {mobiles?.length} Products
                 </p>
 
                 {/* Filters Button (Small Screen)  */}
@@ -300,6 +354,124 @@ const CarFilter = () => {
                             strokeLinejoin="round"
                         />
                     </svg>
+                </div>
+
+                <hr className=" bg-gray-200 lg:w-6/12 w-full md:my-10 my-8" />
+
+                <div>
+                    <div className=" flex space-x-2">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M9.5 16C13.0899 16 16 13.0899 16 9.5C16 5.91015 13.0899 3 9.5 3C5.91015 3 3 5.91015 3 9.5C3 13.0899 5.91015 16 9.5 16Z"
+                                stroke="#1F2937"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <path
+                                d="M19 10H12C10.8954 10 10 10.8954 10 12V19C10 20.1046 10.8954 21 12 21H19C20.1046 21 21 20.1046 21 19V12C21 10.8954 20.1046 10 19 10Z"
+                                stroke="#1F2937"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                        <p className=" lg:text-2xl text-xl lg:leading-6 leading-5 font-Low text-gray-800 ">
+                            Brands
+                        </p>
+                    </div>
+                    <div className=" md:flex md:space-x-6 mt-8 grid grid-cols-3 gap-y-8 flex-wrap">
+                        <div className=" flex space-x-2 md:justify-center md:items-center items-center justify-start">
+                            <input
+                                className="w-4 h-4 mr-2"
+                                type="checkbox"
+                                id="Xiaomi"
+                                name="Xiaomi"
+                                value="Xiaomi"
+                                checked={Xiaomi}
+                                onChange={changeHandler}
+                            />
+                            <div className=" inline-block">
+                                <div className=" flex space-x-6 justify-center items-center">
+                                    <label
+                                        className=" mr-2 text-sm leading-3 font-normal text-gray-600"
+                                        htmlFor="Xiaomi"
+                                    >
+                                        Xiaomi
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className=" flex space-x-2 md:justify-center md:items-center items-center justify-start">
+                            <input
+                                className="w-4 h-4 mr-2"
+                                type="checkbox"
+                                id="OnePlus"
+                                name="OnePlus"
+                                value="OnePlus"
+                                checked={OnePlus}
+                                onChange={changeHandler}
+                            />
+                            <div className=" inline-block">
+                                <div className=" flex space-x-6 justify-center items-center">
+                                    <label
+                                        className=" mr-2 text-sm leading-3 font-normal text-gray-600"
+                                        htmlFor="OnePlus"
+                                    >
+                                        OnePlus
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className=" flex justify-center items-center">
+                            <input
+                                className="w-4 h-4 mr-2"
+                                type="checkbox"
+                                id="Samsung"
+                                name="Samsung"
+                                value="Samsung"
+                                checked={Samsung}
+                                onChange={changeHandler}
+                            />
+                            <div className=" inline-block">
+                                <div className=" flex space-x-6 justify-center items-center">
+                                    <label
+                                        className=" mr-2 text-sm leading-3 font-normal text-gray-600"
+                                        htmlFor="Used"
+                                    >
+                                        Samsung
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className=" flex space-x-2 md:justify-center md:items-center items-center justify-end">
+                            <input
+                                className="w-4 h-4 mr-2"
+                                type="checkbox"
+                                id="Apple"
+                                name="Apple"
+                                value="Apple"
+                                checked={Apple}
+                                onChange={changeHandler}
+                            />
+                            <div className=" inline-block">
+                                <div className=" flex space-x-6 justify-center items-center">
+                                    <label
+                                        className=" mr-2 text-sm leading-3 font-normal text-gray-600"
+                                        htmlFor="Apple"
+                                    >
+                                        Apple
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <hr className=" bg-gray-200 lg:w-6/12 w-full md:my-10 my-8" />
@@ -624,20 +796,20 @@ const CarFilter = () => {
             </div>
 
             <>
-                {cars.length > 0 ? (
+                {mobiles.length > 0 ? (
                     <div className="flex flex-wrap justify-center items-center">
-                        {cars.map((car) => (
+                        {mobiles.map((mobile) => (
                             <ProductCard
-                                key={car.id}
-                                product={car}
-                                endDate={car.soldDate}
+                                key={mobile.id}
+                                product={mobile}
+                                endDate={mobile.soldDate}
                             />
                         ))}
                     </div>
                 ) : (
                     <div className="flex justify-center items-center">
                         <p className="text-2xl font-Low text-gray-800">
-                            No Cars Found
+                            No mobiles Found
                         </p>
                     </div>
                 )}
@@ -646,4 +818,4 @@ const CarFilter = () => {
     );
 };
 
-export default CarFilter;
+export default MobileFilter;

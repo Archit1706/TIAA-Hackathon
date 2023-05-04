@@ -1,31 +1,68 @@
+'use client'
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import Logo from '../../src/assets/BIdBazaar.png';
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleDropdownClick = () => {
+    setShowDropdown(!showDropdown);
+  };
+
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span className="ml-3 text-xl">Tailblocks</span>
-        </a>
-        <nav className="md:ml-4 md:py-2 md:pl-4	flex flex-wrap items-center text-base justify-center">
-          <a href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Home</a>
-          <a href="/auction" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Auction</a>
-          <a href="/auction" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Dashboard</a>
-          <a href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">About</a>
-          <a href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Contact</a>
-        </nav>
-        <Link href='/login'>
-          <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-            Login
-          </button>
+        <Link href='/' className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img className="w-14" src={Logo.src} alt="" />
+          <span className="ml-3 text-xl">BitBazaar</span>
         </Link>
+        <nav className="md:ml-4 md:py-2 md:pl-4	flex flex-wrap items-center text-base justify-center">
+          <Link href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Home</Link>
+          {/* <Link href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Reverse-Auction</Link> */}
+          <Link href="/create" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Create-Auction</Link>
 
+
+          <button onClick={handleDropdownClick} id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" className="mr-2 hover:text-white hover:bg-mobile focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Auction</button>
+          {showDropdown && (
+            <div className="absolute mt-32 ml-40 w-40  bg-white rounded-md overflow-hidden shadow-xl z-10">
+              <Link
+                href="/"
+                className="block px-4 py-2 text-sm text-gray-800 hover:bg-mobile hover:text-white"
+              >
+                Auction
+              </Link>
+              <Link
+                href="/"
+                className="block px-4 py-2 text-sm text-gray-800 hover:bg-mobile hover:text-white"
+              >
+                Government
+              </Link>
+            </div>
+          )}
+
+
+          <Link href="/user/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Dashboard</Link>
+          {/* <a href="/about" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">About</a> */}
+          {/* <a href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Contact</a> */}
+        </nav>
+        {
+          localStorage.getItem("isLogin") && localStorage.getItem("isLogin") === "true"
+            ?
+            <Link href='/login'>
+              <button className="inline-flex text-white items-center bg-mobile border-0 py-2 px-4 focus:outline-none hover:bg-mobile-light hover:text-mobile rounded text-base mt-4 md:mt-0">
+                Dashboard
+              </button>
+            </Link>
+            :
+            <Link href='/login'>
+              <button className="inline-flex text-white items-center bg-mobile border-0 py-2 px-4 focus:outline-none hover:bg-mobile-light hover:text-mobile rounded text-base mt-4 md:mt-0">
+                Login
+              </button>
+            </Link>
+        }
       </div>
     </header>
   );

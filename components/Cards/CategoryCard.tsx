@@ -15,7 +15,7 @@ const CategoryCard = () => {
                     <div className='flex flex-row gap-2 mt-1 '>
                         <button className='bg-mobile-light text-mobile dark:bg-gray-800 hover:text-mobile-light hover:bg-mobile dark:hover:bg-mobile p-3 rounded'><ImHammer2 /></button>
                         <button className='bg-mobile-light text-mobile dark:bg-gray-800 hover:text-mobile-light hover:bg-mobile dark:hover:bg-mobile p-3 rounded'><FaHeart /></button>
-                        <button className='bg-mobile-light text-mobile dark:bg-gray-800 hover:text-mobile-light hover:bg-mobile dark:hover:bg-mobile p-3 rounded'><BsSearch /></button>
+                        {/* <button className='bg-mobile-light text-mobile dark:bg-gray-800 hover:text-mobile-light hover:bg-mobile dark:hover:bg-mobile p-3 rounded'><BsSearch /></button> */}
                     </div>
                 </div>
             </div>
