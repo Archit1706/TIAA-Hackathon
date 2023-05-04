@@ -47,8 +47,10 @@ const Login = (props: Props) => {
                 toast.success("Login Successful")
                 if(res.isAdmin ==  false){
                     router.push('/')
+                    window.location.reload();
                 }else{
                     router.push('/admin');
+                    window.location.reload();
                 }
             } 
             else{
@@ -63,6 +65,9 @@ const Login = (props: Props) => {
         }
         setEmail("");
         setPassword("");
+    }
+    if(localStorage.getItem("isLogin") == "true"){
+        router.push('/')
     }
 
     return (

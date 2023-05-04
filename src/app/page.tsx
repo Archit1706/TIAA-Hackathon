@@ -14,8 +14,8 @@ export default function Home() {
             <HeroTry />
             <Gallery />
             <Filter />
-            <Features />
-            <Testimonials />
+            {/* <Features />
+            <Testimonials /> */}
         </main>
     );
 }
