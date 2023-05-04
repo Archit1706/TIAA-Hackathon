@@ -15,12 +15,16 @@ type Props = {
 
 const QueryModal = ({ setShowQueryModal, product, QnA }: Props) => {
     const [question, setQuestion] = useState("");
+
     const submitAnswer = () => {
+        if (localStorage.getItem("uname") === null) {
+            return toast.error("Please login or refresh to ask a question!")
+        }
         if (question.length > 5) {
             // submit answer to backend
             const body = {
                 "id": product?._id,
-                "name": product?.seller, // Prateek Vishwakarma
+                "name": localStorage.getItem("uname"),
                 "comment": question
             }
             fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/add-question`, {
@@ -36,7 +40,7 @@ const QueryModal = ({ setShowQueryModal, product, QnA }: Props) => {
                     if (data.success) {
                         toast.success("Answer submitted successfully!")
                         QnA.push({
-                            name: "Prateek Vishwakarma",
+                            name: localStorage.getItem("uname") || "",
                             comment: question,
                             response: ""
                         })

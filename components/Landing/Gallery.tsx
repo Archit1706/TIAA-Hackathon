@@ -191,7 +191,7 @@ const Gallery = (props: Props) => {
                                 className="w-full object-cover h-full object-center block rounded-lg"
                                 src={realEstateImages[realEstateIndex].src}
                             />
-                            <Link href="/auction/laptops">
+                            <Link href="/auction/real">
                                 <div className="absolute top-0 left-0 w-full h-full bg-black opacity-0 hover:opacity-70 flex items-center justify-center transition-opacity duration-300 rounded-lg">
                                     <span className="text-white font-bold text-3xl">
                                         Real Estate
