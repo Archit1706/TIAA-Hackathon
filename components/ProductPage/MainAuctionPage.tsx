@@ -103,8 +103,10 @@ const MainAuctionPage = (props: Props) => {
                 amount: amount,
                 name: userName,
             },
+            reverse: props.product.category === "Government",
         };
         socket.emit("bid", messageContent);
+        setPrice(amount);
     };
 
     const options = {
@@ -207,7 +209,7 @@ const MainAuctionPage = (props: Props) => {
                     </div>
                     <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 text-mobile">
                         <span className="text-black">Current Bid: </span>₹
-                        {props?.product?.price}
+                        {price}
                     </p>
 
                     <hr className=" bg-gray-200 w-full mt-4" />
@@ -253,6 +255,7 @@ const MainAuctionPage = (props: Props) => {
                             />
                             <span
                                 // onClick={addCount}
+                                onClick={() => setBidAmt(bidAmt + 100)}
                                 className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-9 rounded-r cursor-pointer outline-none flex items-center justify-center font-bold"
                             >
                                 +
@@ -473,9 +476,9 @@ const MainAuctionPage = (props: Props) => {
             {/* extra tabs section */}
             <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
                 <AuctionHistory product={props?.product} />
-                {
-                    props?.product?.specs && <Specs specifications={props?.product?.specs} />
-                }
+                {props?.product?.specs && (
+                    <Specs specifications={props?.product?.specs} />
+                )}
             </div>
             <div className="flex items-center flex-col md:flex-row gap-8 mt-6 md:mt-12">
                 <Chat />
@@ -487,23 +490,22 @@ const MainAuctionPage = (props: Props) => {
                     <h1 className="text-4xl font-bold pl-4">FAQ</h1>
                 </div>
                 <section className="w-full bg-blueGray-100 rounded-sm">
-                    {
-                        props?.product?.productQuestions?.length === 0 ? (
-                            <div className="flex items-center justify-center py-4 bg-gray-100 rounded-xl">
-                                <h1 className="text-2xl font-bold">
-                                    No questions yet
-                                </h1>
+                    {props?.product?.productQuestions?.length === 0 ? (
+                        <div className="flex items-center justify-center py-4 bg-gray-100 rounded-xl">
+                            <h1 className="text-2xl font-bold">
+                                No questions yet
+                            </h1>
+                        </div>
+                    ) : (
+                        props?.product?.productQuestions && (
+                            <div className="mx-auto">
+                                <FAQ
+                                    product={props?.product}
+                                    QnA={props?.product?.productQuestions}
+                                />
                             </div>
                         )
-                            : (
-                                props?.product?.productQuestions
-                                &&
-                                <div className="mx-auto">
-                                    <FAQ product={props?.product} QnA={props?.product?.productQuestions} />
-                                </div>
-                            )
-                    }
-
+                    )}
                 </section>
             </div>
 
