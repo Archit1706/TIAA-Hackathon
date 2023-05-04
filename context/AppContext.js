@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
 
 
   useEffect(() => {
-    fetch("https://auction-backend.sidd065.repl.co/api/product/get")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL6}/product/get`)
       .then(res => res.json())
       .then(res => {
         if (res.success) setProducts(res.message);
@@ -40,7 +40,7 @@ const AppProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetch("https://auction-backend.sidd065.repl.co/api/users/get")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/get`)
       .then(res => res.json())
       .then(res => {
         if (res.success) setUsers(res.message);

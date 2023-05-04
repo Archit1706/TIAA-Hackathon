@@ -195,7 +195,7 @@ export const ResponseCrad = ({ product, QnA, setQnAs, index } : ResponseCradProp
                 "comment": QnA?.comment,
                 "response": answer
             }
-            fetch("https://auction-backend.sidd065.repl.co/api/product/add-response", {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/add-response`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
