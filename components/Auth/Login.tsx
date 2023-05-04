@@ -48,7 +48,7 @@ const Login = (props: Props) => {
                 if(res.isAdmin ==  false){
                     router.push('/')
                 }else{
-                    router.push('/admin - routez');
+                    router.push('/admin');
                 }
             } 
             else{
