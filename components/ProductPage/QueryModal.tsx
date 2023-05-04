@@ -23,7 +23,7 @@ const QueryModal = ({ setShowQueryModal, product, QnA }: Props) => {
                 "name": product?.seller, // Prateek Vishwakarma
                 "comment": question
             }
-            fetch("https://auction-backend.sidd065.repl.co/api/product/add-question", {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/add-question`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

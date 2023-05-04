@@ -16,7 +16,7 @@ import Link from "next/link";
 import io from "socket.io-client";
 import FAQ from "./FAQ";
 let socket: any;
-const CONNECTION_PORT = "https://auction-backend.sidd065.repl.co";
+const CONNECTION_PORT = process.env.NEXT_PUBLIC_CONNECTION_URL || "";
 
 type Props = {
     product: Product;

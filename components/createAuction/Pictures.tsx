@@ -128,7 +128,7 @@ const Pictures = (props: Props) => {
     console.log(product)
 
     // send product json object to backend
-    fetch('https://auction-backend.sidd065.repl.co/api/product/new', {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}}/product/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
