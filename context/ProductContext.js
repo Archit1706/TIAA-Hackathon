@@ -12,6 +12,7 @@ export const ProductProvider = ({ children }) => {
     const [mobiles, setMobiles] = useState([]);
     const [realestates, setRealestates] = useState([]);
     const [laptops, setLaptops] = useState([]);
+    const [govt, setGovt] = useState([]);
 
 
     const getCars = async () => {
@@ -45,6 +46,26 @@ export const ProductProvider = ({ children }) => {
         if (data.success) setLaptops(data.message);
     }
 
+    const getGovernment = async () => {
+        // https://auction-backend.sidd065.repl.co/api/product/get-government
+        // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-government`);
+        // const data = await res.json();
+        // console.log(data);
+        // if (data.success) setGovt(data.message);
+
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+        fetch("https://auction-backend.sidd065.repl.co/api/product/get-government", requestOptions)
+            .then(response => response.json())
+            .then(response => setGovt(response.message))
+            .catch(error => console.log('error', error));
+
+        console.log("govt")
+    }
+
     const getAllProducts = async () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`);
         const data = await res.json();
@@ -52,6 +73,7 @@ export const ProductProvider = ({ children }) => {
         console.log("jfklae");
     }
 
+    // govt, setGovt, getGovernment
 
     return (
         <ProductContext.Provider value={{
@@ -60,12 +82,14 @@ export const ProductProvider = ({ children }) => {
             mobiles,
             realestates,
             laptops,
+            govt,
             products,
             setCars,
             setBikes,
             setMobiles,
             setRealestates,
             setLaptops,
+            setGovt,
             setProducts,
             getCars,
             getBikes,
@@ -73,6 +97,7 @@ export const ProductProvider = ({ children }) => {
             getRealestates,
             getLaptops,
             getAllProducts,
+            getGovernment,
 
         }}>
             {children}
