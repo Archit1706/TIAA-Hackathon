@@ -3,7 +3,7 @@ import { calculateTimeLeft } from "@/utils/TimeCounter";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 type Props = {
-    endDate: string;
+    endDate?: string | Date;
     product: Product;
 };
 const ProductCard = (props: Props) => {

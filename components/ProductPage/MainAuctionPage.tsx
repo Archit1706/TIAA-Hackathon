@@ -46,7 +46,7 @@ const MainAuctionPage = (props: Props) => {
     const [room, setRoom] = useState(
         window.location.href.substr(window.location.href.length - 24)
     );
-    const [userName, setUserName] = useState(localStorage.getItem("userName"));
+    const [userName, setUserName] = useState(localStorage.getItem("uname"));
     const [_, update] = useState(1);
 
     const [price, setPrice] = useState(0);
@@ -68,7 +68,7 @@ const MainAuctionPage = (props: Props) => {
 
     useEffect(() => {
         socket.once("connectToRoom", (data: any) => {
-            console.log(data);
+            // console.log(data);
             setUserCount(data.userCount);
             setPrice(data.price);
             setBidAmt(data.price + 100);

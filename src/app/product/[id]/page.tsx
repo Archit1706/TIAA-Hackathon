@@ -17,14 +17,14 @@ const page = ({ params }: any) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        console.log("useEffect");
+        // console.log("useEffect");
         getAllProducts();
-        console.log(products);
+        // console.log(products);
     }, []);
 
     const router = useRouter();
     const id = params["id"].toString();
-    console.log(id);
+    // console.log(id);
 
     // fetch the product data from the server or context api
     // const [products, setProducts] = useState<Product[] | null>(null);
@@ -38,7 +38,7 @@ const page = ({ params }: any) => {
     // const product = products[3];
     // const moreProducts = products;
 
-    console.log(products);
+    // console.log(products);
     // console.log(colors[product.category]);
     return (
         <div>

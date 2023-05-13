@@ -1,5 +1,5 @@
 'use client'
-import '../../apps.scss';
+import '../../apps.css';
 import { IoChevronForwardCircle, IoMailOutline, IoChevronForward, IoApps, IoNotifications, IoPieChart, IoNewspaper, IoCard, IoColorFill, IoAddCircle } from 'react-icons/io5';
 import { IconContext } from "react-icons";
 import { motion } from 'framer-motion';

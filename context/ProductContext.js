@@ -70,7 +70,7 @@ export const ProductProvider = ({ children }) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`);
         const data = await res.json();
         if (data.success) setProducts(data.message);
-        console.log("jfklae");
+        // console.log("jfklae");
     }
 
     // govt, setGovt, getGovernment

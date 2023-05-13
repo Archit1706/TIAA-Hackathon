@@ -15,11 +15,13 @@ const Filter = (props: Props) => {
         realestates,
         laptops,
         products,
+        govt,
         setCars,
         setBikes,
         setMobiles,
         setRealestates,
         setLaptops,
+        setGovt,
         setProducts,
         getCars,
         getBikes,
@@ -27,6 +29,7 @@ const Filter = (props: Props) => {
         getRealestates,
         getLaptops,
         getAllProducts,
+        getGovernment,
     } = useContext(ProductContext);
 
     useEffect(() => {
@@ -35,6 +38,7 @@ const Filter = (props: Props) => {
         getMobiles();
         getRealestates();
         getLaptops();
+        getGovernment();
     }, []);
     return (
         <>
@@ -49,6 +53,7 @@ const Filter = (props: Props) => {
                             mobiles[0],
                             laptops[0],
                             realestates[0],
+                            govt[0],
                         ]);
                     }}
                 >

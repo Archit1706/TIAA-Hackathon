@@ -47,7 +47,7 @@ const Chat = (props: Props) => {
 
     useEffect(() => {
         socket.once("connectToRoom", (data: any) => {
-            console.log(data);
+            // console.log(data);
             setPrice(data.price);
             setBidAmt(data.price + 100);
             setBidList(data.history);
@@ -67,7 +67,7 @@ const Chat = (props: Props) => {
 
     useEffect(() => {
         socket.on("recieve_bid", (data: any) => {
-            console.log(data);
+            // console.log(data);
             setPrice(Number(data.price));
             setBidList(data.history);
         });
@@ -83,7 +83,7 @@ const Chat = (props: Props) => {
             },
         };
         // console.log(1);
-        console.log(userId, userName, messageList);
+        // console.log(userId, userName, messageList);
         socket.emit("send_message", messageContent);
         const temp = messageList;
         temp.push(messageContent.content);
@@ -232,7 +232,7 @@ const Chat = (props: Props) => {
                                                     <div className="flex items-center justify-start flex-row-reverse">
                                                         <img
                                                             className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
-                                                            src={`https://avatars.dicebear.com/api/initials/Me.svg`}
+                                                            src={`https://avatars.dicebear.com/api/initials/${userName}.svg`}
                                                         />
                                                         <div className="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
                                                             <div>
@@ -251,7 +251,7 @@ const Chat = (props: Props) => {
                                                     <div className="flex flex-row items-center">
                                                         <img
                                                             className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
-                                                            src={`https://avatars.dicebear.com/api/initials/Others.svg`}
+                                                            src={`https://avatars.dicebear.com/api/initials/${message?.author}.svg`}
                                                         />
                                                         <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
                                                             <div>
