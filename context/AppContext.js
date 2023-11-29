@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
   // picture form data
   const [links, setLinks] = useState([]);
 
-  const [userId, setUserId] = useState(localStorage.getItem("userId") || "6453475e6d17a9bc0d9a8456");
+  const [userId, setUserId] = useState('');
 
   // getDashDetails, itemsSold, itemsBought
 
@@ -41,6 +41,11 @@ const AppProvider = ({ children }) => {
   const [maxValue, setMaxValue] = useState([]);
   const [maxBid, setMaxBid] = useState([]);
   const [maxRating, setMaxRating] = useState([]);
+
+  useEffect(() => {
+    const uid = localStorage.getItem("userId") || "6453475e6d17a9bc0d9a8456";
+    setUserId(uid);
+  })
 
   const getDashDetails = (userId) => {
 
@@ -67,16 +72,6 @@ const AppProvider = ({ children }) => {
         }
       })
       .catch(error => console.log('error', error));
-
-
-    // fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/getDashDetails`)
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     if (res.success) {
-    //       setItemsBought(res.message.itemsBought);
-    //       setItemsSold(res.message.itemsSold);
-    //     }
-    //   });
   }
 
   const getAdminDetails = (userId) => {
@@ -106,21 +101,21 @@ const AppProvider = ({ children }) => {
       .catch(error => console.log('error', error));
   }
 
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`)
-      .then(res => res.json())
-      .then(res => {
-        if (res.success) setProducts(res.message);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       if (res.success) setProducts(res.message);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/get`)
-      .then(res => res.json())
-      .then(res => {
-        if (res.success) setUsers(res.message);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/get`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       if (res.success) setUsers(res.message);
+  //     });
+  // }, []);
 
 
   return (

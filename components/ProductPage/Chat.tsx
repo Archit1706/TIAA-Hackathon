@@ -15,8 +15,9 @@ const Chat = (props: Props) => {
     const [room, setRoom] = useState(
         window.location.href.substr(window.location.href.length - 24)
     );
-    const usr = JSON.parse(localStorage.getItem("user")).name;
-    const [userName, setUserName] = useState(usr);
+
+    const [userName, setUserName] = useState("");
+    const [userId, setUserId] = useState("");
     const [_, update] = useState(1);
 
     const [price, setPrice] = useState(0);
@@ -26,9 +27,12 @@ const Chat = (props: Props) => {
     const [messageList, setMessageList] = useState([]);
     const [bidList, setBidList] = useState([]);
 
-    const userId = JSON.parse(localStorage.getItem("user"))._id;
-    // fetch user from the database or context using userId
-    // const user =
+    useEffect(() => {
+        const usr = JSON.parse(localStorage.getItem("user")).name;
+        const uid = JSON.parse(localStorage.getItem("user"))._id;
+        setUserName(usr);
+        setUserId(uid);
+    }, []);
 
     const user: User = {
         id: "1",
@@ -128,7 +132,7 @@ const Chat = (props: Props) => {
                         <div className="ml-2 font-bold text-2xl">QuickChat</div>
                     </div>
 
-                    {userId != "" && user != null ? (
+                    {userId != "" && userName != null ? (
                         <>
                             <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg">
                                 <div className="h-20 w-20 rounded-full border overflow-hidden">

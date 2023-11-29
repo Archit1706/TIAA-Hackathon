@@ -13,18 +13,19 @@ type Props = {
 const AuctionHistory = (props: Props) => {
     // const [room, setRoom] = useState(window.location.pathname.split("/")[2]);
 
-    const userId = JSON.parse(localStorage.getItem("user"))._id;
-    const usr = JSON.parse(localStorage.getItem("user")).uname;
-    console.log(userId, usr);
-    const [userName, setUserName] = useState(usr);
-
     const [room, setRoom] = useState(
         window.location.href.substr(window.location.href.length - 24)
     );
-    // const [userName, setUserName] = useState(
-    //     // JSON.parse(localStorage.getItem("user")).name
-    //     "Hello World"
-    // ); //GET USERNAME FROM COOKIES OR LOCALSTORAGE
+
+    const [userName, setUserName] = useState<any>("");
+    const [userId, setUserId] = useState<any>("");
+    useEffect(() => {
+        const id = localStorage.getItem("id")?.toString();
+        const usr = localStorage.getItem("uname")?.toString();
+        setUserName(usr);
+        setUserId(id);
+    }, []);
+
     const [_, update] = useState(1);
 
     const [price, setPrice] = useState(0);

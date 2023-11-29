@@ -19,7 +19,6 @@ export const ProductProvider = ({ children }) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-cars`);
         const data = await res.json();
         if (data.success) setCars(data.message);
-        console.log("cars")
     }
 
     const getBikes = async () => {
@@ -47,33 +46,23 @@ export const ProductProvider = ({ children }) => {
     }
 
     const getGovernment = async () => {
-        // https://auction-backend.sidd065.repl.co/api/product/get-government
-        // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get-government`);
-        // const data = await res.json();
-        // console.log(data);
-        // if (data.success) setGovt(data.message);
 
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
 
-        fetch("https://auction-backend.sidd065.repl.co/api/product/get-government", requestOptions)
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}product/get-government`, requestOptions)
             .then(response => response.json())
             .then(response => setGovt(response.message))
-            .catch(error => console.log('error', error));
-
-        console.log("govt")
+            .catch(error => error);
     }
 
     const getAllProducts = async () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product/get`);
         const data = await res.json();
         if (data.success) setProducts(data.message);
-        // console.log("jfklae");
     }
-
-    // govt, setGovt, getGovernment
 
     return (
         <ProductContext.Provider value={{

@@ -8,14 +8,13 @@ import { ProductContext } from "context/ProductContext";
 type Props = {};
 
 const Admin = (props: Props) => {
-    const userId = localStorage.getItem("userId");
-
     const { getAdminDetails, maxBid, maxRating, maxValue } =
         useContext(AppContext);
 
     const { products, getAllProducts } = useContext(ProductContext);
 
     useEffect(() => {
+        const userId = localStorage.getItem("id");
         getAllProducts();
         getAdminDetails(userId);
     }, []);

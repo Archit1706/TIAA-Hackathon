@@ -8,13 +8,12 @@ import { ProductContext } from "context/ProductContext";
 type Props = {};
 
 const Dash = (props: Props) => {
-    const userId = localStorage.getItem("userId");
-
     const { getDashDetails, itemsSold, itemsBought } = useContext(AppContext);
 
     const { products, getAllProducts } = useContext(ProductContext);
 
     useEffect(() => {
+        const userId = localStorage.getItem("id");
         getAllProducts();
         getDashDetails(userId);
     }, []);

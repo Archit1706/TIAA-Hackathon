@@ -108,6 +108,7 @@ const MainAuctionPage = (props: Props) => {
         };
         socket.emit("bid", messageContent);
         setPrice(amount);
+        // console.log(messageContent);
     };
 
     const options = {

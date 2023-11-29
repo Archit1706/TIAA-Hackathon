@@ -68,71 +68,9 @@ const Pictures = (props: Props) => {
     const formSubmitHandler = () => {
         console.log(links);
         if (links.length < 4) {
-            // toast.success('🙌 Auction created successfully!');
-            // // toast.error('Please upload at least four image!');
             return toast.error("😓 Please upload at least four image!");
         }
-        // get all form data from context and create a product json object
-        // sample product json object
-        // {
-        //   "_id": "64526677e862bc95ff206759",
-        //   "name": "Honda CB Shine",
-        //   "brand": "Honda",
-        //   "description": "Honda CB Shine is a 124.7 cc, 4 stroke engine motorcycle with advanced features.",
-        //   "tags": [],
-        //   "price": 60000,
-        //   "rating": 4,
-        //   "sellerReviews": [
-        //     {
-        //       "name": "Steven",
-        //       "comment": "The bike is nice and the performance is great. The seller was very helpful and the bike arrived in good condition.",
-        //       "rating": 4.5
-        //     },
-        //     {
-        //       "name": "Melissa",
-        //       "comment": "I am very pleased with my purchase. The bike has a nice design and the engine is strong. The seller was very responsive.",
-        //       "rating": 4
-        //     }
-        //   ],
-        //   "productQuestions": [
-        //     {
-        //       "name": "Tim",
-        //       "comment": "Does this bike have a kick start?",
-        //       "response": "Yes, the Honda CB Shine has a kick start."
-        //     },
-        //     {
-        //       "name": "Dylan",
-        //       "comment": "What is the engine type of this bike?",
-        //       "response": "The Honda CB Shine has a 124.7 cc, 4 stroke engine."
-        //     }
-        //   ],
-        //   "condition": "New",
-        //   "images": [
-        //     "https://picsum.photos/200/300",
-        //     "https://example.com/honda-cb-shine-image2.jpg",
-        //     "https://example.com/honda-cb-shine-image3.jpg"
-        //   ],
-        //   "createDate": "2023-05-03T12:00:00.000Z",
-        //   "soldDate": null,
-        //   "seller": "Jill Doe",
-        //   "buyer": "",
-        //   "status": "Available",
-        //   "category": "Bikes",
-        //   "specs": {
-        //     "Age (years)": 2023,
-        //     "transmission": "manual",
-        //     "Owner": "first",
-        //     "Fuel Capacity (12L)": 12,
-        //     "Power (CC)": 124.7,
-        //     "Fuel": "Petrol",
-        //     "Kilometers Driven": 225,
-        //     "Mileage (KMPL)": 45
-        //   },
-        //   "location": "Delhi, IN",
-        //   "returns": false,
-        //   "bids": 0,
-        //   "__v": 0
-        // }
+
         if (localStorage.getItem("uname") == null) {
             return toast.error("😓 Please login or refresh to create auction!");
         }
