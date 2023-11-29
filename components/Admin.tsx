@@ -14,9 +14,12 @@ const Admin = (props: Props) => {
     const { products, getAllProducts } = useContext(ProductContext);
 
     useEffect(() => {
-        const userId = localStorage.getItem("id");
-        getAllProducts();
-        getAdminDetails(userId);
+        if (typeof window !== 'undefined') {
+            // Perform localStorage action
+            const userId = localStorage.getItem("id");
+            getAllProducts();
+            getAdminDetails(userId);
+          }
     }, []);
 
     const options = {

@@ -28,10 +28,12 @@ const Chat = (props: Props) => {
     const [bidList, setBidList] = useState([]);
 
     useEffect(() => {
-        const usr = JSON.parse(localStorage.getItem("user")).name;
-        const uid = JSON.parse(localStorage.getItem("user"))._id;
-        setUserName(usr);
-        setUserId(uid);
+        if (typeof window !== 'undefined') {
+            const usr = JSON.parse(localStorage.getItem("user")).name;
+            const uid = JSON.parse(localStorage.getItem("user"))._id;
+            setUserName(usr);
+            setUserId(uid);
+        }
     }, []);
 
     const user: User = {

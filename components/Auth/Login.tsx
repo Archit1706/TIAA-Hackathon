@@ -40,10 +40,12 @@ const Login = (props: Props) => {
             var res = await response.json();
             console.log(res);
             if (res.success == true) {
-                localStorage.setItem("id", res._id);
-                localStorage.setItem("uname", res.data.name);
-                localStorage.setItem("isLogin", "true");
-                localStorage.setItem("user", JSON.stringify(res.data));
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem("id", res._id);
+                    localStorage.setItem("uname", res.data.name);
+                    localStorage.setItem("isLogin", "true");
+                    localStorage.setItem("user", JSON.stringify(res.data));
+                }
                 toast.success("Login Successful")
                 if(res.isAdmin ==  false){
                     router.push('/')
@@ -66,8 +68,10 @@ const Login = (props: Props) => {
         setEmail("");
         setPassword("");
     }
-    if(localStorage.getItem("isLogin") == "true"){
-        router.push('/')
+    if (typeof window !== 'undefined') {
+        if(localStorage.getItem("isLogin") == "true"){
+            router.push('/')
+        }
     }
 
     return (

@@ -60,6 +60,7 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("bid", async (data) => {
+		console.log("data ---->", data)
 		console.log(data, prices[data.room], prices[data.room] < data.content.amount, !data.reverse)
 		if ((prices[data.room] < data.content.amount && !data.reverse) || (prices[data.room] > data.content.amount && data.reverse)) {
 			console.log(123)
@@ -72,14 +73,14 @@ io.on("connection", (socket) => {
 			history[data.room] = temp;
 
 			//database
-			const product = await Product.findById(data.room);
-			if (product.price) {
-				product.price = prices[data.room];
-				product.buyer = data.content.name;
-				product.status = "Pending";
-				product.bids = product.bids + 1;
-				product.save()
-			}
+			// const product = await Product.findById(data.room);
+			// if (product.price) {
+			// 	product.price = prices[data.room];
+			// 	product.buyer = data.content.name;
+			// 	product.status = "Pending";
+			// 	product.bids = product.bids + 1;
+			// 	product.save()
+			// }
 			console.log(123)
 			socket.to(data.room).emit("recieve_bid", { price: prices[data.room], history: history[data.room] });
 		}

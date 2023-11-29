@@ -13,9 +13,11 @@ const Dash = (props: Props) => {
     const { products, getAllProducts } = useContext(ProductContext);
 
     useEffect(() => {
-        const userId = localStorage.getItem("id");
-        getAllProducts();
-        getDashDetails(userId);
+        if (typeof window !== 'undefined') {
+            const userId = localStorage.getItem("id");
+            getAllProducts();
+            getDashDetails(userId);
+        }
     }, []);
 
     const options = {

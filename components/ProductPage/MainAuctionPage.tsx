@@ -46,7 +46,7 @@ const MainAuctionPage = (props: Props) => {
     const [room, setRoom] = useState(
         window.location.href.substr(window.location.href.length - 24)
     );
-    const [userName, setUserName] = useState(localStorage.getItem("uname"));
+    const [userName, setUserName] = useState(typeof window !== 'undefined' && localStorage.getItem("uname") ? localStorage.getItem("uname") : "");
     const [_, update] = useState(1);
 
     const [price, setPrice] = useState(0);

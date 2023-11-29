@@ -73,15 +73,16 @@ const Navbar = (props: Props) => {
           {/* <a href="/" className="mr-2 hover:text-white hover:bg-mobile py-2 px-3 rounded">Contact</a> */}
         </nav>
         {
-          localStorage.getItem("isLogin") && localStorage.getItem("isLogin") === "true"
+          typeof window !== 'undefined' && localStorage.getItem("isLogin") && localStorage.getItem("isLogin") === "true"
             ?
             <button onClick={() => {
-              localStorage.removeItem("isLogin");
-              localStorage.removeItem("uname");
-              localStorage.removeItem("user");
-              localStorage.removeItem("id");
-              window.location.href = "/";
-
+              if (typeof window !== 'undefined') {
+                localStorage.removeItem("isLogin");
+                localStorage.removeItem("uname");
+                localStorage.removeItem("user");
+                localStorage.removeItem("id");
+                window.location.href = "/";
+              }
             }} className="inline-flex text-white items-center bg-mobile border-0 py-2 px-4 focus:outline-none hover:bg-mobile-light hover:text-mobile rounded text-base mt-4 md:mt-0">
               LogOut
             </button>

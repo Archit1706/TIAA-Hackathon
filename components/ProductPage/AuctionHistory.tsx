@@ -20,10 +20,12 @@ const AuctionHistory = (props: Props) => {
     const [userName, setUserName] = useState<any>("");
     const [userId, setUserId] = useState<any>("");
     useEffect(() => {
-        const id = localStorage.getItem("id")?.toString();
-        const usr = localStorage.getItem("uname")?.toString();
-        setUserName(usr);
-        setUserId(id);
+        if (typeof window !== 'undefined') {
+            const id = localStorage.getItem("id")?.toString();
+            const usr = localStorage.getItem("uname")?.toString();
+            setUserName(usr);
+            setUserId(id);
+        }
     }, []);
 
     const [_, update] = useState(1);

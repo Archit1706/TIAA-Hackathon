@@ -71,8 +71,10 @@ const Pictures = (props: Props) => {
             return toast.error("😓 Please upload at least four image!");
         }
 
-        if (localStorage.getItem("uname") == null) {
-            return toast.error("😓 Please login or refresh to create auction!");
+        if (typeof window !== 'undefined') {
+            if (localStorage.getItem("uname") == null) {
+                return toast.error("😓 Please login or refresh to create auction!");
+            }
         }
         const product = {
             name: productName,
@@ -87,7 +89,7 @@ const Pictures = (props: Props) => {
             images: links.map((link: any) => link.secure_url),
             createDate: new Date(),
             soldDate: soldDate,
-            seller: localStorage.getItem("uname"),
+            seller: typeof window !== 'undefined' && localStorage.getItem("uname") ? localStorage.getItem("uname") : "",
             buyer: "",
             category: category,
             specs: specs,
